@@ -6,6 +6,7 @@
     :date-locale="dateZhCN"
     class="h-full"
   >
+    <n-global-style  />
     <naive-provider>
       <router-view />
     </naive-provider>

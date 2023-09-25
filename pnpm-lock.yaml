@@ -97,6 +97,9 @@ devDependencies:
   '@types/crypto-js':
     specifier: ^4.1.2
     version: 4.1.2
+  '@types/lodash-es':
+    specifier: ^4.17.9
+    version: 4.17.9
   '@types/mockjs':
     specifier: ^1.0.7
     version: 1.0.7
@@ -1239,11 +1242,9 @@ packages:
     resolution: {integrity: sha512-ZTcmhiI3NNU7dEvWLZJkzG6ao49zOIjEgIE0RgV7wbPxU0f2xT3VSAHw2gmst8swH6V0YkLRGp4qPlX/6I90MQ==}
     dependencies:
       '@types/lodash': 4.14.199
-    dev: false
 
   /@types/lodash@4.14.199:
     resolution: {integrity: sha512-Vrjz5N5Ia4SEzWWgIVwnHNEnb1UE1XMkvY5DGXrAeOGE9imk0hgTHh5GyDjLDJi9OTCn9oo9dXH1uToK1VRfrg==}
-    dev: false
 
   /@types/mockjs@1.0.7:
     resolution: {integrity: sha512-OCxXz6hEaJOVpRwuJMiVY5a6LtJcih+br9gwB/Q8ooOBikvk5FpBQ31OlNimXo3EqKha1Z7PFBni+q9m+8NCWg==}
