@@ -3,6 +3,10 @@ import presetUno from "@unocss/preset-uno"
 import transformerDirectives from "@unocss/transformer-directives"
 
 export default defineConfig({
+  rules: [
+    [/^w%-([\.\d]+)$/, ([_, num]) => ({ width: `${num}%` })],
+    [/^bg-([A-Za-z0-9]{6})$/, ([_, colorCode]) => ({ backgroundColor: `#${colorCode}` })],
+  ],
   content: {
     pipeline: {
       exclude: [
