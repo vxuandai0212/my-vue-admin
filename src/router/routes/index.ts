@@ -39,6 +39,15 @@ export const constantRoutes: AuthRoute.Route[] = [
     }
   },
   {
+    name: 'login-betacrm',
+    path: '/login-betacrm',
+    component: 'self',
+    meta: {
+      title: 'Login BetaCRM',
+      singleLayout: 'blank'
+    }
+  },
+  {
     name: '403',
     path: '/403',
     component: 'self',
