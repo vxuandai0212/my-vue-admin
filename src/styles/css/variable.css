@@ -1,0 +1,22 @@
+:root {
+  --font: Lato;
+  --primary: #5E81F4;
+  --primary-hover: #475EAB;
+  --primary-resting: #EFF3FE;
+  --primary-disabled: #F6F6F6;
+  --primary-dark: #1C1D21;
+  --primary-grey: #8181A5;
+  --success: #7CE7AC;
+  --warning: #F4BE5E;
+  --danger: #FF808B;
+  --info: #9698D6;
+  --secondary: #ECFCFF;
+  --sucess-light: #F2FDF7;
+  --warning-light: #FEF9EF;
+  --danger-light: #FFF3F4;
+  --white: #FFFFFF;
+  --outline: #F0F0F3;
+  --resting-outline: #ECECF2;
+  --background-light: #F5F5FA;
+  --transition-timing-func: cubic-bezier(0.4, 0, 0.2, 1);
+}

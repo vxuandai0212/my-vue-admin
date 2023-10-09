@@ -1,6 +1,13 @@
 @import './transition.css';
 @import './reset.css';
 @import './font.css';
+@import './variable.css';
+
+* {
+  font-family: var(--font);
+  font-style: normal;
+  line-height: normal;
+}
 
 html,
 body,
@@ -40,4 +47,10 @@ select:-webkit-autofill:focus {
   -webkit-text-fill-color: #1c1d21;
   -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
   transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill::first-line {
+  color: #1c1d21;
+  font-family: Lato; 
+  font-weight: 700;
 }

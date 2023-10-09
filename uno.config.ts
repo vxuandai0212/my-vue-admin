@@ -1,15 +1,178 @@
 import { defineConfig } from 'unocss/vite'
+import type { Theme } from 'unocss/preset-uno'
+import type { Rule } from 'unocss'
 import presetUno from '@unocss/preset-uno'
 import transformerDirectives from '@unocss/transformer-directives'
+
+type RuleType = {
+  [key: string]: {
+    [key: string]: Rule<Theme>[]
+  }
+}
+
+const RULES: RuleType = {
+  GENERAL: {
+    COLORS: [],
+    TYPOGRAPHY: [
+      [/^font-size-([\.\d]+)$/, ([_, num]) => ({ 'font-size': `${num}px` })],
+    ],
+    SVG: [],
+    VARIANTS: [],
+  },
+  ACCESSIBILITY: {
+    SCREEN_READERS: [],
+  },
+  ANIMATIONS: {
+    ANIMATION: [],
+    TRANSFORMS: [],
+    TRANSITIONS: [
+      [
+        /^transition$/,
+        (_match) => ({ transition: `all 0.3s cubic-bezier(0.4, 0, 0.2, 1)` }),
+      ],
+    ],
+  },
+  BACKGROUNDS: {
+    BACKGROUND: [
+      [
+        /^(background-color|color)-([A-Za-z0-9-]+)$/,
+        (match) => {
+          const property = match[1]
+          const color = match[2]
+          const css: any = {}
+          css[property] =
+            COLOR.indexOf(color) !== -1 ? `var(--${color})` : `#${color}`
+          return css
+        },
+      ],
+    ],
+    GRADIENTS: [],
+    BACKGROUND_BLEND_MODE: [],
+  },
+  BEHAVIORS: {
+    BOX_DECORATION_BREAK: [],
+    IMAGE_RENDERING: [],
+    LISTINGS: [],
+    OVERFLOW: [],
+    OVERSCROLL_BEHAVIOR: [],
+    PLACEHOLDER: [],
+  },
+  BORDERS: {
+    BORDER: [
+      [
+        /^border-rd-([\.\d]+)$/,
+        ([_, num]) => ({ 'border-radius': `${num}px` }),
+      ],
+    ],
+    DIVIDER: [],
+    OUTLINE: [],
+    RING: [],
+  },
+  EFFECTS: {
+    BOX_SHADOW: [],
+    OPACITY: [],
+    MIX_BLEND_MODE: [],
+  },
+  FILTERS: {
+    FILTER: [],
+    BACKDROP_FILTER: [],
+  },
+  INTERACTIVITY: {
+    ACCENT_COLOR: [],
+    APPEARANCE: [],
+    CURSOR: [],
+    CARET: [],
+    POINTER_EVENTS: [],
+    RESIZE: [],
+    SCROLL_BEHAVIOR: [],
+    TOUCH_ACTION: [],
+    USER_SELECT: [],
+    WILL_CHANGE: [],
+  },
+  LAYOUT: {
+    COLUMNS: [],
+    CONTAINER: [],
+    DISPLAY: [],
+    FLEXBOX: [],
+    GRID: [[/^gap-([\.\d]+)$/, ([_, num]) => ({ gap: `0 ${num}px` })]],
+    POSITIONING: [],
+    SIZING: [[/^w%-([\.\d]+)$/, ([_, num]) => ({ width: `${num}%` })]],
+    SPACING: [
+      [/^pt-([\.\d]+)$/, ([_, num]) => ({ 'padding-top': `${num}px` })],
+      [/^pr-([\.\d]+)$/, ([_, num]) => ({ 'padding-right': `${num}px` })],
+      [/^pb-([\.\d]+)$/, ([_, num]) => ({ 'padding-bottom': `${num}px` })],
+      [/^pl-([\.\d]+)$/, ([_, num]) => ({ 'padding-left': `${num}px` })],
+      [
+        /^p-([\.\d]+)-([\.\d]+)-([\.\d]+)-([\.\d]+)$/,
+        (match) => {
+          const top = match[1]
+          const right = match[2]
+          const bottom = match[3]
+          const left = match[4]
+          return { padding: `${top}px ${right}px ${bottom}px ${left}px` }
+        },
+      ],
+    ],
+    TABLES: [],
+  },
+}
+
+const COLOR = [
+  'primary',
+  'primary-hover',
+  'primary-resting',
+  'primary-disabled',
+  'primary-dark',
+  'primary-grey',
+  'success',
+  'warning',
+  'danger',
+  'info',
+  'secondary',
+  'sucess-light',
+  'warning-light',
+  'danger-light',
+  'white',
+  'outline',
+  'resting-outline',
+  'background-light',
+]
 
 export default defineConfig({
   rules: [
     [/^w%-([\.\d]+)$/, ([_, num]) => ({ width: `${num}%` })],
+    [/^gap-([\.\d]+)$/, ([_, num]) => ({ gap: `0 ${num}px` })],
+    [/^border-rd-([\.\d]+)$/, ([_, num]) => ({ 'border-radius': `${num}px` })],
+    [/^font-size-([\.\d]+)$/, ([_, num]) => ({ 'font-size': `${num}px` })],
     [
-      /^bg-([A-Za-z0-9]{6})$/,
-      ([_, colorCode]) => ({ backgroundColor: `#${colorCode}` }),
+      /^(background-color|color)-([A-Za-z0-9-]+)$/,
+      (match) => {
+        const property = match[1]
+        const color = match[2]
+        const css: any = {}
+        css[property] =
+          COLOR.indexOf(color) !== -1 ? `var(--${color})` : `#${color}`
+        return css
+      },
     ],
-    [/^flex-col-gap-([\.\d]+)$/, ([_, num]) => ({ gap: `0 ${num}px` })],
+    [/^pt-([\.\d]+)$/, ([_, num]) => ({ 'padding-top': `${num}px` })],
+    [/^pr-([\.\d]+)$/, ([_, num]) => ({ 'padding-right': `${num}px` })],
+    [/^pb-([\.\d]+)$/, ([_, num]) => ({ 'padding-bottom': `${num}px` })],
+    [/^pl-([\.\d]+)$/, ([_, num]) => ({ 'padding-left': `${num}px` })],
+    [
+      /^p-([\.\d]+)-([\.\d]+)-([\.\d]+)-([\.\d]+)$/,
+      (match) => {
+        const top = match[1]
+        const right = match[2]
+        const bottom = match[3]
+        const left = match[4]
+        return { padding: `${top}px ${right}px ${bottom}px ${left}px` }
+      },
+    ],
+    [
+      /^transition$/,
+      (_match) => ({ transition: `all 0.3s cubic-bezier(0.4, 0, 0.2, 1)` }),
+    ],
   ],
   content: {
     pipeline: {

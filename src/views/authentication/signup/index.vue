@@ -1,6 +1,6 @@
 <template>
   <div
-    style="background-color: #3061ea; width: 100vw;"
+    style="background-color: #3061ea; width: 100vw; min-height: 100vh;"
     class="flex"
   >
     <div
@@ -295,6 +295,7 @@
               </div>
             </div>
             <div
+            class="transition-400"
               style="
                 display: flex;
                 justify-content: space-between;
@@ -302,40 +303,13 @@
               "
             >
               <div
-                style="
-                  cursor: pointer;
-                  padding: 14px 64px 15px 65px;
-                  color: #ffffff;
-                  background-color: #5e81f4;
-                  font-family: Lato;
-                  font-size: 14px;
-                  font-style: normal;
-                  font-weight: 700;
-                  line-height: normal;
-                  border-radius: 8px;
-                "
+                class="cursor-pointer font-700 hover:background-color-primary-hover border-rd-8 font-size-14 background-color-primary p-14-64-15-65 color-white transition"
                 @click="handleSignUpBtnClick"
               >
                 Sign Up
               </div>
               <div
-                style="
-                  cursor: pointer;
-                  padding: 14px 69px 15px 67px;
-                  color: #5e81f4;
-                  background: linear-gradient(
-                      0deg,
-                      rgba(94, 129, 244, 0.1) 0%,
-                      rgba(94, 129, 244, 0.1) 100%
-                    ),
-                    #fff;
-                  font-family: Lato;
-                  font-size: 14px;
-                  font-style: normal;
-                  font-weight: 700;
-                  line-height: normal;
-                  border-radius: 8px;
-                "
+                class="cursor-pointer hover:background-color-primary-hover hover:color-white p-14-69-15-67 color-primary background-color-primary-resting font-size-14 font-700 border-rd-8 transition"
                 @click="handleSignInBtnClick"
               >
                 Sign In
@@ -349,7 +323,7 @@
                 align-items: center;
               "
             >
-              <div class="flex flex-row flex-col-gap-6 justify-left">
+              <div class="flex flex-row gap-6 justify-left">
                 <div
                   style="
                     border: 1px solid #ececf2;
