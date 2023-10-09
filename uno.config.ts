@@ -3,6 +3,7 @@ import type { Theme } from 'unocss/preset-uno'
 import type { Rule } from 'unocss'
 import presetUno from '@unocss/preset-uno'
 import transformerDirectives from '@unocss/transformer-directives'
+import { reduce, concat } from 'lodash-es'
 
 type RuleType = {
   [key: string]: {
@@ -139,41 +140,18 @@ const COLOR = [
 ]
 
 export default defineConfig({
-  rules: [
-    [/^w%-([\.\d]+)$/, ([_, num]) => ({ width: `${num}%` })],
-    [/^gap-([\.\d]+)$/, ([_, num]) => ({ gap: `0 ${num}px` })],
-    [/^border-rd-([\.\d]+)$/, ([_, num]) => ({ 'border-radius': `${num}px` })],
-    [/^font-size-([\.\d]+)$/, ([_, num]) => ({ 'font-size': `${num}px` })],
-    [
-      /^(background-color|color)-([A-Za-z0-9-]+)$/,
-      (match) => {
-        const property = match[1]
-        const color = match[2]
-        const css: any = {}
-        css[property] =
-          COLOR.indexOf(color) !== -1 ? `var(--${color})` : `#${color}`
-        return css
-      },
-    ],
-    [/^pt-([\.\d]+)$/, ([_, num]) => ({ 'padding-top': `${num}px` })],
-    [/^pr-([\.\d]+)$/, ([_, num]) => ({ 'padding-right': `${num}px` })],
-    [/^pb-([\.\d]+)$/, ([_, num]) => ({ 'padding-bottom': `${num}px` })],
-    [/^pl-([\.\d]+)$/, ([_, num]) => ({ 'padding-left': `${num}px` })],
-    [
-      /^p-([\.\d]+)-([\.\d]+)-([\.\d]+)-([\.\d]+)$/,
-      (match) => {
-        const top = match[1]
-        const right = match[2]
-        const bottom = match[3]
-        const left = match[4]
-        return { padding: `${top}px ${right}px ${bottom}px ${left}px` }
-      },
-    ],
-    [
-      /^transition$/,
-      (_match) => ({ transition: `all 0.3s cubic-bezier(0.4, 0, 0.2, 1)` }),
-    ],
-  ],
+  rules: reduce(
+    RULES,
+    (r, v, _k) => {
+      const _result = reduce(
+        v,
+        (r2, v2, _k2) => concat(r2, v2),
+        [] as Rule<Theme>[]
+      )
+      return concat(r, _result)
+    },
+    [] as Rule<Theme>[]
+  ),
   content: {
     pipeline: {
       exclude: [
