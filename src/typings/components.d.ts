@@ -127,6 +127,7 @@ declare module 'vue' {
     SvgIcon: typeof import('./../components/custom/svg-icon.vue')['default']
     SvgSignup: typeof import('./../components/svg/svg-signup.vue')['default']
     SystemLogo: typeof import('./../components/common/system-logo.vue')['default']
+    VInput: typeof import('./../components/input/v-input.vue')['default']
     WebSiteLink: typeof import('./../components/custom/web-site-link.vue')['default']
   }
 }

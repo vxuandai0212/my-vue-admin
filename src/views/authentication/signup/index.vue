@@ -1,6 +1,6 @@
 <template>
   <div
-    style="background-color: #3061ea; width: 100vw; height: 100vh"
+    style="background-color: #3061ea; width: 100vw;"
     class="flex"
   >
     <div
@@ -12,7 +12,7 @@
         justify-content: center;
       "
     >
-      <div style="margin-top: 108px; width: 371px">
+      <div style="margin-top: 108px; margin-bottom: 110px; width: 371px">
         <div
           style="
             color: #1c1d21;
@@ -419,7 +419,7 @@
         );
       "
     >
-      <svg-signup width="45vw" height="100vh" />
+      <svg-signup width="45vw"/>
     </div>
   </div>
 </template>
@@ -510,36 +510,4 @@ function handleSignInBtnClick() {
 }
 </script>
 
-<style lang="scss">
-.__input__ {
-  &:focus-visible {
-    outline: none;
-  }
-  &::placeholder {
-    color: #8181a5;
-    font-family: Lato;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-  }
-}
-.required:after {
-  content: ' *';
-  color: #ff808b;
-}
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-  border: none;
-  -webkit-text-fill-color: #1c1d21;
-  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
-  transition: background-color 5000s ease-in-out 0s;
-}
-</style>
+<style lang="scss"></style>
