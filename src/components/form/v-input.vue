@@ -7,21 +7,25 @@
       {{ props.label }}
     </div>
     <div
-      class="transition border-bottom-solid border-bottom-1 p-6-0-17-0 relative"
+      class="transition border-bottom-solid border-bottom-1 p-6-0-17-0 flex flex-row gap-2"
       :style="{ borderBottomColor: borderBottomColor }"
     >
-      <div class="absolute right-0 bottom-18">
-        <component :is="iconComponent" :fill="color" />
-      </div>
       <input
-        class="__input__ border-none color-primary-dark font-size-14 font-700 w-full pr-21"
+        class="__input__ flex-grow border-none color-primary-dark font-size-14 font-700"
         :type="type"
         :placeholder="placeholder"
         v-model="inputValue"
+        :disabled="disabled"
         @focus="inputFocus = true"
         @blur="onBlur"
         @input="validate()"
       />
+      <div
+        :class="{ opacity70: disabled }"
+        class="flex justify-center items-center width-18 height-18"
+      >
+        <component :is="iconComponent" :fill="color" />
+      </div>
     </div>
     <div
       class="color-danger font-size-14 font-400 line-height-21 transition"
@@ -48,10 +52,12 @@ interface Props {
   icon?: IconProp
   placeholder?: string
   type: string
+  disabled?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   value: '',
+  disabled: false,
 })
 
 interface Emits {

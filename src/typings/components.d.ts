@@ -38,6 +38,8 @@ declare module 'vue' {
     IconLocalLogo: typeof import('~icons/local/logo')['default']
     IconLocalLogoFill: typeof import('~icons/local/logo-fill')['default']
     IconLocalNetworkError: typeof import('~icons/local/network-error')['default']
+    IconLocalOval: typeof import('~icons/local/oval')['default']
+    IconLocalTick: typeof import('~icons/local/tick')['default']
     IconLocalTwitter: typeof import('~icons/local/twitter')['default']
     IconMdiArrowDownThin: typeof import('~icons/mdi/arrow-down-thin')['default']
     IconMdiArrowUpThin: typeof import('~icons/mdi/arrow-up-thin')['default']
@@ -110,7 +112,10 @@ declare module 'vue' {
     SvgPassword: typeof import('./../components/svg/svg-password.vue')['default']
     SvgSignup: typeof import('./../components/svg/svg-signup.vue')['default']
     SystemLogo: typeof import('./../components/common/system-logo.vue')['default']
-    VInput: typeof import('./../components/input/v-input.vue')['default']
+    VCheckbox: typeof import('./../components/form/v-checkbox.vue')['default']
+    VInput: typeof import('./../components/form/v-input.vue')['default']
+    VRadio: typeof import('./../components/form/v-radio.vue')['default']
+    VToggle: typeof import('./../components/form/v-toggle.vue')['default']
     WebSiteLink: typeof import('./../components/custom/web-site-link.vue')['default']
   }
 }

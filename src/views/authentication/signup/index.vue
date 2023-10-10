@@ -16,27 +16,27 @@
         </div>
         <div class="mt-62">
           <div class="flex flex-col gap-5">
-            <v-input 
-              label="Full name" 
-              :value="model.fullname" 
+            <v-input
+              label="Full name"
+              :value="model.fullname"
               :rules="rules.fullname"
               @update:value="setFullname"
               icon="fullname"
               placeholder="Start typing…"
               type="text"
             />
-            <v-input 
-              label="Email" 
-              :value="model.email" 
+            <v-input
+              label="Email"
+              :value="model.email"
               :rules="rules.email"
               @update:value="setEmail"
               icon="email"
               placeholder="Start typing…"
               type="text"
             />
-            <v-input 
-              label="Password" 
-              :value="model.password" 
+            <v-input
+              label="Password"
+              :value="model.password"
               :rules="rules.password"
               @update:value="setPassword"
               icon="password"
@@ -44,79 +44,56 @@
               type="password"
             />
           </div>
-          <n-form
-            ref="formRef"
-            :model="model"
-            :rules="rules"
-            label-placement="top"
-            require-mark-placement="right-hanging"
-            label-width="auto"
-          >
+          <v-checkbox
+            class="mt-13"
+            :value="checkboxValue"
+            @update:value="setCheckboxValue"
+            :options="checkboxOptions"
+          />
+          <div class="flex justify-between mt-38">
             <div
-              class="mt-13 cursor-pointer flex gap-10 items-center"
-              @click="model.agreement = !model.agreement"
+              class="cursor-pointer font-700 hover:background-color-primary-hover rounded-8 font-size-14 background-color-primary p-14-64-15-65 color-white transition"
+              @click="handleSignUpBtnClick"
             >
+              Sign Up
+            </div>
+            <div
+              class="cursor-pointer hover:background-color-primary-hover hover:color-white p-14-69-15-67 color-primary background-color-primary-resting font-size-14 font-700 rounded-8 transition"
+              @click="handleSignInBtnClick"
+            >
+              Sign In
+            </div>
+          </div>
+          <div class="mt-77 flex gap-13 items-center">
+            <div class="flex flex-row gap-6 justify-left">
               <div
-                class="flex justify-center items-center width-20 height-20 transition"
-                :style="{
-                  background: outerCheckBoxBackground,
-                  borderRadius: outerCheckBoxBorderRadius,
-                }"
+                class="group border border-solid border-color-resting-outline hover:border-color-primary rounded-8 width-46 height-46 flex justify-center items-center cursor-pointer transition"
               >
-                <div
-                  class="width-8 height-8 rounded-10 transition"
-                  :style="{ background: innerCheckBoxBackground }"
-                ></div>
+                <icon-local-twitter
+                  class="fill-primary-grey group-hover:fill-primary-dark transition"
+                />
               </div>
-              <div class="color-primary-dark font-size-14 font-700">
-                I agree with terms & conditions
+              <div
+                class="group border border-solid border-color-resting-outline hover:border-color-primary rounded-8 width-46 height-46 flex justify-center items-center cursor-pointer transition"
+              >
+                <icon-local-google
+                  class="fill-primary-grey group-hover:fill-primary-dark transition"
+                />
+              </div>
+              <div
+                class="group border border-solid border-color-resting-outline hover:border-color-primary rounded-8 width-46 height-46 flex justify-center items-center cursor-pointer transition"
+              >
+                <icon-local-facebook
+                  class="fill-primary-grey group-hover:fill-primary-dark transition"
+                />
               </div>
             </div>
-            <div class="flex justify-between mt-38">
-              <div
-                class="cursor-pointer font-700 hover:background-color-primary-hover rounded-8 font-size-14 background-color-primary p-14-64-15-65 color-white transition"
-                @click="handleSignUpBtnClick"
-              >
-                Sign Up
-              </div>
-              <div
-                class="cursor-pointer hover:background-color-primary-hover hover:color-white p-14-69-15-67 color-primary background-color-primary-resting font-size-14 font-700 rounded-8 transition"
-                @click="handleSignInBtnClick"
-              >
-                Sign In
-              </div>
+            <div
+              class="color-primary-grey font-size-14 font-400 line-height-21 cursor-default"
+            >
+              Or sign in with
             </div>
-            <div class="mt-77 flex gap-13 items-center">
-              <div class="flex flex-row gap-6 justify-left">
-                <div
-                  class="group border border-solid border-color-resting-outline hover:border-color-primary rounded-8 width-46 height-46 flex justify-center items-center cursor-pointer transition"
-                >
-                  <icon-local-twitter
-                    class="fill-primary-grey group-hover:fill-primary-dark transition"
-                  />
-                </div>
-                <div
-                  class="group border border-solid border-color-resting-outline hover:border-color-primary rounded-8 width-46 height-46 flex justify-center items-center cursor-pointer transition"
-                >
-                  <icon-local-google
-                    class="fill-primary-grey group-hover:fill-primary-dark transition"
-                  />
-                </div>
-                <div
-                  class="group border border-solid border-color-resting-outline hover:border-color-primary rounded-8 width-46 height-46 flex justify-center items-center cursor-pointer transition"
-                >
-                  <icon-local-facebook
-                    class="fill-primary-grey group-hover:fill-primary-dark transition"
-                  />
-                </div>
-              </div>
-              <div
-                class="color-primary-grey font-size-14 font-400 line-height-21 cursor-default"
-              >
-                Or sign in with
-              </div>
-            </div>
-          </n-form>
+          </div>
         </div>
       </div>
     </div>
@@ -131,54 +108,61 @@
     >
       <svg-signup width="45vw" />
     </div>
+    <!-- todo: select, select autocomplete, tag, datepicker, datetime picker, tab, table, pagination -->
   </div>
 </template>
 
 <script setup lang="tsx">
-import { FormInst } from 'naive-ui'
-import { watch } from 'vue'
-import { computed, reactive, ref } from 'vue'
-
-const formRef = ref<FormInst | null>(null)
+import { ref } from 'vue'
+import { reactive } from 'vue'
 
 const model = reactive({
-  fullname: null,
+  fullname: 'aaa',
   email: null,
   password: null,
   agreement: false,
 })
 
 const rules: any = {
-  fullname: [{
-    required: true,
-    trigger: ['blur', 'input'],
-    message: 'Please enter your full name',
-  }],
-  email: [{
-    required: true,
-    trigger: ['blur', 'input'],
-    message: 'Please enter your email',
-  }],
-  password: [{
-    required: true,
-    trigger: ['blur', 'change'],
-    message: 'Please enter your password',
-  }],
+  fullname: [
+    {
+      required: true,
+      trigger: ['blur', 'input'],
+      message: 'Please enter your full name',
+    },
+  ],
+  email: [
+    {
+      required: true,
+      trigger: ['blur', 'input'],
+      message: 'Please enter your email',
+    },
+  ],
+  password: [
+    {
+      required: true,
+      trigger: ['blur', 'change'],
+      message: 'Please enter your password',
+    },
+  ],
 }
 
-watch(model, () => {
-  console.log(model)
-})
+const checkboxValue = ref<Array<any>>([1])
+function setCheckboxValue(v: any) {
+  if (checkboxValue.value.indexOf(v) === -1) {
+    checkboxValue.value.push(v)
+  } else {
+    checkboxValue.value = checkboxValue.value.filter((i) => i !== v)
+  }
+}
 
-const innerCheckBoxBackground = computed(() =>
-  model.agreement ? '#FFF' : '#EEE'
-)
-const outerCheckBoxBackground = computed(() =>
-  model.agreement ? '#1B51E5' : '#EEE'
-)
-const outerCheckBoxBorderRadius = computed(() =>
-  model.agreement ? '10px' : '4px'
-)
+const checkboxOptions = [
+  {
+    key: 1,
+    value: 1,
+    label: 'I agree with terms & conditions',
+  },
+]
 
 function setFullname(v: any) {
   model.fullname = v

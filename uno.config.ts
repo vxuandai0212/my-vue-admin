@@ -199,7 +199,7 @@ const RULES: RuleType = {
     CONTAINER: [],
     DISPLAY: [],
     FLEXBOX: [],
-    GRID: [[/^gap-([\.\d]+)$/, ([_, num]) => ({ gap: `0 ${num}px` })]],
+    GRID: [[/^gap-([\.\d]+)$/, ([_, num]) => ({ gap: `${num}px` })]],
     POSITIONING: [
       [
         /^(top|right|bottom|left)-([\.\d]+)$/,
