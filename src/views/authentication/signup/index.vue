@@ -1,242 +1,48 @@
 <template>
-  <div
-    style="background-color: #3061ea; width: 100vw; min-height: 100vh;"
-    class="flex"
-  >
+  <div class="flex background-color-3061EA w-screen min-h-screen">
     <div
-      style="
-        background-color: #fff;
-        width: 55%;
-        border-radius: 0 16px 16px 0;
-        display: flex;
-        justify-content: center;
-      "
+      class="background-color-white w%-55 rounded-0-16-16-0 flex justify-center"
     >
-      <div style="margin-top: 108px; margin-bottom: 110px; width: 371px">
+      <div class="mt-108 mb-110 width-371">
         <div
-          style="
-            color: #1c1d21;
-            font-family: Lato;
-            font-size: 32px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: 42px;
-            cursor: default;
-          "
+          class="color-primary-dark font-size-32 font-700 line-height-42 cursor-default"
         >
           Welcome to our CRM. Sign Up to getting started.
         </div>
         <div
-          style="
-            margin-top: 11px;
-            color: #8181a5;
-            font-family: Lato;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 21px; /* 150% */
-            cursor: default;
-          "
+          class="mt-11 color-primary-grey font-size-14 font-400 line-height-21 cursor-default"
         >
           Enter your details to proceed further
         </div>
-        <div style="margin-top: 62px">
-          <div style="display: flex; flex-direction: column; gap: 5px">
-            <div>
-              <div
-                class="required"
-                style="
-                  color: #8181a5;
-                  font-family: Lato;
-                  font-size: 14px;
-                  font-style: normal;
-                  font-weight: 400;
-                  line-height: 21px;
-                  cursor: default;
-                "
-              >
-                Full name
-              </div>
-              <div
-                style="
-                  transition: border-bottom-color 0.3s
-                    cubic-bezier(0.4, 0, 0.2, 1);
-                  border-bottom-style: solid;
-                  border-bottom-width: 1px;
-                  padding: 6px 0 17px 0;
-                  position: relative;
-                "
-                :style="{ borderBottomColor: borderBottomColor }"
-              >
-                <div style="position: absolute; right: 0; bottom: 19px">
-                  <icon-local-fullname :fill="color" />
-                </div>
-                <input
-                  class="__input__"
-                  style="
-                    border: none;
-                    color: #1c1d21;
-                    font-family: Lato;
-                    font-size: 14px;
-                    font-style: normal;
-                    font-weight: 700;
-                    line-height: normal;
-                    width: 100%;
-                    padding-right: 22px;
-                  "
-                  type="text"
-                  placeholder="Start typing…"
-                  v-model="model.fullname"
-                  @focus="inputFocus = true"
-                  @blur="onBlur"
-                  @input="validate()"
-                />
-              </div>
-              <div
-                style="
-                  color: #ff808b;
-                  font-family: Lato;
-                  font-size: 14px;
-                  font-style: normal;
-                  font-weight: 400;
-                  line-height: 21px;
-                  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                "
-                :style="{ opacity: showError }"
-              >
-                Please enter your full name
-              </div>
-            </div>
-            <div>
-              <div
-                class="required"
-                style="
-                  color: #8181a5;
-                  font-family: Lato;
-                  font-size: 14px;
-                  font-style: normal;
-                  font-weight: 400;
-                  line-height: 21px;
-                  cursor: default;
-                "
-              >
-                Email
-              </div>
-              <div
-                style="
-                  transition: border-bottom-color 0.3s
-                    cubic-bezier(0.4, 0, 0.2, 1);
-                  border-bottom-style: solid;
-                  border-bottom-width: 1px;
-                  padding: 6px 0 17px 0;
-                  position: relative;
-                "
-                :style="{ borderBottomColor: borderBottomColor }"
-              >
-                <div style="position: absolute; right: 0; bottom: 19px">
-                  <icon-local-email :fill="color" />
-                </div>
-                <input
-                  class="__input__"
-                  style="
-                    border: none;
-                    color: #1c1d21;
-                    font-family: Lato;
-                    font-size: 14px;
-                    font-style: normal;
-                    font-weight: 700;
-                    line-height: normal;
-                    width: 100%;
-                    padding-right: 22px;
-                  "
-                  type="text"
-                  placeholder="Start typing…"
-                  v-model="model.fullname"
-                  @focus="inputFocus = true"
-                  @blur="onBlur"
-                  @input="validate()"
-                />
-              </div>
-              <div
-                style="
-                  color: #ff808b;
-                  font-family: Lato;
-                  font-size: 14px;
-                  font-style: normal;
-                  font-weight: 400;
-                  line-height: 21px;
-                  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                "
-                :style="{ opacity: showError }"
-              >
-                Please enter your email
-              </div>
-            </div>
-            <div>
-              <div
-                class="required"
-                style="
-                  color: #8181a5;
-                  font-family: Lato;
-                  font-size: 14px;
-                  font-style: normal;
-                  font-weight: 400;
-                  line-height: 21px;
-                  cursor: default;
-                "
-              >
-                Password
-              </div>
-              <div
-                style="
-                  transition: border-bottom-color 0.3s
-                    cubic-bezier(0.4, 0, 0.2, 1);
-                  border-bottom-style: solid;
-                  border-bottom-width: 1px;
-                  padding: 6px 0 17px 0;
-                  position: relative;
-                "
-                :style="{ borderBottomColor: borderBottomColor }"
-              >
-                <div style="position: absolute; right: 0; bottom: 19px">
-                  <icon-local-email :fill="color" />
-                </div>
-                <input
-                  class="__input__"
-                  style="
-                    border: none;
-                    color: #1c1d21;
-                    font-family: Lato;
-                    font-size: 14px;
-                    font-style: normal;
-                    font-weight: 700;
-                    line-height: normal;
-                    width: 100%;
-                    padding-right: 22px;
-                  "
-                  type="password"
-                  placeholder="Start typing…"
-                  v-model="model.fullname"
-                  @focus="inputFocus = true"
-                  @blur="onBlur"
-                  @input="validate()"
-                />
-              </div>
-              <div
-                style="
-                  color: #ff808b;
-                  font-family: Lato;
-                  font-size: 14px;
-                  font-style: normal;
-                  font-weight: 400;
-                  line-height: 21px;
-                  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                "
-                :style="{ opacity: showError }"
-              >
-                Please enter your password
-              </div>
-            </div>
+        <div class="mt-62">
+          <div class="flex flex-col gap-5">
+            <v-input 
+              label="Full name" 
+              :value="model.fullname" 
+              :rules="rules.fullname"
+              @update:value="setFullname"
+              icon="fullname"
+              placeholder="Start typing…"
+              type="text"
+            />
+            <v-input 
+              label="Email" 
+              :value="model.email" 
+              :rules="rules.email"
+              @update:value="setEmail"
+              icon="email"
+              placeholder="Start typing…"
+              type="text"
+            />
+            <v-input 
+              label="Password" 
+              :value="model.password" 
+              :rules="rules.password"
+              @update:value="setPassword"
+              icon="password"
+              placeholder="Start typing…"
+              type="password"
+            />
           </div>
           <n-form
             ref="formRef"
@@ -247,135 +53,65 @@
             label-width="auto"
           >
             <div
-              style="
-                margin-top: 13px;
-                cursor: pointer;
-                display: flex;
-                gap: 10px;
-                align-items: center;
-              "
+              class="mt-13 cursor-pointer flex gap-10 items-center"
               @click="model.agreement = !model.agreement"
             >
               <div
-                style="
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  width: 20px;
-                  height: 20px;
-                  transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                    border-radius 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                "
+                class="flex justify-center items-center width-20 height-20 transition"
                 :style="{
                   background: outerCheckBoxBackground,
                   borderRadius: outerCheckBoxBorderRadius,
                 }"
               >
                 <div
-                  style="
-                    width: 8px;
-                    height: 8px;
-                    border-radius: 10px;
-                    transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                  "
+                  class="width-8 height-8 rounded-10 transition"
                   :style="{ background: innerCheckBoxBackground }"
                 ></div>
               </div>
-              <div
-                style="
-                  color: #1c1d21;
-                  font-family: Lato;
-                  font-size: 14px;
-                  font-style: normal;
-                  font-weight: 700;
-                  line-height: normal;
-                "
-              >
+              <div class="color-primary-dark font-size-14 font-700">
                 I agree with terms & conditions
               </div>
             </div>
-            <div
-            class="transition-400"
-              style="
-                display: flex;
-                justify-content: space-between;
-                margin-top: 38px;
-              "
-            >
+            <div class="flex justify-between mt-38">
               <div
-                class="cursor-pointer font-700 hover:background-color-primary-hover border-rd-8 font-size-14 background-color-primary p-14-64-15-65 color-white transition"
+                class="cursor-pointer font-700 hover:background-color-primary-hover rounded-8 font-size-14 background-color-primary p-14-64-15-65 color-white transition"
                 @click="handleSignUpBtnClick"
               >
                 Sign Up
               </div>
               <div
-                class="cursor-pointer hover:background-color-primary-hover hover:color-white p-14-69-15-67 color-primary background-color-primary-resting font-size-14 font-700 border-rd-8 transition"
+                class="cursor-pointer hover:background-color-primary-hover hover:color-white p-14-69-15-67 color-primary background-color-primary-resting font-size-14 font-700 rounded-8 transition"
                 @click="handleSignInBtnClick"
               >
                 Sign In
               </div>
             </div>
-            <div
-              style="
-                margin-top: 77px;
-                display: flex;
-                gap: 13px;
-                align-items: center;
-              "
-            >
+            <div class="mt-77 flex gap-13 items-center">
               <div class="flex flex-row gap-6 justify-left">
                 <div
-                  style="
-                    border: 1px solid #ececf2;
-                    border-radius: 8px;
-                    width: 46px;
-                    height: 46px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    cursor: pointer;
-                  "
+                  class="group border border-solid border-color-resting-outline hover:border-color-primary rounded-8 width-46 height-46 flex justify-center items-center cursor-pointer transition"
                 >
-                  <icon-local-twitter />
+                  <icon-local-twitter
+                    class="fill-primary-grey group-hover:fill-primary-dark transition"
+                  />
                 </div>
                 <div
-                  style="
-                    border: 1px solid #ececf2;
-                    border-radius: 8px;
-                    width: 46px;
-                    height: 46px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    cursor: pointer;
-                  "
+                  class="group border border-solid border-color-resting-outline hover:border-color-primary rounded-8 width-46 height-46 flex justify-center items-center cursor-pointer transition"
                 >
-                  <icon-local-google />
+                  <icon-local-google
+                    class="fill-primary-grey group-hover:fill-primary-dark transition"
+                  />
                 </div>
                 <div
-                  style="
-                    border: 1px solid #ececf2;
-                    border-radius: 8px;
-                    width: 46px;
-                    height: 46px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    cursor: pointer;
-                  "
+                  class="group border border-solid border-color-resting-outline hover:border-color-primary rounded-8 width-46 height-46 flex justify-center items-center cursor-pointer transition"
                 >
-                  <icon-local-facebook />
+                  <icon-local-facebook
+                    class="fill-primary-grey group-hover:fill-primary-dark transition"
+                  />
                 </div>
               </div>
               <div
-                style="
-                  color: #8181a5;
-                  font-size: 14px;
-                  font-style: normal;
-                  font-weight: 400;
-                  line-height: 21px;
-                  cursor: default;
-                "
+                class="color-primary-grey font-size-14 font-400 line-height-21 cursor-default"
               >
                 Or sign in with
               </div>
@@ -393,13 +129,13 @@
         );
       "
     >
-      <svg-signup width="45vw"/>
+      <svg-signup width="45vw" />
     </div>
   </div>
 </template>
 
 <script setup lang="tsx">
-import { FormInst, FormRules } from 'naive-ui'
+import { FormInst } from 'naive-ui'
 import { watch } from 'vue'
 import { computed, reactive, ref } from 'vue'
 
@@ -412,35 +148,27 @@ const model = reactive({
   agreement: false,
 })
 
-const rules: FormRules = {
-  fullname: {
+const rules: any = {
+  fullname: [{
     required: true,
     trigger: ['blur', 'input'],
-    message: 'Please enter your fullname',
-  },
-  email: {
+    message: 'Please enter your full name',
+  }],
+  email: [{
     required: true,
     trigger: ['blur', 'input'],
     message: 'Please enter your email',
-  },
-  password: {
+  }],
+  password: [{
     required: true,
     trigger: ['blur', 'change'],
     message: 'Please enter your password',
-  },
-  agreement: {
-    type: 'boolean',
-    required: true,
-    trigger: 'change',
-    message: 'Please agree with our terms & conditions',
-  },
+  }],
 }
 
 watch(model, () => {
   console.log(model)
 })
-
-const color = computed(() => (model.fullname ? '#1C1D21' : '#8181A5'))
 
 const innerCheckBoxBackground = computed(() =>
   model.agreement ? '#FFF' : '#EEE'
@@ -452,28 +180,17 @@ const outerCheckBoxBorderRadius = computed(() =>
   model.agreement ? '10px' : '4px'
 )
 
-const inputFocus = ref<boolean>()
-
-const borderBottomColor = computed(() =>
-  error.value ? '#FF808B' : inputFocus.value ? '#5E81F4' : '#f0f0f3'
-)
-
-const error = ref<boolean>(false)
-
-function validate() {
-  if (!model.fullname) {
-    error.value = true
-  } else {
-    error.value = false
-  }
+function setFullname(v: any) {
+  model.fullname = v
 }
 
-function onBlur() {
-  inputFocus.value = false
-  validate()
+function setEmail(v: any) {
+  model.email = v
 }
 
-const showError = computed(() => (error.value ? 1 : 0))
+function setPassword(v: any) {
+  model.password = v
+}
 
 function handleSignUpBtnClick() {
   console.log('handleSignUpBtnClick')

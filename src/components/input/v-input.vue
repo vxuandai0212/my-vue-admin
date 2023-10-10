@@ -1,70 +1,127 @@
 <template>
   <div>
     <div
-      class="required"
-      style="
-        color: #8181a5;
-        font-family: Lato;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 21px;
-        cursor: default;
-      "
+      :class="{ required: isRequired }"
+      class="color-primary-grey font-size-14 font-400 line-height-21 cursor-default"
     >
-      Full name
+      {{ props.label }}
     </div>
     <div
-      style="
-        transition: border-bottom-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        border-bottom-style: solid;
-        border-bottom-width: 1px;
-        padding: 6px 0 17px 0;
-        position: relative;
-      "
+      class="transition border-bottom-solid border-bottom-1 p-6-0-17-0 relative"
       :style="{ borderBottomColor: borderBottomColor }"
     >
-      <div style="position: absolute; right: 0; bottom: 19px">
-        <icon-local-fullname :fill="color" />
+      <div class="absolute right-0 bottom-18">
+        <component :is="iconComponent" :fill="color" />
       </div>
       <input
-        class="__input__"
-        style="
-          border: none;
-          color: #1c1d21;
-          font-family: Lato;
-          font-size: 14px;
-          font-style: normal;
-          font-weight: 700;
-          line-height: normal;
-          width: 100%;
-          padding-right: 22px;
-        "
-        type="text"
-        placeholder="Start typing…"
-        v-model="model.fullname"
+        class="__input__ border-none color-primary-dark font-size-14 font-700 w-full pr-21"
+        :type="type"
+        :placeholder="placeholder"
+        v-model="inputValue"
         @focus="inputFocus = true"
         @blur="onBlur"
         @input="validate()"
       />
     </div>
     <div
-      style="
-        color: #ff808b;
-        font-family: Lato;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 21px;
-        transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      "
+      class="color-danger font-size-14 font-400 line-height-21 transition"
       :style="{ opacity: showError }"
     >
-      Please enter your full name
+      {{ errorMessage }}
     </div>
   </div>
 </template>
-<script lang="ts">
+<script setup lang="ts">
+import { computed, ref } from 'vue'
+import SvgEmail from '@/components/svg/svg-email.vue'
+import SvgFullname from '@/components/svg/svg-fullname.vue'
+import SvgPassword from '@/components/svg/svg-password.vue'
 
+defineOptions({ name: 'VInput' })
+
+type IconProp = 'email' | 'fullname' | 'password'
+
+interface Props {
+  label?: string
+  value: any
+  rules?: any
+  icon?: IconProp
+  placeholder?: string
+  type: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  value: '',
+})
+
+interface Emits {
+  (e: 'update:value', value: string): void
+}
+
+const emit = defineEmits<Emits>()
+
+const isRequired = computed(() => {
+  for (let i = 0; i < props.rules.length; i++) {
+    if ('required' in props.rules[i] && props.rules[i].required) {
+      errorMessage.value = props.rules[i].message
+      return true
+    }
+  }
+  return false
+})
+
+const ICON: any = {
+  fullname: SvgFullname,
+  email: SvgEmail,
+  password: SvgPassword,
+}
+
+const iconComponent = computed(() => {
+  return props.icon ? ICON[props.icon] : null
+})
+
+const inputFocus = ref<boolean>()
+
+const error = ref<boolean>(false)
+
+const errorMessage = ref<string>()
+
+const inputValue = computed({
+  get() {
+    return props.value
+  },
+  set(newValue: string) {
+    emit('update:value', newValue)
+  },
+})
+
+function validate() {
+  if (isRequired && !inputValue.value) {
+    error.value = true
+  } else {
+    error.value = false
+  }
+}
+
+function onBlur() {
+  inputFocus.value = false
+  validate()
+}
+
+const showError = computed(() => (error.value ? 1 : 0))
+
+const color = computed(() =>
+  inputValue.value && inputValue.value.trim() !== ''
+    ? 'var(--primary-dark)'
+    : 'var(--primary-grey)'
+)
+
+const borderBottomColor = computed(() =>
+  error.value
+    ? 'var(--danger)'
+    : inputFocus.value
+    ? 'var(--primary)'
+    : 'var(--outline)'
+)
 </script>
 <style scoped></style>

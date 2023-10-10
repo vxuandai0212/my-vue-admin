@@ -5,6 +5,36 @@ import presetUno from '@unocss/preset-uno'
 import transformerDirectives from '@unocss/transformer-directives'
 import { reduce, concat } from 'lodash-es'
 
+const COLOR = [
+  'primary',
+  'primary-hover',
+  'primary-resting',
+  'primary-disabled',
+  'primary-dark',
+  'primary-grey',
+  'success',
+  'warning',
+  'danger',
+  'info',
+  'secondary',
+  'sucess-light',
+  'warning-light',
+  'danger-light',
+  'white',
+  'outline',
+  'resting-outline',
+  'background-light',
+]
+
+const SPACING = {
+  p: 'padding',
+  m: 'margin',
+  t: 'top',
+  r: 'right',
+  b: 'bottom',
+  l: 'left',
+}
+
 type RuleType = {
   [key: string]: {
     [key: string]: Rule<Theme>[]
@@ -13,11 +43,39 @@ type RuleType = {
 
 const RULES: RuleType = {
   GENERAL: {
-    COLORS: [],
+    COLORS: [
+      [
+        /^(background-color|color|border-color)-([A-Za-z0-9-]+)$/,
+        (match) => {
+          const property = match[1]
+          const color = match[2]
+          const css: any = {}
+          css[property] =
+            COLOR.indexOf(color) !== -1 ? `var(--${color})` : `#${color}`
+          return css
+        },
+      ],
+    ],
     TYPOGRAPHY: [
       [/^font-size-([\.\d]+)$/, ([_, num]) => ({ 'font-size': `${num}px` })],
+      [
+        /^line-height-([\.\d]+)$/,
+        ([_, num]) => ({ 'line-height': `${num}px` }),
+      ],
     ],
-    SVG: [],
+    SVG: [
+      [
+        /^(fill)-([A-Za-z0-9-]+)$/,
+        (match) => {
+          const property = match[1]
+          const color = match[2]
+          const css: any = {}
+          css[property] =
+            COLOR.indexOf(color) !== -1 ? `var(--${color})` : `#${color}`
+          return css
+        },
+      ],
+    ],
     VARIANTS: [],
   },
   ACCESSIBILITY: {
@@ -34,19 +92,7 @@ const RULES: RuleType = {
     ],
   },
   BACKGROUNDS: {
-    BACKGROUND: [
-      [
-        /^(background-color|color)-([A-Za-z0-9-]+)$/,
-        (match) => {
-          const property = match[1]
-          const color = match[2]
-          const css: any = {}
-          css[property] =
-            COLOR.indexOf(color) !== -1 ? `var(--${color})` : `#${color}`
-          return css
-        },
-      ],
-    ],
+    BACKGROUND: [],
     GRADIENTS: [],
     BACKGROUND_BLEND_MODE: [],
   },
@@ -60,9 +106,67 @@ const RULES: RuleType = {
   },
   BORDERS: {
     BORDER: [
+      [/^rounded-([\.\d]+)$/, ([_, num]) => ({ 'border-radius': `${num}px` })],
       [
-        /^border-rd-([\.\d]+)$/,
-        ([_, num]) => ({ 'border-radius': `${num}px` }),
+        /^rounded-([\.\d]+)-([\.\d]+)-([\.\d]+)-([\.\d]+)$/,
+        (match) => {
+          const topLeft = match[1]
+          const topRight = match[2]
+          const bottomRight = match[3]
+          const bottomLeft = match[4]
+          return {
+            'border-radius': `${topLeft}px ${topRight}px ${bottomRight}px ${bottomLeft}px`,
+          }
+        },
+      ],
+      [
+        /^(border|border-top|border-right|border-bottom|border-left)-([\.\d]+)$/,
+        (match) => {
+          const border:
+            | 'border'
+            | 'border-top'
+            | 'border-right'
+            | 'border-bottom'
+            | 'border-left' = match[1] as any
+          const value = match[2]
+          const key = `${border}-width`
+          const css: any = {}
+          css[key] = `${value}px`
+          return css
+        },
+      ],
+      [
+        /^(border|border-top|border-right|border-bottom|border-left)-color-(.+)$/,
+        (match) => {
+          const border:
+            | 'border'
+            | 'border-top'
+            | 'border-right'
+            | 'border-bottom'
+            | 'border-left' = match[1] as any
+          const value = match[2]
+          const key = `${border}-color`
+          const css: any = {}
+          css[key] =
+            COLOR.indexOf(value) !== -1 ? `var(--${value})` : `#${value}`
+          return css
+        },
+      ],
+      [
+        /^(border|border-top|border-right|border-bottom|border-left)-(solid|dashed|dotted|double|none)$/,
+        (match) => {
+          const border:
+            | 'border'
+            | 'border-top'
+            | 'border-right'
+            | 'border-bottom'
+            | 'border-left' = match[1] as any
+          const value = match[2]
+          const key = `${border}-style`
+          const css: any = {}
+          css[key] = value
+          return css
+        },
       ],
     ],
     DIVIDER: [],
@@ -96,48 +200,57 @@ const RULES: RuleType = {
     DISPLAY: [],
     FLEXBOX: [],
     GRID: [[/^gap-([\.\d]+)$/, ([_, num]) => ({ gap: `0 ${num}px` })]],
-    POSITIONING: [],
-    SIZING: [[/^w%-([\.\d]+)$/, ([_, num]) => ({ width: `${num}%` })]],
+    POSITIONING: [
+      [
+        /^(top|right|bottom|left)-([\.\d]+)$/,
+        (match) => {
+          const position: 'top' | 'right' | 'bottom' | 'left' = match[1] as any
+          const value = match[2]
+          const css: any = {}
+          css[position] = `${value}px`
+          return css
+        },
+      ],
+    ],
+    SIZING: [
+      [/^w%-([\.\d]+)$/, ([_, num]) => ({ width: `${num}%` })],
+      [/^width-([\.\d]+)$/, ([_, num]) => ({ width: `${num}px` })],
+      [/^height-([\.\d]+)$/, ([_, num]) => ({ height: `${num}px` })],
+    ],
     SPACING: [
-      [/^pt-([\.\d]+)$/, ([_, num]) => ({ 'padding-top': `${num}px` })],
+      [
+        /^(p|m)(t|r|b|l)-([\.\d]+)$/,
+        (match) => {
+          const property: 'p' | 'm' = match[1] as any
+          const position: 't' | 'r' | 'b' | 'l' = match[2] as any
+          const value = match[3]
+          const css: any = {}
+          const key = `${SPACING[property]}-${SPACING[position]}`
+          css[key] = `${value}px`
+          return css
+        },
+      ],
       [/^pr-([\.\d]+)$/, ([_, num]) => ({ 'padding-right': `${num}px` })],
       [/^pb-([\.\d]+)$/, ([_, num]) => ({ 'padding-bottom': `${num}px` })],
       [/^pl-([\.\d]+)$/, ([_, num]) => ({ 'padding-left': `${num}px` })],
       [
-        /^p-([\.\d]+)-([\.\d]+)-([\.\d]+)-([\.\d]+)$/,
+        /^(p|m)-([\.\d]+)-([\.\d]+)-([\.\d]+)-([\.\d]+)$/,
         (match) => {
-          const top = match[1]
-          const right = match[2]
-          const bottom = match[3]
-          const left = match[4]
-          return { padding: `${top}px ${right}px ${bottom}px ${left}px` }
+          const property: 'p' | 'm' = match[1] as any
+          const top = match[2]
+          const right = match[3]
+          const bottom = match[4]
+          const left = match[5]
+          const key = SPACING[property]
+          const css: any = {}
+          css[key] = `${top}px ${right}px ${bottom}px ${left}px`
+          return css
         },
       ],
     ],
     TABLES: [],
   },
 }
-
-const COLOR = [
-  'primary',
-  'primary-hover',
-  'primary-resting',
-  'primary-disabled',
-  'primary-dark',
-  'primary-grey',
-  'success',
-  'warning',
-  'danger',
-  'info',
-  'secondary',
-  'sucess-light',
-  'warning-light',
-  'danger-light',
-  'white',
-  'outline',
-  'resting-outline',
-  'background-light',
-]
 
 export default defineConfig({
   rules: reduce(
