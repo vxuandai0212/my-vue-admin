@@ -6,7 +6,9 @@
   --primary-disabled: #F6F6F6;
   --primary-dark: #1C1D21;
   --primary-grey: #8181A5;
+  --primary-hard: #1B51E5;
   --success: #7CE7AC;
+  --success-hard: #8AF1B9;
   --warning: #F4BE5E;
   --danger: #FF808B;
   --info: #9698D6;
@@ -14,9 +16,11 @@
   --sucess-light: #F2FDF7;
   --warning-light: #FEF9EF;
   --danger-light: #FFF3F4;
+  --default: #2CE5F6;
   --white: #FFFFFF;
   --outline: #F0F0F3;
   --resting-outline: #ECECF2;
   --background-light: #F5F5FA;
+  --background-extra-light: rgba(245, 245, 250, 0.40); 
   --transition-timing-func: cubic-bezier(0.4, 0, 0.2, 1);
 }

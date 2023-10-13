@@ -3,28 +3,19 @@
     <div
       class="background-color-white w%-55 rounded-0-16-16-0 flex justify-center"
     >
-      <div class="mt-108 mb-110 width-371">
+      <div class="mt-108 mb-110 width-405">
         <div
           class="color-primary-dark font-size-32 font-700 line-height-42 cursor-default"
         >
-          Welcome to our CRM. Sign Up to getting started.
+          Welcome to our CRM. <br> Sign In to see latest updates.
         </div>
         <div
           class="mt-11 color-primary-grey font-size-14 font-400 line-height-21 cursor-default"
         >
           Enter your details to proceed further
         </div>
-        <div class="mt-62">
+        <div class="mt-62 width-361">
           <div class="flex flex-col gap-5">
-            <v-input
-              label="Full name"
-              :value="model.fullname"
-              :rules="rules.fullname"
-              @update:value="setFullname"
-              icon="fullname"
-              placeholder="Start typing…"
-              type="text"
-            />
             <v-input
               label="Email"
               :value="model.email"
@@ -44,23 +35,21 @@
               type="password"
             />
           </div>
-          <v-checkbox
-            class="mt-13"
-            :value="checkboxValue"
-            @update:value="setCheckboxValue"
-            :options="checkboxOptions"
-          />
+          <div class="flex justify-between items-center mt-13">
+            <v-checkbox
+              :value="checkboxValue"
+              @update:value="setCheckboxValue"
+              :options="checkboxOptions"
+            />
+            <div
+              class="cursor-pointer color-primary hover:color-primary-hover font-size-14 font-700"
+            >
+              Recover password
+            </div>
+          </div>
           <div class="flex justify-between mt-38">
-            <primary-button
-              class="p-14-64-15-65"
-              label="Sign Up"
-              @click="handleSignUpBtnClick"
-            />
-            <resting-button
-              class="p-14-69-15-67"
-              label="Sign In"
-              @click="handleSignInBtnClick"
-            />
+            <primary-button class="p-14-64-15-64" label="Sign In" @click="handleSignInBtnClick" />
+            <resting-button class="p-14-64-15-64" label="Sign Up" @click="handleSignUpBtnClick" />
           </div>
           <div class="mt-77 flex gap-13 items-center">
             <div class="flex flex-row gap-6 justify-left">
@@ -92,7 +81,7 @@
         );
       "
     >
-      <svg-signup width="45vw" />
+      <svg-login width="45vw" />
     </div>
     <!-- todo: select, select autocomplete, tag, datepicker, datetime picker, tab, table, pagination -->
   </div>
@@ -155,13 +144,9 @@ const checkboxOptions = [
   {
     key: 1,
     value: 1,
-    label: 'I agree with terms & conditions',
+    label: 'Remember me',
   },
 ]
-
-function setFullname(v: any) {
-  model.fullname = v
-}
 
 function setEmail(v: any) {
   model.email = v

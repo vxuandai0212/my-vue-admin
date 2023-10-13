@@ -48,6 +48,51 @@ export const constantRoutes: AuthRoute.Route[] = [
     }
   },
   {
+    name: 'signup-betacrm',
+    path: '/signup-betacrm',
+    component: 'self',
+    meta: {
+      title: 'Signup BetaCRM',
+      singleLayout: 'blank'
+    }
+  },
+  {
+    name: 'invoice-empty',
+    path: '/invoice-empty',
+    component: 'self',
+    meta: {
+      title: 'Invoice Empty',
+      singleLayout: 'blank'
+    }
+  },
+  {
+    name: 'invoice-list',
+    path: '/invoice-list',
+    component: 'self',
+    meta: {
+      title: 'Invoice List',
+      singleLayout: 'blank'
+    }
+  },
+  {
+    name: 'invoice-detail',
+    path: '/invoice-detail',
+    component: 'self',
+    meta: {
+      title: 'Invoice Detail',
+      singleLayout: 'blank'
+    }
+  },
+  {
+    name: 'invoice-new',
+    path: '/invoice-new',
+    component: 'self',
+    meta: {
+      title: 'Invoice New',
+      singleLayout: 'blank'
+    }
+  },
+  {
     name: '403',
     path: '/403',
     component: 'self',

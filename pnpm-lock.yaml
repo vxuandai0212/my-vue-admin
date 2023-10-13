@@ -20,6 +20,9 @@ dependencies:
   '@vueuse/core':
     specifier: ^10.4.1
     version: 10.4.1(vue@3.3.4)
+  animejs:
+    specifier: ^3.2.1
+    version: 3.2.1
   axios:
     specifier: ^1.5.0
     version: 1.5.0
@@ -94,6 +97,9 @@ devDependencies:
   '@iconify/vue':
     specifier: ^4.1.1
     version: 4.1.1(vue@3.3.4)
+  '@types/animejs':
+    specifier: ^3.1.8
+    version: 3.1.8
   '@types/crypto-js':
     specifier: ^4.1.2
     version: 4.1.2
@@ -1226,6 +1232,10 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: true
 
+  /@types/animejs@3.1.8:
+    resolution: {integrity: sha512-jBMAq/l14WKPrKGoSbeVBqT94BOwikQ6V3F63K/rduUE/HE/zQ6qFEhUoISyUm+Yg7qdRYbrToJ04mKHRtybtw==}
+    dev: true
+
   /@types/crypto-js@4.1.2:
     resolution: {integrity: sha512-t33RNmTu5ufG/sorROIafiCVJMx3jz95bXUMoPAZcUD14fxMXnuTzqzXZoxpR0tNx2xpw11Dlmem9vGCsrSOfA==}
     dev: true
@@ -1741,6 +1751,10 @@ packages:
   /amdefine@1.0.1:
     resolution: {integrity: sha512-S2Hw0TtNkMJhIabBwIojKL9YHO5T0n5eNqWJ7Lrlel/zDbftQpxpapi8tZs3X1HWa+u+QeydGmzzNU0m09+Rcg==}
     engines: {node: '>=0.4.2'}
+    dev: false
+
+  /animejs@3.2.1:
+    resolution: {integrity: sha512-sWno3ugFryK5nhiDm/2BKeFCpZv7vzerWUcUPyAZLDhMek3+S/p418ldZJbJXo5ZUOpfm2kP2XRO4NJcULMy9A==}
     dev: false
 
   /ansi-regex@2.1.1:

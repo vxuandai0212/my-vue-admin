@@ -116,5 +116,16 @@ export function getNaiveThemeOverrides(
     LoadingBar: {
       colorLoading,
     },
+    Dropdown: {
+      borderRadius: '8px',
+      padding: '10px 0 12px 0',
+      fontSizeLarge: '14px',
+      optionTextColorHover: '#5E81F4',
+      optionTextColor: '#1C1D21',
+    },
+    Pagination: {
+      itemBorder: '2px dashed black',
+      
+    }
   }
 }

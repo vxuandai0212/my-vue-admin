@@ -12,7 +12,9 @@ const COLOR = [
   'primary-disabled',
   'primary-dark',
   'primary-grey',
+  'primary-hard',
   'success',
+  'success-hard',
   'warning',
   'danger',
   'info',
@@ -20,10 +22,12 @@ const COLOR = [
   'sucess-light',
   'warning-light',
   'danger-light',
+  'default',
   'white',
   'outline',
   'resting-outline',
   'background-light',
+  'background-extra-light'
 ]
 
 const SPACING = {
@@ -45,7 +49,29 @@ const RULES: RuleType = {
   GENERAL: {
     COLORS: [
       [
-        /^(background-color|color|border-color)-([A-Za-z0-9-]+)$/,
+        /^(background-color)-([A-Za-z0-9-]+)$/,
+        (match) => {
+          const property = match[1]
+          const color = match[2]
+          const css: any = {}
+          css[property] =
+            COLOR.indexOf(color) !== -1 ? `var(--${color})` : `#${color}`
+          return css
+        },
+      ],
+      [
+        /^(color)-([A-Za-z0-9-]+)$/,
+        (match) => {
+          const property = match[1]
+          const color = match[2]
+          const css: any = {}
+          css[property] =
+            COLOR.indexOf(color) !== -1 ? `var(--${color})` : `#${color}`
+          return css
+        },
+      ],
+      [
+        /^(border-color)-([A-Za-z0-9-]+)$/,
         (match) => {
           const property = match[1]
           const color = match[2]
@@ -202,7 +228,7 @@ const RULES: RuleType = {
     GRID: [[/^gap-([\.\d]+)$/, ([_, num]) => ({ gap: `${num}px` })]],
     POSITIONING: [
       [
-        /^(top|right|bottom|left)-([\.\d]+)$/,
+        /^(top|right|bottom|left)-(-?[\.\d]+)$/,
         (match) => {
           const position: 'top' | 'right' | 'bottom' | 'left' = match[1] as any
           const value = match[2]

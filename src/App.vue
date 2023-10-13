@@ -2,8 +2,8 @@
   <n-config-provider
     :theme="theme.naiveTheme"
     :theme-overrides="theme.naiveThemeOverrides"
-    :locale="zhCN"
-    :date-locale="dateZhCN"
+    :locale="enUS"
+    :date-locale="dateEnUS"
     class="h-full"
   >
     <n-global-style  />
@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { dateZhCN, zhCN } from "naive-ui/es"
+import { dateEnUS, enUS } from "naive-ui/es"
 import { subscribeStore, useThemeStore } from "@/store"
 import { useGlobalEvents } from "@/composables"
 
