@@ -124,8 +124,13 @@ export function getNaiveThemeOverrides(
       optionTextColor: '#1C1D21',
     },
     Pagination: {
-      itemBorder: '2px dashed black',
-      
+      itemFontSizeLarge: '14px',
+      itemBorder: '0px solid #5E81F4',
+      itemBorderActive: '1px solid #5E81F4',
+      itemBorderHover: '1px solid #5E81F4',
+      buttonBorder: '1px solid #ECECF2',
+      buttonBorderHover: '1px solid #5E81F4',
+      itemTextColorHover: '#1C1D21',
     }
   }
 }

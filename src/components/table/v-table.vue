@@ -72,14 +72,7 @@
             :on-clickoutside="dropdownOnClickOutside"
             :render-option="render"
           >
-            <div
-              @click="dropdownClick(item.id)"
-              class="width-36 height-36 rounded-8 background-color-white border-1 border-solid border-color-resting-outline flex justify-center items-center group hover:border-color-primary transition"
-            >
-              <icon-local-three-dot
-                class="width-16 height-16 fill-primary-grey group-hover:fill-primary-dark transition"
-              />
-            </div>
+            <three-dot @click="dropdownClick(item.id)" />
           </n-dropdown>
         </div>
       </div>
@@ -160,15 +153,14 @@ function render(arg: any) {
 
 const props = withDefaults(defineProps<Props>(), {})
 
-const hasCommand = computed(
-  () => {
-    const r = props.data &&
+const hasCommand = computed(() => {
+  const r =
+    props.data &&
     props.data.filter((item) => item.commands && item.commands.length > 0)
       .length > 0
-    console.log(r)
-    return r
-  }
-)
+  console.log(r)
+  return r
+})
 
 function isRenderCommandDropdown(item: any) {
   return item.commands && item.commands.length > 0

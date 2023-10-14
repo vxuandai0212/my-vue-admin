@@ -158,6 +158,11 @@
             :headers="headers"
             :data="data"
           />
+          <n-modal v-model:show="showModal">
+            <div class="rounded-4 background-color-white width-1079" style="box-shadow: 0px 6px 16px 0px rgba(153, 155, 168, 0.10);">
+              <invoice-detail />
+            </div>
+          </n-modal>
         </div>
       </div>
     </div>
@@ -179,8 +184,11 @@ import SvgFile from '@/components/svg/svg-file.vue'
 import SvgNotification from '@/components/svg/svg-notification.vue'
 import SvgReport from '@/components/svg/svg-report.vue'
 import SvgHelp from '@/components/svg/svg-help.vue'
+import InvoiceDetail from '@/views/invoice/components/detail.vue'
 
 import type { Header } from '@/components/table/v-table.vue'
+
+const showModal = ref<boolean>(false)
 
 const headers: Header[] = [
   {
@@ -374,6 +382,7 @@ function handleCreateInvoice(v: any) {
 }
 
 function handleEditInvoice(v: any) {
+  showModal.value = true
   console.log('Edit invoice: ' + v.id)
 }
 
