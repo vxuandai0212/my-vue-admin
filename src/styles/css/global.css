@@ -21,9 +21,33 @@ body,
   height: 100%;
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: white; 
+}
+ 
+::-webkit-scrollbar-thumb {
+ border-radius: 8px;
+  background: #c5c5cc; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a9a9af; 
+}
+
 .required:after {
   content: ' *';
   color: #ff808b;
+}
+
+.__textarea__ {
+  background-color: var(--background-light);
+  &:focus-visible {
+    outline: none;
+  }
 }
 
 .__input__ {

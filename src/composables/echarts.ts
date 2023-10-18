@@ -9,7 +9,7 @@ import type {
   PictorialBarSeriesOption,
   PieSeriesOption,
   RadarSeriesOption,
-  ScatterSeriesOption
+  ScatterSeriesOption,
 } from 'echarts/charts';
 import {
   DatasetComponent,
@@ -18,7 +18,8 @@ import {
   TitleComponent,
   ToolboxComponent,
   TooltipComponent,
-  TransformComponent
+  TransformComponent,
+  PolarComponent
 } from 'echarts/components';
 import type {
   DatasetComponentOption,
@@ -61,6 +62,7 @@ echarts.use([
   LineChart,
   PieChart,
   ScatterChart,
+  PolarComponent,
   PictorialBarChart,
   RadarChart,
   GaugeChart,

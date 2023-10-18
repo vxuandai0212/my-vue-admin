@@ -20,7 +20,11 @@
   --white: #FFFFFF;
   --outline: #F0F0F3;
   --resting-outline: #ECECF2;
+  --border: #EEE;
   --background-light: #F5F5FA;
+  --background-1: #FBFBFD;
+  --background-2: #F5F5FB;
+  --background-3: #EAEAF1;
   --background-extra-light: rgba(245, 245, 250, 0.40); 
   --transition-timing-func: cubic-bezier(0.4, 0, 0.2, 1);
 }

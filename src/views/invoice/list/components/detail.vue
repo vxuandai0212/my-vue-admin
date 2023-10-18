@@ -212,7 +212,10 @@
             Activities
           </div>
         </div>
-        <div class="mt-30 flex flex-col gap-21">
+        <div
+          class="mt-30 flex flex-col gap-21"
+          style="max-height: 570px; overflow-y: scroll"
+        >
           <div class="self-start flex-col gap-5">
             <div class="flex gap-8">
               <img
@@ -276,12 +279,202 @@
               />
             </div>
           </div>
+          <div class="self-start flex-col gap-5">
+            <div class="flex gap-8">
+              <img
+                class="width-24 height-24 rounded-50 mt-5"
+                src="@/assets/images/avatar.png"
+                alt="Avatar"
+              />
+              <div class="flex flex-col gap-5">
+                <div
+                  class="rounded-19-19-19-0 p-6-17-7-15 background-color-F6F6F6 color-primary-dark font-size-14 font-400 line-height-21"
+                >
+                  Created invoice #AA-04-19-1890
+                </div>
+                <div
+                  class="color-primary-grey font-size-12 font-700 line-height-18"
+                >
+                  04 May 2019
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="self-start flex-col gap-5">
+            <div class="flex gap-8">
+              <img
+                class="width-24 height-24 rounded-50 mt-5"
+                src="@/assets/images/avatar.png"
+                alt="Avatar"
+              />
+              <div class="flex flex-col gap-5">
+                <div
+                  class="rounded-19-19-19-0 p-6-17-7-15 background-color-F6F6F6 color-primary-dark font-size-14 font-400 line-height-21"
+                >
+                  Set due date to 13 Nov 2019
+                </div>
+                <div
+                  class="color-primary-grey font-size-12 font-700 line-height-18"
+                >
+                  05 May 2019
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="self-end flex-col gap-5">
+            <div class="flex gap-8">
+              <div class="flex flex-col gap-5 items-end">
+                <div
+                  class="rounded-17-17-0-17 p-6-17-7-15 background-color-primary color-white font-size-14 font-400 line-height-21"
+                >
+                  Invoice paid
+                </div>
+                <div
+                  class="color-primary-grey font-size-12 font-700 line-height-18"
+                >
+                  04 Sep 2019
+                </div>
+              </div>
+              <img
+                class="width-24 height-24 rounded-50 mt-5"
+                src="@/assets/images/avatar.png"
+                alt="Avatar"
+              />
+            </div>
+          </div>
+          <div class="self-start flex-col gap-5">
+            <div class="flex gap-8">
+              <img
+                class="width-24 height-24 rounded-50 mt-5"
+                src="@/assets/images/avatar.png"
+                alt="Avatar"
+              />
+              <div class="flex flex-col gap-5">
+                <div
+                  class="rounded-19-19-19-0 p-6-17-7-15 background-color-F6F6F6 color-primary-dark font-size-14 font-400 line-height-21"
+                >
+                  Created invoice #AA-04-19-1890
+                </div>
+                <div
+                  class="color-primary-grey font-size-12 font-700 line-height-18"
+                >
+                  04 May 2019
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="self-start flex-col gap-5">
+            <div class="flex gap-8">
+              <img
+                class="width-24 height-24 rounded-50 mt-5"
+                src="@/assets/images/avatar.png"
+                alt="Avatar"
+              />
+              <div class="flex flex-col gap-5">
+                <div
+                  class="rounded-19-19-19-0 p-6-17-7-15 background-color-F6F6F6 color-primary-dark font-size-14 font-400 line-height-21"
+                >
+                  Set due date to 13 Nov 2019
+                </div>
+                <div
+                  class="color-primary-grey font-size-12 font-700 line-height-18"
+                >
+                  05 May 2019
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="self-end flex-col gap-5">
+            <div class="flex gap-8">
+              <div class="flex flex-col gap-5 items-end">
+                <div
+                  class="rounded-17-17-0-17 p-6-17-7-15 background-color-primary color-white font-size-14 font-400 line-height-21"
+                >
+                  Invoice paid
+                </div>
+                <div
+                  class="color-primary-grey font-size-12 font-700 line-height-18"
+                >
+                  04 Sep 2019
+                </div>
+              </div>
+              <img
+                class="width-24 height-24 rounded-50 mt-5"
+                src="@/assets/images/avatar.png"
+                alt="Avatar"
+              />
+            </div>
+          </div>
+          <div class="self-start flex-col gap-5">
+            <div class="flex gap-8">
+              <img
+                class="width-24 height-24 rounded-50 mt-5"
+                src="@/assets/images/avatar.png"
+                alt="Avatar"
+              />
+              <div class="flex flex-col gap-5">
+                <div
+                  class="rounded-19-19-19-0 p-6-17-7-15 background-color-F6F6F6 color-primary-dark font-size-14 font-400 line-height-21"
+                  style="max-width: 255px"
+                >
+                  Created invoice #AA-04-19-1890
+                </div>
+                <div
+                  class="color-primary-grey font-size-12 font-700 line-height-18"
+                >
+                  04 May 2019
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="self-start flex-col gap-5">
+            <div class="flex gap-8">
+              <img
+                class="width-24 height-24 rounded-50 mt-5"
+                src="@/assets/images/avatar.png"
+                alt="Avatar"
+              />
+              <div class="flex flex-col gap-5">
+                <div
+                  class="rounded-19-19-19-0 p-6-17-7-15 background-color-F6F6F6 color-primary-dark font-size-14 font-400 line-height-21"
+                >
+                  Set due date to 13 Nov 2019
+                </div>
+                <div
+                  class="color-primary-grey font-size-12 font-700 line-height-18"
+                >
+                  05 May 2019
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="self-end flex-col gap-5">
+            <div class="flex gap-8">
+              <div class="flex flex-col gap-5 items-end">
+                <div
+                  class="rounded-17-17-0-17 p-6-17-7-15 background-color-primary color-white font-size-14 font-400 line-height-21"
+                >
+                  Invoice paid
+                </div>
+                <div
+                  class="color-primary-grey font-size-12 font-700 line-height-18"
+                >
+                  04 Sep 2019
+                </div>
+              </div>
+              <img
+                class="width-24 height-24 rounded-50 mt-5"
+                src="@/assets/images/avatar.png"
+                alt="Avatar"
+              />
+            </div>
+          </div>
         </div>
       </div>
       <div
-        class="flex justify-between background-color-background-light items-center height-72"
+        class="flex justify-between background-color-background-light items-center flex-grow"
       >
-        <div class="color-primary-grey font-size-14 font-700 p-0-30-0-30">
+        <div style="overflow-y: auto; max-height: 100px;" class="__textarea__ width-212 color-primary-grey font-size-14 font-700 m-10-10-10-30" contenteditable>
           Add your comment
         </div>
         <div class="flex gap-11 items-center pr-30">

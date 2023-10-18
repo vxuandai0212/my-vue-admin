@@ -92,7 +92,6 @@
 import { ref, computed, h } from 'vue'
 import { Icon } from '@iconify/vue'
 import dayjs from 'dayjs'
-import { DropdownMixedOption } from 'naive-ui/es/dropdown/src/interface'
 
 defineOptions({ name: 'VTable' })
 
@@ -125,7 +124,6 @@ export interface Header {
 interface Props {
   headers: Array<Header>
   data: Array<any>
-  commands?: DropdownMixedOption[]
 }
 
 const emit = defineEmits()
@@ -141,7 +139,7 @@ function render(arg: any) {
     'div',
     {
       style: `color: var(--${color})`,
-      class: `cursor-pointer p-14-20-15-17 font-size-14 font-700 hover:color-primary hover:background-color-background-extra-light transition`,
+      class: `cursor-pointer p-12-20-13-17 font-size-14 font-700 hover:color-primary hover:background-color-background-extra-light transition`,
       onClick: () => {
         emit(arg.option.key, { id: selectedId.value })
         selectedId.value = null

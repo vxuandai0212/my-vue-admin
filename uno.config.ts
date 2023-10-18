@@ -27,7 +27,11 @@ const COLOR = [
   'outline',
   'resting-outline',
   'background-light',
-  'background-extra-light'
+  'background-extra-light',
+  'background-1',
+  'background-2',
+  'background-3',
+  'border'
 ]
 
 const SPACING = {

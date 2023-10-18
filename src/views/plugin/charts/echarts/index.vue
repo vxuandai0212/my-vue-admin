@@ -32,6 +32,9 @@ import { type ECOption, useEcharts } from '@/composables';
 
 const pieOptions = ref<ECOption>({
   legend: {},
+  tooltip: {
+    trigger: 'item'
+  },
   toolbox: {
     show: true,
     feature: {

@@ -12,19 +12,19 @@
 </template>
 <script setup lang="ts">
 import {ref} from 'vue'
-defineOptions({ name: 'Tab' })
+defineOptions({ name: 'SimpleTab' })
 
-interface Tab {
+export interface SimpleTabItem {
   label: string
   value: any
 }
 
-interface Props {
-  tabs: Tab[]
+export interface SimpleTabProps {
+  tabs: SimpleTabItem[]
   initActiveTab: any
 }
 
-const props = withDefaults(defineProps<Props>(), {})
+const props = withDefaults(defineProps<SimpleTabProps>(), {})
 
 const activeTab = ref<string>(props.initActiveTab)
 

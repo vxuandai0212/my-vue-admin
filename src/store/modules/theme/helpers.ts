@@ -131,6 +131,10 @@ export function getNaiveThemeOverrides(
       buttonBorder: '1px solid #ECECF2',
       buttonBorderHover: '1px solid #5E81F4',
       itemTextColorHover: '#1C1D21',
+    },
+    DatePicker: {
+      panelBorderRadius: '8px',
+      panelBoxShadow: '0 3px 6px -4px rgba(0, 0, 0, .12), 0 6px 16px 0 rgba(0, 0, 0, .08), 0 9px 28px 8px rgba(0, 0, 0, .05)'
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="relative">
     <div
       :class="{ required: isRequired }"
       class="color-primary-grey font-size-14 font-400 line-height-21 cursor-default"
@@ -7,18 +7,19 @@
       {{ props.label }}
     </div>
     <div
+      ref="inputWrapperRef"
+      @click="showDatePicker = true"
       class="transition border-bottom-solid border-bottom-1 p-6-0-17-0 flex flex-row gap-2"
       :style="{ borderBottomColor: borderBottomColor }"
     >
       <input
         class="__input__ flex-grow border-none color-primary-dark font-size-14 font-700"
-        :type="type"
+        type="text"
         :placeholder="placeholder"
         v-model="inputValue"
         :disabled="disabled"
         @focus="inputFocus = true"
         @blur="onBlur"
-        @input="validate()"
       />
       <div
         v-if="icon"
@@ -28,6 +29,14 @@
         <v-icon :icon="icon" :fill="color" />
       </div>
     </div>
+    <n-date-picker
+      ref="datePickerRef"
+      :class="[showDatePicker ? 'opacity-100' : 'opacity-0']"
+      class="absolute border-1 border-solid border-color-resting-outline transition z-1"
+      @update-value="() => (showDatePicker = false)"
+      panel
+      :type="type"
+    />
     <div
       class="color-danger font-size-14 font-400 line-height-21 transition"
       :style="{ opacity: showError }"
@@ -37,12 +46,21 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import type { Icon } from '@/components/icon/v-icon.vue'
+import { useClick } from '@/hooks'
 
-defineOptions({ name: 'VInput' })
+defineOptions({ name: 'VDatepicker' })
 
-type InputType = 'text' | 'password'
+type DatepickerType =
+  | 'date'
+  | 'datetime'
+  | 'daterange'
+  | 'datetimerange'
+  | 'month'
+  | 'monthrange'
+  | 'year'
+  | 'quarter'
 
 interface Props {
   label?: string
@@ -50,14 +68,14 @@ interface Props {
   rules?: any
   icon?: Icon
   placeholder?: string
-  type?: InputType
   disabled?: boolean
+  type: DatepickerType
 }
 
 const props = withDefaults(defineProps<Props>(), {
   value: '',
   disabled: false,
-  type: 'text',
+  type: 'date',
 })
 
 interface Emits {
@@ -65,6 +83,24 @@ interface Emits {
 }
 
 const emit = defineEmits<Emits>()
+
+const datePickerRef = ref(null)
+
+const inputWrapperRef = ref(null)
+
+const showDatePicker = ref<boolean>(false)
+
+const { el } = useClick()
+
+watch(el, newValue => {
+  if (!showDatePicker.value) return
+  const inputWrapperEl: any = inputWrapperRef.value
+  const datePickerEl: any = (datePickerRef.value as any).$el
+  if (!inputWrapperEl && !datePickerEl) return
+  if (showDatePicker.value && !inputWrapperEl.contains(newValue) && !datePickerEl.contains(newValue)) {
+    showDatePicker.value = false
+  }
+})
 
 const isRequired = computed(() => {
   if (props.rules && props.rules.length > 0) {
@@ -94,7 +130,6 @@ const inputValue = computed({
 })
 
 function validate() {
-  console.log(isRequired && !inputValue.value);
   if (isRequired && !inputValue.value) {
     error.value = true
   } else {

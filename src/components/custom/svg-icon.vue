@@ -1,7 +1,7 @@
 <template>
   <template v-if="renderLocalIcon">
-    <svg aria-hidden="true" width="1em" height="1em" v-bind="bindAttrs">
-      <use :xlink:href="symbolId" fill="currentColor" />
+    <svg aria-hidden="true" :width="width" :height="height">
+      <use :xlink:href="symbolId" :fill="fill" :width="width" :height="height" />
     </svg>
   </template>
   <template v-else>
@@ -25,6 +25,9 @@ interface Props {
   icon?: string;
   /** 本地svg的文件名 */
   localIcon?: string;
+  fill?: string
+  width?: string
+  height?: string
 }
 
 const props = defineProps<Props>();

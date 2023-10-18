@@ -1,6 +1,7 @@
 <template>
   <div
-    class="width-336 height-98 p-14-22-20-26 background-color-background-extra-light flex flex-col gap-15 rounded-12"
+    class="height-98 p-14-22-20-26 flex flex-col grow gap-15 rounded-12"
+    :class="[`background-color-${props.backgroundColor}`]"
   >
     <div class="flex justify-between items-center">
       <div>
@@ -38,7 +39,7 @@ import { computed, ref } from 'vue'
 import anime from 'animejs/lib/anime.es.js'
 
 defineOptions({ name: 'ProgressCard' })
-interface Props {
+export interface ProgressCardProps {
   label?: string
   description?: string
   valuePrefix?: string
@@ -46,6 +47,7 @@ interface Props {
   progressColor: 'primary' | 'warning' | 'danger' | 'success'
   trend: 'up' | 'down'
   percent: number
+  backgroundColor: string
 }
 
 const COLOR = {
@@ -55,10 +57,11 @@ const COLOR = {
   warning: '#F4BE5E',
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<ProgressCardProps>(), {
   progressColor: 'primary',
   trend: 'up',
   percent: 60,
+  backgroundColor: 'background-extra-light'
 })
 
 const percentageValue = ref<number>(0)

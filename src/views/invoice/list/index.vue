@@ -98,11 +98,7 @@
               </div>
             </div>
           </div>
-          <icon-button>
-            <icon-local-caret-down
-              class="fill-primary-grey width-16 height-16"
-            />
-          </icon-button>
+          <icon-button icon="caret-down" />
         </div>
         <div class="p-28-21-28-30">
           <div class="color-primary-dark font-size-16 font-700 line-height-24">
@@ -122,11 +118,7 @@
       <div class="p-0-28-28-28 flex-grow">
         <div class="flex justify-between items-center height-84">
           <div class="flex items-center">
-            <icon-button @click="collapsed = !collapsed">
-              <icon-local-hamburger
-                class="fill-primary-grey width-16 height-16"
-              />
-            </icon-button>
+            <icon-button icon="hamburger" @click="collapsed = !collapsed" />
             <div
               class="ml-20 color-primary-dark font-size-20 font-700 line-height-32 cursor-default"
             >
@@ -134,12 +126,8 @@
             </div>
           </div>
           <div class="flex items-center justify-end gap-6">
-            <icon-button>
-              <icon-local-search class="fill-primary-grey width-16 height-16" />
-            </icon-button>
-            <icon-button>
-              <icon-local-add class="fill-primary-grey width-16 height-16" />
-            </icon-button>
+            <icon-button icon="search" />
+            <icon-button icon="add" />
           </div>
         </div>
         <!-- empty-invoice -->
@@ -159,7 +147,10 @@
             :data="data"
           />
           <n-modal v-model:show="showModal">
-            <div class="rounded-4 background-color-white width-1079" style="box-shadow: 0px 6px 16px 0px rgba(153, 155, 168, 0.10);">
+            <div
+              class="rounded-4 background-color-white width-1079"
+              style="box-shadow: 0px 6px 16px 0px rgba(153, 155, 168, 0.1)"
+            >
               <invoice-detail />
             </div>
           </n-modal>
@@ -184,7 +175,7 @@ import SvgFile from '@/components/svg/svg-file.vue'
 import SvgNotification from '@/components/svg/svg-notification.vue'
 import SvgReport from '@/components/svg/svg-report.vue'
 import SvgHelp from '@/components/svg/svg-help.vue'
-import InvoiceDetail from '@/views/invoice/components/detail.vue'
+import InvoiceDetail from '@/views/invoice/list/components/detail.vue'
 
 import type { Header } from '@/components/table/v-table.vue'
 

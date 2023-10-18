@@ -6,28 +6,39 @@
     >
       {{ props.label }}
     </div>
-    <div
-      class="transition border-bottom-solid border-bottom-1 p-6-0-17-0 flex flex-row gap-2"
-      :style="{ borderBottomColor: borderBottomColor }"
+    <n-dropdown
+      style="max-height: 265px; overflow-y: auto"
+      trigger="click"
+      :options="options"
+      size="large"
+      :show="showDropdown"
+      :on-clickoutside="() => (showDropdown = false)"
+      :render-option="renderOption"
     >
-      <input
-        class="__input__ flex-grow border-none color-primary-dark font-size-14 font-700"
-        :type="type"
-        :placeholder="placeholder"
-        v-model="inputValue"
-        :disabled="disabled"
-        @focus="inputFocus = true"
-        @blur="onBlur"
-        @input="validate()"
-      />
       <div
-        v-if="icon"
-        :class="{ opacity70: disabled }"
-        class="flex justify-center items-center width-18 height-18"
+        @click="showDropdown = true"
+        class="transition border-bottom-solid border-bottom-1 p-6-0-17-0 flex flex-row gap-2"
+        :style="{ borderBottomColor: borderBottomColor }"
       >
-        <v-icon :icon="icon" :fill="color" />
+        <input
+          class="__input__ flex-grow border-none color-primary-dark font-size-14 font-700"
+          type="text"
+          :placeholder="placeholder"
+          v-model="inputValue"
+          :disabled="disabled"
+          @focus="inputFocus = true"
+          @blur="onBlur"
+          @input="validate()"
+        />
+        <div
+          v-if="icon"
+          :class="{ opacity70: disabled }"
+          class="flex justify-center items-center width-18 height-18"
+        >
+          <v-icon :icon="icon" :fill="color" />
+        </div>
       </div>
-    </div>
+    </n-dropdown>
     <div
       class="color-danger font-size-14 font-400 line-height-21 transition"
       :style="{ opacity: showError }"
@@ -37,12 +48,10 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, h, ref } from 'vue'
 import type { Icon } from '@/components/icon/v-icon.vue'
 
-defineOptions({ name: 'VInput' })
-
-type InputType = 'text' | 'password'
+defineOptions({ name: 'VSelect' })
 
 interface Props {
   label?: string
@@ -50,14 +59,13 @@ interface Props {
   rules?: any
   icon?: Icon
   placeholder?: string
-  type?: InputType
   disabled?: boolean
+  options: any
 }
 
 const props = withDefaults(defineProps<Props>(), {
   value: '',
   disabled: false,
-  type: 'text',
 })
 
 interface Emits {
@@ -65,6 +73,30 @@ interface Emits {
 }
 
 const emit = defineEmits<Emits>()
+
+const showDropdown = ref<boolean>(false)
+
+function renderOption(arg: any) {
+  const color =
+    arg.option.type === 'warning'
+      ? 'warning'
+      : arg.option.type === 'danger'
+      ? 'danger'
+      : 'primary-dark'
+  return h(
+    'div',
+    {
+      style: `color: var(--${color});`,
+      class: `cursor-pointer p-12-20-13-17 line-height-24 font-size-14 font-700 hover:color-primary width-300 hover:background-color-background-extra-light transition`,
+      onClick: () => {
+        // emit
+        inputValue.value = arg.option.label
+        showDropdown.value = false
+      },
+    },
+    arg.option.label
+  )
+}
 
 const isRequired = computed(() => {
   if (props.rules && props.rules.length > 0) {
@@ -94,7 +126,7 @@ const inputValue = computed({
 })
 
 function validate() {
-  console.log(isRequired && !inputValue.value);
+  console.log(isRequired && !inputValue.value)
   if (isRequired && !inputValue.value) {
     error.value = true
   } else {

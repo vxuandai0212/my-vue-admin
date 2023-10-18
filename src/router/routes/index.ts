@@ -57,15 +57,6 @@ export const constantRoutes: AuthRoute.Route[] = [
     }
   },
   {
-    name: 'invoice-empty',
-    path: '/invoice-empty',
-    component: 'self',
-    meta: {
-      title: 'Invoice Empty',
-      singleLayout: 'blank'
-    }
-  },
-  {
     name: 'invoice-list',
     path: '/invoice-list',
     component: 'self',
@@ -75,20 +66,20 @@ export const constantRoutes: AuthRoute.Route[] = [
     }
   },
   {
-    name: 'invoice-detail',
-    path: '/invoice-detail',
-    component: 'self',
-    meta: {
-      title: 'Invoice Detail',
-      singleLayout: 'blank'
-    }
-  },
-  {
     name: 'invoice-new',
     path: '/invoice-new',
     component: 'self',
     meta: {
       title: 'Invoice New',
+      singleLayout: 'blank'
+    }
+  },
+  {
+    name: 'report',
+    path: '/report',
+    component: 'self',
+    meta: {
+      title: 'Report',
       singleLayout: 'blank'
     }
   },

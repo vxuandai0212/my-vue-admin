@@ -7,7 +7,8 @@
         <div
           class="color-primary-dark font-size-32 font-700 line-height-42 cursor-default"
         >
-          Welcome to our CRM. <br> Sign In to see latest updates.
+          Welcome to our CRM. <br />
+          Sign In to see latest updates.
         </div>
         <div
           class="mt-11 color-primary-grey font-size-14 font-400 line-height-21 cursor-default"
@@ -48,8 +49,16 @@
             </div>
           </div>
           <div class="flex justify-between mt-38">
-            <primary-button class="p-14-64-15-64" label="Sign In" @click="handleSignInBtnClick" />
-            <resting-button class="p-14-64-15-64" label="Sign Up" @click="handleSignUpBtnClick" />
+            <primary-button
+              class="p-14-64-15-64"
+              label="Sign In"
+              @click="handleSignInBtnClick"
+            />
+            <resting-button
+              class="p-14-64-15-64"
+              label="Sign Up"
+              @click="handleSignUpBtnClick"
+            />
           </div>
           <div class="mt-77 flex gap-13 items-center">
             <div class="flex flex-row gap-6 justify-left">
@@ -93,6 +102,7 @@ import { reactive } from 'vue'
 import IconLocalTwitter from '@/components/svg/svg-twitter.vue'
 import IconLocalGoogle from '@/components/svg/svg-google.vue'
 import IconLocalFacebook from '@/components/svg/svg-facebook.vue'
+import axios from 'axios'
 
 const model = reactive({
   fullname: 'aaa',
@@ -160,8 +170,28 @@ function handleSignUpBtnClick() {
   console.log('handleSignUpBtnClick')
 }
 
+const bodyFormData = new FormData()
+bodyFormData.append('username', '1')
+bodyFormData.append('password', '1')
+bodyFormData.append('grant_type', 'password')
+
 function handleSignInBtnClick() {
-  console.log('handleSignInBtnClick')
+  // axios({
+  //   method: 'post',
+  //   url: 'http://localhost:8080/oauth/token',
+  //   data: bodyFormData,
+  //   headers: { 'Content-Type': 'multipart/form-data',
+  // "Authorization": "Basic Y2xpZW50OmNsaWVudEAyMDIy" },
+  // })
+  //   .then(function (response) {
+  //     //handle success
+  //     console.log(response)
+  //   })
+  //   .catch(function (response) {
+  //     //handle error
+  //     console.log(response)
+  //   })
+  axios.get('http://localhost:8080/cart/test')
 }
 </script>
 
