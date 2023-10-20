@@ -1,6 +1,6 @@
 <template>
   <div
-    class="p-17-20-17-17 background-color-background-1 flex justify-between items-center rounded-12"
+    class="p-17-20-17-17 background-color-background-1 flex justify-between items-center rounded-12 transition"
   >
     <div class="flex gap-13 items-center">
       <div class="flex items-center justify-center width-38 height-38 rounded-8 background-color-primary-resting">

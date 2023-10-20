@@ -1,6 +1,6 @@
 <template>
   <div
-    class="background-color-background-1 p-22-24-20-30 flex justify-between items-center rounded-12"
+    class="background-color-background-1 p-22-24-20-30 flex justify-between items-center rounded-12 transition"
   >
     <div class="flex flex-col">
       <div class="color-primary-dark font-size-18 font-700 line-height-27">

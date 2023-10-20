@@ -14,6 +14,8 @@ export async function createDynamicRouteGuard(
   const route = useRouteStore();
   const isLogin = Boolean(localStg.get('token'));
 
+  console.log(route.isInitAuthRoute);
+
   // 初始化权限路由
   if (!route.isInitAuthRoute) {
     // 未登录情况下直接回到登录页，登录成功后再加载权限路由
@@ -39,6 +41,8 @@ export async function createDynamicRouteGuard(
       return false;
     }
   }
+
+
 
   // 权限路由已经加载，仍然未找到，重定向到404
   if (to.name === routeName('not-found')) {

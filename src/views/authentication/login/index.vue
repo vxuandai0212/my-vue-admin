@@ -102,7 +102,6 @@ import { reactive } from 'vue'
 import IconLocalTwitter from '@/components/svg/svg-twitter.vue'
 import IconLocalGoogle from '@/components/svg/svg-google.vue'
 import IconLocalFacebook from '@/components/svg/svg-facebook.vue'
-import axios from 'axios'
 
 const model = reactive({
   fullname: 'aaa',
@@ -176,22 +175,6 @@ bodyFormData.append('password', '1')
 bodyFormData.append('grant_type', 'password')
 
 function handleSignInBtnClick() {
-  // axios({
-  //   method: 'post',
-  //   url: 'http://localhost:8080/oauth/token',
-  //   data: bodyFormData,
-  //   headers: { 'Content-Type': 'multipart/form-data',
-  // "Authorization": "Basic Y2xpZW50OmNsaWVudEAyMDIy" },
-  // })
-  //   .then(function (response) {
-  //     //handle success
-  //     console.log(response)
-  //   })
-  //   .catch(function (response) {
-  //     //handle error
-  //     console.log(response)
-  //   })
-  axios.get('http://localhost:8080/cart/test')
 }
 </script>
 

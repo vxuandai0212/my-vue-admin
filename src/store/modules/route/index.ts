@@ -146,6 +146,7 @@ export const useRouteStore = defineStore('route-store', {
     },
     /** 初始化权限路由 */
     async initAuthRoute() {
+      console.log('init auth route');
       if (this.authRouteMode === 'dynamic') {
         await this.initDynamicRoute();
       } else {

@@ -1,10 +1,12 @@
 <template>
-  <div class="background-color-background-light flex">
+  <div
+    class="background-color-background-light flex m-height-screen overflow-hidden"
+  >
     <div
-      class="pb-10 background-color-white border-right-1 border-right-color-outline border-right-solid transition flex flex-col min-h-full justify-between"
+      class="pb-10 background-color-white border-right-1 border-right-color-outline border-right-solid transition flex flex-col max-h-screen"
       :class="[collapsed ? 'width-89' : 'width-242']"
     >
-      <div>
+      <div class="__navigation__">
         <div class="pt-26 pl-29 flex gap-23 items-center cursor-pointer">
           <svg-logo />
           <span
@@ -78,8 +80,10 @@
         >
       </div>
     </div>
-    <div class="flex flex-grow">
-      <div class="w%-25 background-color-white p-28-29-28-28">
+    <div class="flex flex-grow max-h-screen">
+      <div
+        class="w%-25 background-color-white p-28-29-28-28 max-h-screen __sidebar__"
+      >
         <div class="flex flex-col gap-33">
           <div class="mt-55">
             <img
@@ -151,7 +155,7 @@
           </div>
         </div>
         <!-- report -->
-        <div class="grid grid-cols-3 gap-28">
+        <div class="grid grid-cols-3 gap-28 pb-28 __main-section__">
           <progress-card
             class="col-span-1"
             v-for="item in progressCards"
@@ -523,3 +527,32 @@ const menus = [
   },
 ]
 </script>
+<style scoped>
+.__navigation__,
+.__sidebar__,
+.__main-section__ {
+  overflow: hidden;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.__navigation__::-webkit-scrollbar {
+  display: none;
+}
+.__sidebar__::-webkit-scrollbar {
+  display: none;
+}
+.__main-section__::-webkit-scrollbar {
+  display: none;
+}
+.__main-section__ {
+  max-height: calc(100vh - 84px);
+  overflow-y: auto;
+}
+
+.__navigation__:hover {
+  overflow-y: auto;
+}
+.__sidebar__:hover {
+  overflow-y: auto;
+}
+</style>

@@ -63,13 +63,8 @@ const { el } = useClick()
 const simpleSearchContainerRef = ref(null)
 
 watch(el, (newValue) => {
-  console.log(`showinput: ` + showInput.value)
-  console.log(newValue)
   const simpleSearchContainerEl: any = simpleSearchContainerRef.value
-  console.log(simpleSearchContainerEl)
-  // console.log(showInput.value && !simpleSearchContainerEl.contains(newValue));
   if (!showInput.value) return
-
   if (!simpleSearchContainerEl) return
   if (showInput.value && !simpleSearchContainerEl.contains(newValue)) {
     showInput.value = false

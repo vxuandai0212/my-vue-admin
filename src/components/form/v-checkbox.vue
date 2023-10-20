@@ -60,8 +60,6 @@ const props = withDefaults(defineProps<Props>(), {
   disabled: false,
 })
 
-console.log(props.disabled)
-
 interface Emits {
   (e: 'update:value', value: any): void
 }

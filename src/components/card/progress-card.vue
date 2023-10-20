@@ -1,6 +1,6 @@
 <template>
   <div
-    class="height-98 p-14-22-20-26 flex flex-col grow gap-15 rounded-12"
+    class="height-98 p-14-22-20-26 flex flex-col grow gap-15 rounded-12 transition"
     :class="[`background-color-${props.backgroundColor}`]"
   >
     <div class="flex justify-between items-center">

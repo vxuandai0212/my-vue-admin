@@ -72,7 +72,13 @@
             :on-clickoutside="dropdownOnClickOutside"
             :render-option="render"
           >
-            <three-dot @click="dropdownClick(item.id)" />
+            <icon-button 
+              class="border-1 border-solid border-color-resting-outline rounded-8" 
+              icon="three-dot" 
+              icon-fill-color="primary-grey"
+              icon-background-color="white"
+              @click="dropdownClick(item.id)" 
+            />
           </n-dropdown>
         </div>
       </div>
@@ -156,7 +162,6 @@ const hasCommand = computed(() => {
     props.data &&
     props.data.filter((item) => item.commands && item.commands.length > 0)
       .length > 0
-  console.log(r)
   return r
 })
 

@@ -94,7 +94,6 @@ const inputValue = computed({
 })
 
 function validate() {
-  console.log(isRequired && !inputValue.value);
   if (isRequired && !inputValue.value) {
     error.value = true
   } else {

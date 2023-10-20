@@ -213,8 +213,9 @@
           </div>
         </div>
         <div
-          class="mt-30 flex flex-col gap-21"
-          style="max-height: 570px; overflow-y: scroll"
+          class="mt-30 flex flex-col gap-21 transition"
+          :style="['overflow-y: scroll', `max-height: ${chatListHeight}px`]"
+          ref="chatContainerRef"
         >
           <div class="self-start flex-col gap-5">
             <div class="flex gap-8">
@@ -474,12 +475,26 @@
       <div
         class="flex justify-between background-color-background-light items-center flex-grow"
       >
-        <div style="overflow-y: auto; max-height: 100px;" class="__textarea__ width-212 color-primary-grey font-size-14 font-700 m-10-10-10-30" contenteditable>
-          Add your comment
-        </div>
+        <div
+          ref="commentInputRef"
+          data-text="Add your comment"
+          role="textbox"
+          @input="growHeight"
+          style="overflow-y: auto; max-height: 100px; min-height: 20px"
+          class="__textarea__ width-212 resize-none color-primary-grey font-size-14 font-700 m-10-10-10-30 transition"
+          contenteditable
+        ></div>
         <div class="flex gap-11 items-center pr-30">
-          <div class="flex items-center gap-9">
-            <icon-local-emoticon class="fill-primary-grey" />
+          <div class="flex items-center gap-9 relative">
+            <emoji-picker
+              ref="emojiPickerRef"
+              :style="[showEmojiPicker ? 'opacity: 1; left: -126px; z-index: 1;' : 'opacity: 0; left:160px; z-index: -1;']"
+              style="bottom: 30px;"
+              class="absolute transition"
+              :native="true"
+              @select="onSelectEmoji"
+            />
+            <icon-local-emoticon ref="emojiIconRef" @click="onClickEmotionPicker" class="fill-primary-grey cursor-pointer" />
             <icon-local-attach class="fill-primary-grey" />
           </div>
           <primary-button class="p-9-33-10-34" label="Send" />
@@ -489,5 +504,50 @@
   </div>
 </template>
 <script setup lang="ts">
+import { onMounted, ref, watch } from 'vue'
+import EmojiPicker from 'vue3-emoji-picker'
+import 'vue3-emoji-picker/css'
+import { useClick } from '@/hooks'
+
 defineOptions({ name: 'InvoiceDetail' })
+const chatContainerRef: any = ref(null)
+const commentInputRef: any = ref(null)
+const chatListHeight = ref(570)
+const showEmojiPicker = ref<boolean>(false)
+const emojiPickerRef = ref()
+const emojiIconRef = ref()
+onMounted(() => {
+  chatContainerRef.value.scrollTo(0, chatContainerRef.value.scrollHeight)
+})
+
+const { el } = useClick()
+
+watch(el, newValue => {
+  if (!showEmojiPicker.value) return
+  const emojiPickerEl: any = emojiPickerRef.value.$el
+  const emojiIconEl: any = emojiIconRef.value.$el
+  if (!emojiPickerEl) return
+  if (showEmojiPicker.value && !emojiPickerEl.contains(newValue) && !emojiIconEl.contains(newValue)) {
+    showEmojiPicker.value = false
+  }
+})
+
+function growHeight(el: any) {
+  const newChatListHeight = 590 - el.target.offsetHeight
+  if (newChatListHeight !== chatListHeight.value) {
+    chatListHeight.value = newChatListHeight
+    commentInputRef.value.scrollTo(0, commentInputRef.value.scrollHeight)
+  }
+}
+
+function onSelectEmoji(emoji: any) {
+  commentInputRef.value.innerHTML += emoji.i
+}
+
+function onClickEmotionPicker() {
+  showEmojiPicker.value = true
+}
 </script>
+<style scoped>
+
+</style>

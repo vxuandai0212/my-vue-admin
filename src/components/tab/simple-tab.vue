@@ -29,7 +29,6 @@ const props = withDefaults(defineProps<SimpleTabProps>(), {})
 const activeTab = ref<string>(props.initActiveTab)
 
 function chooseTab(v: any) {
-  console.log(v)
   activeTab.value = v
 }
 </script>

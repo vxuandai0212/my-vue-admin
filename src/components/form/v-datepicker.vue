@@ -33,7 +33,7 @@
       ref="datePickerRef"
       :class="[showDatePicker ? 'opacity-100' : 'opacity-0']"
       class="absolute border-1 border-solid border-color-resting-outline transition z-1"
-      @update-value="() => (showDatePicker = false)"
+      @confirm="() => (showDatePicker = false)"
       panel
       :type="type"
     />
