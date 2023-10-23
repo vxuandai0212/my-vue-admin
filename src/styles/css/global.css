@@ -21,6 +21,20 @@ body,
   height: 100%;
 }
 
+.overflow-y-no-scrollbar {
+  overflow: hidden;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.overflow-y-no-scrollbar::-webkit-scrollbar {
+  display: none
+}
+
+.overflow-y-no-scrollbar:hover {
+  overflow-y: auto;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
 }

@@ -33,6 +33,8 @@
 <script setup lang="tsx">
 import { DropdownRenderOption } from 'naive-ui/es/dropdown/src/interface'
 import { ref } from 'vue'
+import { useRouterPush } from '~/src/composables';
+const { routerPush } = useRouterPush()
 
 const showDropdown = ref<boolean>(false)
 
@@ -48,6 +50,7 @@ const options: DropdownRenderOption[] = [
           }
           onClick={() => {
             showDropdown.value = false
+            routerPush({ name: 'project_new' })
           }}
         >
           <div class={'flex gap-15 items-center'}>
@@ -79,6 +82,7 @@ const options: DropdownRenderOption[] = [
           }
           onClick={() => {
             showDropdown.value = false
+            routerPush({ name: 'task_new' })
           }}
         >
           <div class={'flex gap-15 items-center'}>
@@ -110,6 +114,7 @@ const options: DropdownRenderOption[] = [
           }
           onClick={() => {
             showDropdown.value = false
+            routerPush({ name: 'contact_new' })
           }}
         >
           <div class={'flex gap-15 items-center'}>
@@ -141,6 +146,7 @@ const options: DropdownRenderOption[] = [
           }
           onClick={() => {
             showDropdown.value = false
+            routerPush({ name: 'notification_new' })
           }}
         >
           <div class={'flex gap-15 items-center'}>
@@ -172,6 +178,7 @@ const options: DropdownRenderOption[] = [
           }
           onClick={() => {
             showDropdown.value = false
+            routerPush({ name: 'product_new' })
           }}
         >
           <div class={'flex gap-15 items-center'}>
@@ -203,6 +210,7 @@ const options: DropdownRenderOption[] = [
           }
           onClick={() => {
             showDropdown.value = false
+            routerPush({ name: 'invoice_new' })
           }}
         >
           <div class={'flex gap-15 items-center'}>

@@ -1,89 +1,95 @@
 <template>
-  <div>
-    <div class="flex p-14-25-16-45 background-color-FBFBFD cursor-default">
+  <div class="flex flex-col gap-36 h-full">
+    <div class="flex flex-col gap-38 grow shrink overflow-hidden">
       <div
-        v-for="item in props.headers"
-        class="color-primary-grey font-size-12 font-700 line-height-18"
-        :style="{
-          width: `${item.width}%`,
-          textAlign: item.align ? item.align : 'left',
-        }"
-      >
-        {{ item.label }}
-      </div>
-      <div v-if="hasCommand" class="width-80"></div>
-    </div>
-    <div class="p-22-0-36-0 flex flex-col gap-7">
-      <div
-        v-for="item in data"
-        class="border-1 border-solid border-color-resting-outline rounded-12 flex height-88 flex items-center m-0-25-0-25 p-0-0-0-20 hover:background-color-background-extra-light transition"
+        class="flex basis-32px grow-0 shrink-0 overflow-hidden p-14-25-0-45 background-color-FBFBFD cursor-default"
       >
         <div
-          v-for="(value, key) in item"
-          class="color-primary-dark font-size-16 line-height-24 flex items-center cursor-default"
+          v-for="item in props.headers"
+          class="color-primary-grey font-size-12 font-700 line-height-18"
           :style="{
-            width: getWidth(key),
-            justifyContent: getJustifyContent(key),
-            fontStyle: getFontStyle(key),
-            fontWeight: getFontWeight(key),
+            width: `${item.width}%`,
+            textAlign: item.align ? item.align : 'left',
           }"
         >
-          <template v-if="isShowField(key)">
-            <template v-if="isMatchType(key, 'tag')">
-              <tag :label="value.value" :type="value.type" />
-            </template>
-            <template v-else-if="isMatchType(key, 'icon-text')">
-              <div
-                class="width-52 height-52 rounded-8 flex justify-center items-center"
-                style="
-                  background: linear-gradient(
-                      0deg,
-                      rgba(94, 129, 244, 0.1) 0%,
-                      rgba(94, 129, 244, 0.1) 100%
-                    ),
-                    #fff;
-                "
-              >
-                <Icon
-                  style="width: 18px; height: 18px; color: var(--primary)"
-                  icon="ph:calculator"
-                />
-              </div>
-              <div class="ml-20">{{ getFormatText(key, value.text) }}</div>
-            </template>
-            <template v-else-if="isMatchType(key, 'image-text')">
-              <img
-                class="width-36 height-36 rounded-6"
-                src="@/assets/images/avatar.png"
-                alt="image"
-              />
-              <div class="ml-12">{{ getFormatText(key, value.text) }}</div>
-            </template>
-            <template v-else>{{ getFormatText(key, value) }}</template>
-          </template>
+          {{ item.label }}
         </div>
-        <div class="width-80 cursor-pointer" v-if="hasCommand">
-          <n-dropdown
-            v-if="isRenderCommandDropdown(item)"
-            trigger="click"
-            :options="item.commands"
-            size="large"
-            :show="selectedId === item.id"
-            :on-clickoutside="dropdownOnClickOutside"
-            :render-option="render"
+        <div v-if="hasCommand" class="width-80"></div>
+      </div>
+      <div class="flex flex-col h-full overflow-y-no-scrollbar gap-7">
+        <div
+          v-for="item in data"
+          class="border-1 border-solid border-color-resting-outline rounded-12 flex basis-88px grow-0 shrink-0 items-center m-0-25-0-25 p-0-0-0-20 hover:background-color-background-extra-light transition"
+        >
+          <div
+            v-for="(value, key) in item"
+            class="color-primary-dark font-size-16 line-height-24 flex items-center cursor-default"
+            :style="{
+              width: getWidth(key),
+              justifyContent: getJustifyContent(key),
+              fontStyle: getFontStyle(key),
+              fontWeight: getFontWeight(key),
+            }"
           >
-            <icon-button 
-              class="border-1 border-solid border-color-resting-outline rounded-8" 
-              icon="three-dot" 
-              icon-fill-color="primary-grey"
-              icon-background-color="white"
-              @click="dropdownClick(item.id)" 
-            />
-          </n-dropdown>
+            <template v-if="isShowField(key)">
+              <template v-if="isMatchType(key, 'tag')">
+                <tag :label="value.value" :type="value.type" />
+              </template>
+              <template v-else-if="isMatchType(key, 'icon-text')">
+                <div
+                  class="width-52 height-52 rounded-8 flex justify-center items-center"
+                  style="
+                    background: linear-gradient(
+                        0deg,
+                        rgba(94, 129, 244, 0.1) 0%,
+                        rgba(94, 129, 244, 0.1) 100%
+                      ),
+                      #fff;
+                  "
+                >
+                  <Icon
+                    style="width: 18px; height: 18px; color: var(--primary)"
+                    icon="ph:calculator"
+                  />
+                </div>
+                <div class="ml-20">{{ getFormatText(key, value.text) }}</div>
+              </template>
+              <template v-else-if="isMatchType(key, 'image-text')">
+                <img
+                  class="width-36 height-36 rounded-6"
+                  src="@/assets/images/avatar.png"
+                  alt="image"
+                />
+                <div class="ml-12">{{ getFormatText(key, value.text) }}</div>
+              </template>
+              <template v-else>{{ getFormatText(key, value) }}</template>
+            </template>
+          </div>
+          <div class="width-80 cursor-pointer" v-if="hasCommand">
+            <n-dropdown
+              v-if="isRenderCommandDropdown(item)"
+              trigger="click"
+              :options="item.commands"
+              size="large"
+              :show="selectedId === item.id"
+              :on-clickoutside="dropdownOnClickOutside"
+              :render-option="render"
+            >
+              <icon-button
+                class="border-1 border-solid border-color-resting-outline rounded-8"
+                icon="three-dot"
+                icon-fill-color="primary-grey"
+                icon-background-color="white"
+                @click="dropdownClick(item.id)"
+              />
+            </n-dropdown>
+          </div>
         </div>
       </div>
     </div>
-    <div class="flex justify-end p-0-25-0-25">
+    <div
+      class="flex justify-end p-0-25-0-25 basis-34px grow-0 shrink-0 overflow-hidden"
+    >
       <n-pagination
         v-model:page="page"
         :page-count="100"

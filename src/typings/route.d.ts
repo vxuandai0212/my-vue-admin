@@ -26,7 +26,7 @@ declare namespace AuthRoute {
    * - multi - 多级路由布局(三级路由或三级以上时，除第一级路由和最后一级路由，其余的采用该布局)
    * - self - 作为子路由，使用自身的布局(作为最后一级路由，没有子路由)
    */
-  type RouteComponentType = "basic" | "blank" | "multi" | "self"
+  type RouteComponentType = "basic" | "custom" | "blank" | "multi" | "self"
 
   /** 路由描述 */
   interface RouteMeta<K extends AuthRoute.RoutePath> {
@@ -37,7 +37,7 @@ declare namespace AuthRoute {
     /** 路由的动态路径(需要动态路径的页面需要将path添加进范型参数) */
     dynamicPath?: AuthRouteUtils.GetDynamicPath<K>
     /** 作为单级路由的父级路由布局组件 */
-    singleLayout?: Extract<RouteComponentType, "basic" | "blank">
+    singleLayout?: Extract<RouteComponentType, "basic" | "blank" | "custom">
     /** 需要登录权限 */
     requiresAuth?: boolean
     /**
@@ -65,6 +65,8 @@ declare namespace AuthRoute {
     multi?: boolean
     /** 是否固定在tab卡不可关闭  */
     affix?: boolean
+    headerTitle?: string
+    i18nHeaderTitle?: string
   }
 
   type Route<K extends AllRouteKey = AllRouteKey> = K extends AllRouteKey

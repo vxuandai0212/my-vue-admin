@@ -1,5 +1,7 @@
+import { LocalIcon } from './icon'
+
 declare namespace Service {
-  type RequestErrorType = "axios" | "http" | "backend"
+  type RequestErrorType = 'axios' | 'http' | 'backend'
 
   interface RequestError {
     type: RequestErrorType
@@ -145,33 +147,40 @@ declare namespace App {
     showMenuCollapse: boolean
   }
 
-  type GlobalMenuOption = import("naive-ui").MenuOption & {
+  type CustomMenuOption = {
+    key: string
+    label: string
+    icon: LocalIcon
+    i18nTitle: I18nType.I18nKey
+  }
+
+  type GlobalMenuOption = import('naive-ui').MenuOption & {
     key: string
     label: string
     routeName: string
     routePath: string
-    icon?: () => import("vue").VNodeChild
+    icon?: () => import('vue').VNodeChild
     children?: GlobalMenuOption[]
     i18nTitle?: I18nType.I18nKey
   }
 
-  type GlobalBreadcrumb = Omit<import("naive-ui").DropdownOption, "icon"> & {
+  type GlobalBreadcrumb = Omit<import('naive-ui').DropdownOption, 'icon'> & {
     key: string
     label: string
     disabled: boolean
     routeName: string
     hasChildren: boolean
-    icon?: import("vue").Component
+    icon?: import('vue').Component
     i18nTitle?: I18nType.I18nKey
-    options?: (import("naive-ui/es/dropdown/src/interface").DropdownMixedOption & {
+    options?: (import('naive-ui/es/dropdown/src/interface').DropdownMixedOption & {
       i18nTitle?: I18nType.I18nKey
     })[]
   }
 
   interface GlobalTabRoute
     extends Pick<
-      import("vue-router").RouteLocationNormalizedLoaded,
-      "name" | "fullPath" | "meta"
+      import('vue-router').RouteLocationNormalizedLoaded,
+      'name' | 'fullPath' | 'meta'
     > {
     /** 滚动的位置 */
     scrollPosition: {
@@ -183,7 +192,7 @@ declare namespace App {
   interface MessageTab {
     key: number
     name: string
-    badgeProps?: import("naive-ui").BadgeProps
+    badgeProps?: import('naive-ui').BadgeProps
     list: MessageList[]
   }
 
@@ -197,12 +206,12 @@ declare namespace App {
     isRead?: boolean
     description?: string
     tagTitle?: string
-    tagProps?: import("naive-ui").TagProps
+    tagProps?: import('naive-ui').TagProps
   }
 }
 
 declare namespace I18nType {
-  type LangType = "en" | "zh-CN" | "km-KH"
+  type LangType = 'en' | 'zh-CN' | 'km-KH'
 
   type Schema = {
     system: {
@@ -224,8 +233,6 @@ declare namespace I18nType {
     routes: {
       dashboard: {
         _value: string
-        analysis: string
-        workbench: string
       }
       document: {
         _value: string
@@ -233,7 +240,7 @@ declare namespace I18nType {
         vite: string
         naive: string
         project: string
-        "project-link": string
+        'project-link': string
       }
       component: {
         _value: string
@@ -260,7 +267,7 @@ declare namespace I18nType {
         swiper: string
         video: string
       }
-      "auth-demo": {
+      'auth-demo': {
         _value: string
         permission: string
         super: string
@@ -271,16 +278,16 @@ declare namespace I18nType {
       }
       exception: {
         _value: string
-        "403": string
-        "404": string
-        "500": string
+        '403': string
+        '404': string
+        '500': string
       }
-      "multi-menu": {
+      'multi-menu': {
         _value: string
         first: {
           _value: string
           second: string
-          "second-new": {
+          'second-new': {
             _value: string
             third: string
           }
@@ -294,6 +301,65 @@ declare namespace I18nType {
         user: string
       }
       about: string
+      calendar: {
+        _value: string
+        list: string
+        new: string
+      }
+      contact: {
+        _value: string
+        list: string
+        new: string
+      }
+      'file-browser': {
+        _value: string
+        list: string
+        new: string
+      }
+      'help-center': {
+        _value: string
+        list: string
+        new: string
+      }
+      invoice: {
+        _value: string
+        list: string
+        new: string
+      }
+      kanban: {
+        _value: string
+        list: string
+        new: string
+      }
+      message: {
+        _value: string
+        list: string
+        new: string
+      }
+      notification: {
+        _value: string
+        list: string
+        new: string
+      }
+      product: {
+        _value: string
+        list: string
+        new: string
+      }
+      project: {
+        _value: string
+        list: string
+        new: string
+      }
+      report: {
+        _value: string
+        list: string
+      }
+      task: {
+        _value: string
+        list: string
+        new: string
+      }
     }
     layout: {
       settingDrawer: {

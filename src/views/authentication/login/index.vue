@@ -52,6 +52,7 @@
             <primary-button
               class="p-14-64-15-64"
               label="Sign In"
+              :loading="auth.loginLoading"
               @click="handleSignInBtnClick"
             />
             <resting-button
@@ -92,7 +93,6 @@
     >
       <svg-login width="45vw" />
     </div>
-    <!-- todo: select, select autocomplete, tag, datepicker, datetime picker, tab, table, pagination -->
   </div>
 </template>
 
@@ -102,22 +102,15 @@ import { reactive } from 'vue'
 import IconLocalTwitter from '@/components/svg/svg-twitter.vue'
 import IconLocalGoogle from '@/components/svg/svg-google.vue'
 import IconLocalFacebook from '@/components/svg/svg-facebook.vue'
+import { useAuthStore } from '~/src/store'
 
 const model = reactive({
-  fullname: 'aaa',
-  email: null,
-  password: null,
+  email: '',
+  password: '',
   agreement: false,
 })
 
 const rules: any = {
-  fullname: [
-    {
-      required: true,
-      trigger: ['blur', 'input'],
-      message: 'Please enter your full name',
-    },
-  ],
   email: [
     {
       required: true,
@@ -169,12 +162,13 @@ function handleSignUpBtnClick() {
   console.log('handleSignUpBtnClick')
 }
 
-const bodyFormData = new FormData()
-bodyFormData.append('username', '1')
-bodyFormData.append('password', '1')
-bodyFormData.append('grant_type', 'password')
+const auth = useAuthStore()
+const { login } = useAuthStore()
 
-function handleSignInBtnClick() {
+async function handleSignInBtnClick() {
+  const { email, password } = model
+
+  login(email, password)
 }
 </script>
 

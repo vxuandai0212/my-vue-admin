@@ -30,41 +30,23 @@ import SvgCreate from '@/components/svg/svg-create.vue'
 import SvgLaptop from '@/components/svg/svg-laptop.vue'
 import SvgDiamond from '@/components/svg/svg-diamond.vue'
 import SvgKeyboard from '@/components/svg/svg-keyboard.vue'
+import SvgDashboard from '@/components/svg/svg-dashboard.vue'
+import SvgProject from '@/components/svg/svg-project.vue'
+import SvgTask from '@/components/svg/svg-task.vue'
+import SvgKanban from '@/components/svg/svg-kanban.vue'
+import SvgCalendar from '@/components/svg/svg-calendar.vue'
+import SvgContact from '@/components/svg/svg-contact.vue'
+import SvgMessage from '@/components/svg/svg-message.vue'
+import SvgProduct from '@/components/svg/svg-product.vue'
+import SvgFile from '@/components/svg/svg-file.vue'
+import SvgReport from '@/components/svg/svg-report.vue'
+import SvgHelp from '@/components/svg/svg-help.vue'
+import { LocalIcon } from '@/typings/icon'
 
 defineOptions({ name: 'VIcon' })
 
-export type Icon =
-  | 'bill'
-  | 'delete'
-  | 'description'
-  | 'from'
-  | 'save'
-  | 'upload'
-  | 'fullname'
-  | 'email'
-  | 'password'
-  | 'rate'
-  | 'business'
-  | 'caret-down'
-  | 'company'
-  | 'date'
-  | 'phone'
-  | 'invoice'
-  | 'cart'
-  | 'hour'
-  | 'money'
-  | 'add'
-  | 'three-dot'
-  | 'hamburger'
-  | 'search'
-  | 'notification'
-  | 'create'
-  | 'laptop'
-  | 'diamond'
-  | 'keyboard'
-
 interface Props {
-  icon: Icon
+  icon?: LocalIcon
 }
 
 interface IconType {
@@ -99,8 +81,21 @@ const ICON: IconType = {
   create: SvgCreate,
   laptop: SvgLaptop,
   diamond: SvgDiamond,
-  keyboard: SvgKeyboard
+  keyboard: SvgKeyboard,
+  dashboard: SvgDashboard,
+  project: SvgProject,
+  task: SvgTask,
+  kanban: SvgKanban,
+  calendar: SvgCalendar,
+  contact: SvgContact,
+  message: SvgMessage,
+  product: SvgProduct,
+  file: SvgFile,
+  report: SvgReport,
+  help: SvgHelp
 }
 
-const props = withDefaults(defineProps<Props>(), {})
+const props = withDefaults(defineProps<Props>(), {
+  icon: 'dashboard'
+})
 </script>

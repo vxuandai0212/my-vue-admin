@@ -16,11 +16,6 @@ const locale: I18nType.Schema = {
     action: '操作'
   },
   routes: {
-    dashboard: {
-      _value: '仪表盘',
-      analysis: '分析页',
-      workbench: '工作台'
-    },
     document: {
       _value: '文档',
       vue: 'Vue文档',
@@ -87,7 +82,69 @@ const locale: I18nType.Schema = {
       route: '路由管理',
       user: '用户管理'
     },
-    about: '关于'
+    about: '关于',
+    dashboard: {
+      _value: 'Dashboard',
+    },
+    calendar: {
+      _value: 'Calendar',
+      list: 'Calendar',
+      new: 'New Event'
+    },
+    contact: {
+      _value: 'Contacts',
+      list: 'Contact',
+      new: 'New Contact'
+    },
+    'file-browser': {
+      _value: 'File Browser',
+      list: 'File Browser',
+      new: 'Upload File'
+    },
+    'help-center': {
+      _value: 'Help Center',
+      list: 'Help Center',
+      new: 'New Ticket'
+    },
+    invoice: {
+      _value: 'Invoices',
+      list: 'Invoice',
+      new: 'New Invoice'
+    },
+    kanban: {
+      _value: 'Kanban',
+      list: 'Kanban',
+      new: 'New Kanban'
+    },
+    message: {
+      _value: 'Messages',
+      list: 'Message',
+      new: 'New Message'
+    },
+    notification: {
+      _value: 'Notifications',
+      list: 'Notification',
+      new: 'New Event'
+    },
+    product: {
+      _value: 'Products',
+      list: 'Product',
+      new: 'New Product'
+    },
+    project: {
+      _value: 'Projects',
+      list: 'Project',
+      new: 'New Project'
+    },
+    report: {
+      _value: 'Reports',
+      list: 'Report',
+    },
+    task: {
+      _value: 'Tasks',
+      list: 'Task',
+      new: 'New Task'
+    }
   },
   layout: {
     settingDrawer: {

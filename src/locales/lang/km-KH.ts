@@ -16,11 +16,6 @@ const locale: I18nType.Schema = {
     action: 'សកម្មភាព'
   },
   routes: {
-    dashboard: {
-      _value: 'ផ្ទាំងទិន្នន័យ',
-      analysis: 'ផ្ទាំងវិភាគ',
-      workbench: 'ផ្ទាំងការងារ'
-    },
     document: {
       _value: 'ឯកសារ',
       vue: 'ឯកសារ​ Vue',
@@ -87,7 +82,69 @@ const locale: I18nType.Schema = {
       route: 'ផ្លូវប្រព័ន្ធ',
       user: 'អ្នកប្រើប្រាស់'
     },
-    about: 'អំពីប្រព័ន្ធ'
+    about: 'អំពីប្រព័ន្ធ',
+    dashboard: {
+      _value: 'Dashboard',
+    },
+    calendar: {
+      _value: 'Calendar',
+      list: 'Calendar',
+      new: 'New Event'
+    },
+    contact: {
+      _value: 'Contacts',
+      list: 'Contact',
+      new: 'New Contact'
+    },
+    'file-browser': {
+      _value: 'File Browser',
+      list: 'File Browser',
+      new: 'Upload File'
+    },
+    'help-center': {
+      _value: 'Help Center',
+      list: 'Help Center',
+      new: 'New Ticket'
+    },
+    invoice: {
+      _value: 'Invoices',
+      list: 'Invoice',
+      new: 'New Invoice'
+    },
+    kanban: {
+      _value: 'Kanban',
+      list: 'Kanban',
+      new: 'New Kanban'
+    },
+    message: {
+      _value: 'Messages',
+      list: 'Message',
+      new: 'New Message'
+    },
+    notification: {
+      _value: 'Notifications',
+      list: 'Notification',
+      new: 'New Event'
+    },
+    product: {
+      _value: 'Products',
+      list: 'Product',
+      new: 'New Product'
+    },
+    project: {
+      _value: 'Projects',
+      list: 'Project',
+      new: 'New Project'
+    },
+    report: {
+      _value: 'Reports',
+      list: 'Report',
+    },
+    task: {
+      _value: 'Tasks',
+      list: 'Task',
+      new: 'New Task'
+    }
   },
   layout: {
     settingDrawer: {

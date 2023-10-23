@@ -1,19 +1,18 @@
-import { reactive } from 'vue';
-import { defineStore } from 'pinia';
-import { useBoolean } from '@/hooks';
+import { reactive } from 'vue'
+import { defineStore } from 'pinia'
+import { useBoolean } from '@/hooks'
 
 export const useSetupStore = defineStore('setup-store', () => {
-  const { bool: visible, setTrue: show, setFalse: hide } = useBoolean();
+  const { bool: visible, setTrue: show, setFalse: hide } = useBoolean()
 
   interface Config {
-    name: string;
+    name: string
   }
 
-  const config = reactive<Config>({ name: 'config' });
+  const config = reactive<Config>({ name: 'config' })
 
-  /** 设置配置 */
   function setConfig(conf: Partial<Config>) {
-    Object.assign(config, conf);
+    Object.assign(config, conf)
   }
 
   return {
@@ -21,6 +20,6 @@ export const useSetupStore = defineStore('setup-store', () => {
     show,
     hide,
     config,
-    setConfig
-  };
-});
+    setConfig,
+  }
+})

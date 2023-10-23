@@ -1,6 +1,11 @@
-import { defineStore } from 'pinia';
-import { ROOT_ROUTE, constantRoutes, router, routes as staticRoutes } from '@/router';
-import { fetchUserRoutes } from '@/service';
+import { defineStore } from 'pinia'
+import {
+  ROOT_ROUTE,
+  constantRoutes,
+  router,
+  routes as staticRoutes,
+} from '@/router'
+import { fetchUserRoutes } from '@/service'
 import {
   localStg,
   filterAuthRoutesByUserPermission,
@@ -12,178 +17,145 @@ import {
   transformAuthRouteToSearchMenus,
   transformRouteNameToRoutePath,
   transformRoutePathToRouteName,
-  sortRoutes
-} from '@/utils';
-import { useAppStore } from '../app';
-import { useAuthStore } from '../auth';
-import { useTabStore } from '../tab';
+  sortRoutes,
+} from '@/utils'
+import { useAppStore } from '@/store/modules/app'
+import { useAuthStore } from '@/store/modules/auth'
+import { App } from '~/src/typings/system'
 
 interface RouteState {
-  /**
-   * 权限路由模式:
-   * - static - 前端声明的静态
-   * - dynamic - 后端返回的动态
-   */
-  authRouteMode: ImportMetaEnv['VITE_AUTH_ROUTE_MODE'];
-  /** 是否初始化了权限路由 */
-  isInitAuthRoute: boolean;
-  /** 路由首页name(前端静态路由时生效，后端动态路由该值会被后端返回的值覆盖) */
-  routeHomeName: AuthRoute.AllRouteKey;
-  /** 菜单 */
-  menus: App.GlobalMenuOption[];
-  /** 搜索的菜单 */
-  searchMenus: AuthRoute.Route[];
-  /** 缓存的路由名称 */
-  cacheRoutes: string[];
+  authRouteMode: ImportMetaEnv['VITE_AUTH_ROUTE_MODE']
+  isInitAuthRoute: boolean
+  routeHomeName: AuthRoute.AllRouteKey
+  menus: App.GlobalMenuOption[] | App.CustomMenuOption[]
+  searchMenus: AuthRoute.Route[]
+  cacheRoutes: string[]
 }
 
 export const useRouteStore = defineStore('route-store', {
   state: (): RouteState => ({
     authRouteMode: import.meta.env.VITE_AUTH_ROUTE_MODE,
     isInitAuthRoute: false,
-    routeHomeName: transformRoutePathToRouteName(import.meta.env.VITE_ROUTE_HOME_PATH),
+    routeHomeName: transformRoutePathToRouteName(
+      import.meta.env.VITE_ROUTE_HOME_PATH
+    ),
     menus: [],
     searchMenus: [],
-    cacheRoutes: []
+    cacheRoutes: [],
   }),
   actions: {
-    /** 重置路由的store */
     resetRouteStore() {
-      this.resetRoutes();
-      this.$reset();
+      this.resetRoutes()
+      this.$reset()
     },
-    /** 重置路由数据，保留固定路由 */
     resetRoutes() {
-      const routes = router.getRoutes();
-      routes.forEach(route => {
-        const name = (route.name || 'root') as AuthRoute.AllRouteKey;
+      const routes = router.getRoutes()
+      routes.forEach((route) => {
+        const name = (route.name || 'root') as AuthRoute.AllRouteKey
         if (!this.isConstantRoute(name)) {
-          router.removeRoute(name);
+          router.removeRoute(name)
         }
-      });
+      })
     },
-    /**
-     * 是否是固定路由
-     * @param name 路由名称
-     */
     isConstantRoute(name: AuthRoute.AllRouteKey) {
-      const constantRouteNames = getConstantRouteNames(constantRoutes);
-      return constantRouteNames.includes(name);
+      const constantRouteNames = getConstantRouteNames(constantRoutes)
+      return constantRouteNames.includes(name)
     },
-    /**
-     * 是否是有效的固定路由
-     * @param name 路由名称
-     */
     isValidConstantRoute(name: AuthRoute.AllRouteKey) {
-      const NOT_FOUND_PAGE_NAME: AuthRoute.NotFoundRouteKey = 'not-found';
-      const constantRouteNames = getConstantRouteNames(constantRoutes);
-      return constantRouteNames.includes(name) && name !== NOT_FOUND_PAGE_NAME;
+      const NOT_FOUND_PAGE_NAME: AuthRoute.NotFoundRouteKey = 'not-found'
+      const constantRouteNames = getConstantRouteNames(constantRoutes)
+      return constantRouteNames.includes(name) && name !== NOT_FOUND_PAGE_NAME
     },
-    /**
-     * 处理权限路由
-     * @param routes - 权限路由
-     */
     handleAuthRoute(routes: AuthRoute.Route[]) {
-      (this.menus as App.GlobalMenuOption[]) = transformAuthRouteToMenu(routes);
-      this.searchMenus = transformAuthRouteToSearchMenus(routes);
+      ;(this.menus as App.GlobalMenuOption[]) = transformAuthRouteToMenu(routes)
+      this.searchMenus = transformAuthRouteToSearchMenus(routes)
 
-      const vueRoutes = transformAuthRouteToVueRoutes(routes);
+      const vueRoutes = transformAuthRouteToVueRoutes(routes)
 
-      vueRoutes.forEach(route => {
-        router.addRoute(route);
-      });
+      vueRoutes.forEach((route) => {
+        router.addRoute(route)
+      })
 
-      this.cacheRoutes = getCacheRoutes(vueRoutes);
+      this.cacheRoutes = getCacheRoutes(vueRoutes)
     },
-    /** 动态路由模式下：更新根路由的重定向 */
     handleUpdateRootRedirect(routeKey: AuthRoute.AllRouteKey) {
       if (routeKey === 'root' || routeKey === 'not-found') {
-        throw new Error('routeKey的值不能为root或者not-found');
+        throw new Error('routeKey cannot be root or not-found')
       }
-      const rootRoute: AuthRoute.Route = { ...ROOT_ROUTE, redirect: transformRouteNameToRoutePath(routeKey) };
-      const rootRouteName: AuthRoute.AllRouteKey = 'root';
-      router.removeRoute(rootRouteName);
-      const rootVueRoute = transformAuthRouteToVueRoute(rootRoute)[0];
-      router.addRoute(rootVueRoute);
+      const rootRoute: AuthRoute.Route = {
+        ...ROOT_ROUTE,
+        redirect: transformRouteNameToRoutePath(routeKey),
+      }
+      const rootRouteName: AuthRoute.AllRouteKey = 'root'
+      router.removeRoute(rootRouteName)
+      const rootVueRoute = transformAuthRouteToVueRoute(rootRoute)[0]
+      router.addRoute(rootVueRoute)
     },
-    /** 初始化动态路由 */
     async initDynamicRoute() {
-      const { resetAuthStore } = useAuthStore();
-      const { initHomeTab } = useTabStore();
+      const { resetAuthStore } = useAuthStore()
 
-      const { userId } = localStg.get('userInfo') || {};
+      const { userId } = localStg.get('userInfo') || {}
 
       if (!userId) {
-        throw new Error('userId 不能为空!');
+        throw new Error('userId is not found!')
       }
 
-      const { error, data } = await fetchUserRoutes(userId);
+      const { error, data } = await fetchUserRoutes(userId)
 
       if (!error) {
-        this.handleAuthRoute(sortRoutes(data.routes));
-        // home相关处理需要在最后，否则会出现找不到主页404的情况
-        this.routeHomeName = data.home;
-        this.handleUpdateRootRedirect(data.home);
+        this.handleAuthRoute(sortRoutes(data.routes))
+        this.routeHomeName = data.home
+        this.handleUpdateRootRedirect(data.home)
 
-        initHomeTab(data.home, router);
-
-        this.isInitAuthRoute = true;
+        this.isInitAuthRoute = true
       } else {
-        resetAuthStore();
+        resetAuthStore()
       }
     },
-    /** 初始化静态路由 */
     async initStaticRoute() {
-      const { initHomeTab } = useTabStore();
-      const auth = useAuthStore();
+      const auth = useAuthStore()
 
-      const routes = filterAuthRoutesByUserPermission(staticRoutes, auth.userInfo.userRole);
-      this.handleAuthRoute(routes);
+      const routes = filterAuthRoutesByUserPermission(
+        staticRoutes,
+        auth.userInfo.userRole
+      )
+      this.handleAuthRoute(routes)
 
-      initHomeTab(this.routeHomeName, router);
-
-      this.isInitAuthRoute = true;
+      this.isInitAuthRoute = true
     },
-    /** 初始化权限路由 */
     async initAuthRoute() {
-      console.log('init auth route');
       if (this.authRouteMode === 'dynamic') {
-        await this.initDynamicRoute();
+        await this.initDynamicRoute()
       } else {
-        await this.initStaticRoute();
+        await this.initStaticRoute()
       }
     },
-    /** 从缓存路由中去除某个路由 */
     removeCacheRoute(name: AuthRoute.AllRouteKey) {
-      const index = this.cacheRoutes.indexOf(name);
+      const index = this.cacheRoutes.indexOf(name)
       if (index > -1) {
-        this.cacheRoutes.splice(index, 1);
+        this.cacheRoutes.splice(index, 1)
       }
     },
-    /** 添加某个缓存路由 */
     addCacheRoute(name: AuthRoute.AllRouteKey) {
-      const index = this.cacheRoutes.indexOf(name);
+      const index = this.cacheRoutes.indexOf(name)
       if (index === -1) {
-        this.cacheRoutes.push(name);
+        this.cacheRoutes.push(name)
       }
     },
-    /**
-     * 重新缓存路由
-     */
     async reCacheRoute(name: AuthRoute.AllRouteKey) {
-      const { reloadPage } = useAppStore();
+      const { reloadPage } = useAppStore()
 
-      const isCached = this.cacheRoutes.includes(name);
-
-      if (isCached) {
-        this.removeCacheRoute(name);
-      }
-
-      await reloadPage();
+      const isCached = this.cacheRoutes.includes(name)
 
       if (isCached) {
-        this.addCacheRoute(name as AuthRoute.AllRouteKey);
+        this.removeCacheRoute(name)
       }
-    }
-  }
-});
+
+      await reloadPage()
+
+      if (isCached) {
+        this.addCacheRoute(name as AuthRoute.AllRouteKey)
+      }
+    },
+  },
+})

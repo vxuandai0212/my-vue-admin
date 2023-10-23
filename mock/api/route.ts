@@ -1,5 +1,6 @@
 import type { MockMethod } from 'vite-plugin-mock'
 import { homeModel, routeModel, userModel } from '../model'
+import { Service } from '@/typings/system'
 
 const apis: MockMethod[] = [
   {
