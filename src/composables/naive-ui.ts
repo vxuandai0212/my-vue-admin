@@ -26,12 +26,8 @@ export function useNaiveUI() {
     },
   }
 
-  const naiveLocale = ref<NLocale>(
-    naiveLocaleConfig[locale.value as I18nType.LangType].locale
-  )
-  const naiveDateLocale = ref<NDateLocale>(
-    naiveLocaleConfig[locale.value as I18nType.LangType].dateLocale
-  )
+  const naiveLocale = ref<NLocale>(viVN)
+  const naiveDateLocale = ref<NDateLocale>(dateViVN)
 
   scope.run(() => {
     watch(
