@@ -23,13 +23,13 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { Icon } from '@/components/icon/v-icon.vue'
+import { LocalIcon } from '@/typings/icon'
 defineOptions({ name: 'CategoryCard' })
 
 export interface CategoryCardProps {
   title: string
   value: string
-  icon: Icon
+  icon: LocalIcon
   iconFillColor: string
   iconBackgroundColor: string
 }

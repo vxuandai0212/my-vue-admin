@@ -7,7 +7,6 @@ import {
 import { transformRouteNameToRoutePath } from '@/utils'
 import { transformAuthRouteToVueRoutes } from '@/utils/router/transform'
 import { constantRoutes } from './routes'
-import { scrollBehavior } from './helpers'
 import { createRouterGuard } from './guard'
 
 const { VITE_HASH_ROUTE = 'N', VITE_BASE_URL } = import.meta.env
@@ -18,7 +17,6 @@ export const router = createRouter({
       ? createWebHashHistory(VITE_BASE_URL)
       : createWebHistory(VITE_BASE_URL),
   routes: transformAuthRouteToVueRoutes(constantRoutes),
-  scrollBehavior,
 })
 
 export async function setupRouter(app: App) {

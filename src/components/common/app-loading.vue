@@ -1,6 +1,6 @@
 <template>
   <div class="fixed-center flex-col">
-    <system-logo class="text-128px text-primary" />
+    <img src="/vite.svg" alt="Logo">
     <div class="w-56px h-56px my-36px">
       <div class="relative h-full animate-spin">
         <div
@@ -16,28 +16,28 @@
 </template>
 
 <script setup lang="ts">
-import { sessionStg, getRgbOfColor } from '@/utils';
-import { $t } from '@/locales';
-import themeSettings from '@/settings/theme.json';
+import { sessionStg, getRgbOfColor } from '@/utils'
+import { $t } from '@/locales'
+import themeSettings from '@/settings/theme.json'
 
 const loadingClasses = [
   'left-0 top-0',
   'left-0 bottom-0 animate-delay-500',
   'right-0 top-0 animate-delay-1000',
-  'right-0 bottom-0 animate-delay-1500'
-];
+  'right-0 bottom-0 animate-delay-1500',
+]
 
 function addThemeColorCssVars() {
-  const defaultColor = themeSettings.themeColor;
-  const themeColor = sessionStg.get('themeColor') || defaultColor;
+  const defaultColor = themeSettings.themeColor
+  const themeColor = sessionStg.get('themeColor') || defaultColor
 
-  const { r, g, b } = getRgbOfColor(themeColor);
+  const { r, g, b } = getRgbOfColor(themeColor)
 
-  const cssVars = `--primary-color: ${r},${g},${b}`;
-  document.documentElement.style.cssText = cssVars;
+  const cssVars = `--primary-color: ${r},${g},${b}`
+  document.documentElement.style.cssText = cssVars
 }
 
-addThemeColorCssVars();
+addThemeColorCssVars()
 </script>
 
 <style scoped></style>

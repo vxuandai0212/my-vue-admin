@@ -1,6 +1,10 @@
 <template>
   <div class="h-full">
-    <n-card title="富文本插件" :bordered="false" class="rounded-8px shadow-sm">
+    <n-card
+      title="Rich text plugin"
+      :bordered="false"
+      class="rounded-8px shadow-sm"
+    >
       <div ref="domRef" class="bg-white dark:bg-dark"></div>
       <template #footer>
         <github-link link="https://github.com/wangeditor-team/wangEditor" />
@@ -10,27 +14,27 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import WangEditor from 'wangeditor';
+import { onMounted, ref } from 'vue'
+import WangEditor from 'wangeditor'
 
-const editor = ref<WangEditor>();
-const domRef = ref<HTMLElement>();
+const editor = ref<WangEditor>()
+const domRef = ref<HTMLElement>()
 
 function renderWangEditor() {
-  editor.value = new WangEditor(domRef.value);
-  setEditorConfig();
-  editor.value.create();
+  editor.value = new WangEditor(domRef.value)
+  setEditorConfig()
+  editor.value.create()
 }
 
 function setEditorConfig() {
   if (editor.value?.config?.zIndex) {
-    editor.value.config.zIndex = 10;
+    editor.value.config.zIndex = 10
   }
 }
 
 onMounted(() => {
-  renderWangEditor();
-});
+  renderWangEditor()
+})
 </script>
 
 <style scoped>

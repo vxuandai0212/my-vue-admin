@@ -33,22 +33,8 @@ export const useThemeStore = defineStore('theme-store', {
         sessionStg.set('themeSettings', this.$state)
       }
     },
-    setDarkMode(darkMode: boolean) {
-      this.darkMode = darkMode
-    },
     setFollowSystemTheme(visible: boolean) {
       this.followSystemTheme = visible
-    },
-    setIsCustomizeDarkModeTransition(isCustomize: boolean) {
-      this.isCustomizeDarkModeTransition = isCustomize
-    },
-    setAutoFollowSystemMode(darkMode: boolean) {
-      if (this.followSystemTheme) {
-        this.darkMode = darkMode
-      }
-    },
-    toggleDarkMode() {
-      this.darkMode = !this.darkMode
     },
     setLayoutMinWidth(minWidth: number) {
       this.layout.minWidth = minWidth

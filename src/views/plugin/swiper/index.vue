@@ -1,11 +1,6 @@
 <template>
   <div>
-    <n-card title="Swiper插件" :bordered="false" class="rounded-8px shadow-sm">
-      <n-space :vertical="true">
-        <github-link link="https://github.com/nolimits4web/swiper" />
-        <web-site-link label="vue3版文档地址：" link="https://swiperjs.com/vue" />
-        <web-site-link label="插件demo地址：" link="https://swiperjs.com/demos" />
-      </n-space>
+    <n-card title="Swiper" :bordered="false" class="rounded-8px shadow-sm">
       <n-space :vertical="true">
         <div v-for="item in swiperExample" :key="item.id">
           <h3 class="py-24px text-24px font-bold">{{ item.label }}</h3>

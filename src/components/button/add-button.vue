@@ -33,7 +33,9 @@
 <script setup lang="tsx">
 import { DropdownRenderOption } from 'naive-ui/es/dropdown/src/interface'
 import { ref } from 'vue'
-import { useRouterPush } from '~/src/composables';
+import { useRouterPush } from '@/composables'
+import { $t } from '@/locales'
+
 const { routerPush } = useRouterPush()
 
 const showDropdown = ref<boolean>(false)
@@ -64,7 +66,7 @@ const options: DropdownRenderOption[] = [
                 'group-hover:color-primary color-primary-dark font-size-14 font-700 line-height-21 transition'
               }
             >
-              New Project
+              { $t('common.header.create.project') }
             </div>
           </div>
         </div>
@@ -96,7 +98,7 @@ const options: DropdownRenderOption[] = [
                 'group-hover:color-primary color-primary-dark font-size-14 font-700 line-height-21 transition'
               }
             >
-              New Task
+            { $t('common.header.create.task') }
             </div>
           </div>
         </div>
@@ -128,7 +130,7 @@ const options: DropdownRenderOption[] = [
                 'group-hover:color-primary color-primary-dark font-size-14 font-700 line-height-21 transition'
               }
             >
-              New Contact
+            { $t('common.header.create.contact') }
             </div>
           </div>
         </div>
@@ -160,7 +162,7 @@ const options: DropdownRenderOption[] = [
                 'group-hover:color-primary color-primary-dark font-size-14 font-700 line-height-21 transition'
               }
             >
-              New Event
+            { $t('common.header.create.event') }
             </div>
           </div>
         </div>
@@ -192,7 +194,7 @@ const options: DropdownRenderOption[] = [
                 'group-hover:color-primary color-primary-dark font-size-14 font-700 line-height-21 transition'
               }
             >
-              New Product
+            { $t('common.header.create.product') }
             </div>
           </div>
         </div>
@@ -224,7 +226,7 @@ const options: DropdownRenderOption[] = [
                 'group-hover:color-primary color-primary-dark font-size-14 font-700 line-height-21 transition'
               }
             >
-              New Invoice
+            { $t('common.header.create.invoice') }
             </div>
           </div>
         </div>

@@ -41,6 +41,12 @@ import SvgProduct from '@/components/svg/svg-product.vue'
 import SvgFile from '@/components/svg/svg-file.vue'
 import SvgReport from '@/components/svg/svg-report.vue'
 import SvgHelp from '@/components/svg/svg-help.vue'
+import SvgArrow from '@/components/svg/svg-arrow.vue'
+import SvgDropbox from '@/components/svg/svg-dropbox.vue'
+import SvgAttach from '@/components/svg/svg-attach.vue'
+import SvgEmoticon from '@/components/svg/svg-emoticon.vue'
+import SvgTick from '@/components/svg/svg-tick.vue'
+import SvgLanguage from '@/components/svg/svg-language.vue'
 import { LocalIcon } from '@/typings/icon'
 
 defineOptions({ name: 'VIcon' })
@@ -54,6 +60,12 @@ interface IconType {
 }
 
 const ICON: IconType = {
+  language: SvgLanguage,
+  tick: SvgTick,
+  attach: SvgAttach,
+  emoticon: SvgEmoticon,
+  dropbox: SvgDropbox,
+  arrow: SvgArrow,
   bill: SvgBill,
   delete: SvgDelete,
   description: SvgDescription,

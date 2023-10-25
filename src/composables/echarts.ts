@@ -1,7 +1,15 @@
-import { nextTick, effectScope, onScopeDispose, ref, watch } from 'vue';
-import type { ComputedRef, Ref } from 'vue';
-import * as echarts from 'echarts/core';
-import { BarChart, GaugeChart, LineChart, PictorialBarChart, PieChart, RadarChart, ScatterChart } from 'echarts/charts';
+import { nextTick, effectScope, onScopeDispose, ref, watch } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
+import * as echarts from 'echarts/core'
+import {
+  BarChart,
+  GaugeChart,
+  LineChart,
+  PictorialBarChart,
+  PieChart,
+  RadarChart,
+  ScatterChart,
+} from 'echarts/charts'
 import type {
   BarSeriesOption,
   GaugeSeriesOption,
@@ -10,7 +18,7 @@ import type {
   PieSeriesOption,
   RadarSeriesOption,
   ScatterSeriesOption,
-} from 'echarts/charts';
+} from 'echarts/charts'
 import {
   DatasetComponent,
   GridComponent,
@@ -19,20 +27,20 @@ import {
   ToolboxComponent,
   TooltipComponent,
   TransformComponent,
-  PolarComponent
-} from 'echarts/components';
+  PolarComponent,
+} from 'echarts/components'
 import type {
   DatasetComponentOption,
   GridComponentOption,
   LegendComponentOption,
   TitleComponentOption,
   ToolboxComponentOption,
-  TooltipComponentOption
-} from 'echarts/components';
-import { LabelLayout, UniversalTransition } from 'echarts/features';
-import { CanvasRenderer } from 'echarts/renderers';
-import { useElementSize } from '@vueuse/core';
-import { useThemeStore } from '@/store';
+  TooltipComponentOption,
+} from 'echarts/components'
+import { LabelLayout, UniversalTransition } from 'echarts/features'
+import { CanvasRenderer } from 'echarts/renderers'
+import { useElementSize } from '@vueuse/core'
+import { useThemeStore } from '@/store'
 
 export type ECOption = echarts.ComposeOption<
   | BarSeriesOption
@@ -48,7 +56,7 @@ export type ECOption = echarts.ComposeOption<
   | GridComponentOption
   | ToolboxComponentOption
   | DatasetComponentOption
->;
+>
 
 echarts.use([
   TitleComponent,
@@ -68,109 +76,102 @@ echarts.use([
   GaugeChart,
   LabelLayout,
   UniversalTransition,
-  CanvasRenderer
-]);
+  CanvasRenderer,
+])
 
-/**
- * Echarts hooks函数
- * @param options - 图表配置
- * @param renderFun - 图表渲染函数(例如：图表监听函数)
- * @description 按需引入图表组件，没注册的组件需要先引入
- */
 export function useEcharts(
   options: Ref<ECOption> | ComputedRef<ECOption>,
   renderFun?: (chartInstance: echarts.ECharts) => void
 ) {
-  const theme = useThemeStore();
+  const theme = useThemeStore()
 
-  const domRef = ref<HTMLElement>();
+  const domRef = ref<HTMLElement>()
 
-  const initialSize = { width: 0, height: 0 };
-  const { width, height } = useElementSize(domRef, initialSize);
+  const initialSize = { width: 0, height: 0 }
+  const { width, height } = useElementSize(domRef, initialSize)
 
-  let chart: echarts.ECharts | null = null;
+  let chart: echarts.ECharts | null = null
 
   function canRender() {
-    return initialSize.width > 0 && initialSize.height > 0;
+    return initialSize.width > 0 && initialSize.height > 0
   }
 
   function isRendered() {
-    return Boolean(domRef.value && chart);
+    return Boolean(domRef.value && chart)
   }
 
   function update(updateOptions: ECOption) {
     if (isRendered()) {
-      chart?.clear();
-      chart!.setOption({ ...updateOptions, backgroundColor: 'transparent' });
+      chart?.clear()
+      chart!.setOption({ ...updateOptions, backgroundColor: 'transparent' })
     }
   }
 
   async function render() {
     if (domRef.value) {
-      const chartTheme = theme.darkMode ? 'dark' : 'light';
-      await nextTick();
-      chart = echarts.init(domRef.value, chartTheme);
+      const chartTheme = theme.darkMode ? 'dark' : 'light'
+      await nextTick()
+      chart = echarts.init(domRef.value, chartTheme)
       if (renderFun) {
-        renderFun(chart);
+        renderFun(chart)
       }
-      update(options.value);
+      update(options.value)
     }
   }
 
   function resize() {
-    chart?.resize();
+    chart?.resize()
   }
 
   function destroy() {
-    chart?.dispose();
+    chart?.dispose()
   }
 
   function updateTheme() {
-    destroy();
-    render();
+    destroy()
+    render()
   }
 
-  const scope = effectScope();
+  const scope = effectScope()
 
   scope.run(() => {
     watch([width, height], ([newWidth, newHeight]) => {
-      initialSize.width = newWidth;
-      initialSize.height = newHeight;
+      initialSize.width = newWidth
+      initialSize.height = newHeight
       if (newWidth === 0 && newHeight === 0) {
-        // 节点被删除 将chart置为空
-        chart = null;
+        chart = null
       }
       if (canRender()) {
         if (!isRendered()) {
-          render();
+          render()
         } else {
-          resize();
+          resize()
         }
       }
-    });
+    })
 
     watch(
       options,
-      newValue => {
-        update(newValue);
+      (newValue) => {
+        update(newValue)
       },
       { deep: true }
-    );
+    )
 
     watch(
       () => theme.darkMode,
       () => {
-        updateTheme();
+        updateTheme()
       }
-    );
-  });
+    )
+  })
 
   onScopeDispose(() => {
-    destroy();
-    scope.stop();
-  });
+    destroy()
+    scope.stop()
+  })
 
   return {
-    domRef
-  };
+    domRef,
+  }
 }

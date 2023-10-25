@@ -1,676 +1,676 @@
 [
   {
-    "label": "红色系",
+    "label": "Color Red",
     "data": [
       {
-        "label": "绾",
+        "label": "Details",
         "color": "#A98175"
       },
       {
-        "label": "檀",
+        "label": "Red 1",
         "color": "#B36D61"
       },
       {
-        "label": "栗色",
+        "label": "Red 2",
         "color": "#60281E"
       },
       {
-        "label": "玄",
+        "label": "Mysterious",
         "color": "#622A1D"
       },
       {
-        "label": "胭脂",
+        "label": "Rouge",
         "color": "#9D2933"
       },
       {
-        "label": "殷红",
+        "label": "Pink 1",
         "color": "#BE002F"
       },
       {
-        "label": "枣红",
+        "label": "Red 3",
         "color": "#C32136"
       },
       {
-        "label": "赤",
+        "label": "Red 4",
         "color": "#C3272B"
       },
       {
-        "label": "绯红",
+        "label": "Crimson",
         "color": "#C83C23"
       },
       {
-        "label": "赫赤",
+        "label": "Red 5",
         "color": "#C91F37"
       },
       {
-        "label": "樱桃红",
+        "label": "Cherry Red",
         "color": "#C93756"
       },
       {
-        "label": "茜色",
+        "label": "Madder Red",
         "color": "#CB3A56"
       },
       {
-        "label": "海棠红",
+        "label": "Begonia Red",
         "color": "#DB5A6B"
       },
       {
-        "label": "酡红",
+        "label": "Red 6",
         "color": "#DC3023"
       },
       {
-        "label": "妃色",
+        "label": "Red 7",
         "color": "#ED5736"
       },
       {
-        "label": "嫣红",
+        "label": "Pink 2",
         "color": "#EF7A82"
       },
       {
-        "label": "品红",
+        "label": "Magenta",
         "color": "#F00056"
       },
       {
-        "label": "石榴红",
+        "label": "Pomegranate Red",
         "color": "#F20C00"
       },
       {
-        "label": "银红",
+        "label": "Silver Red",
         "color": "#F05654"
       },
       {
-        "label": "彤",
+        "label": "Red 8",
         "color": "#F35336"
       },
       {
-        "label": "桃红",
+        "label": "Pink 3",
         "color": "#F47983"
       },
       {
-        "label": "酡颜",
+        "label": "Blushing",
         "color": "#F9906F"
       },
       {
-        "label": "洋红",
+        "label": "Magenta 2",
         "color": "#FF0097"
       },
       {
-        "label": "大红",
+        "label": "Big Red",
         "color": "#FF2121"
       },
       {
-        "label": "火红",
+        "label": "Fiery Red",
         "color": "#FF2D51"
       },
       {
-        "label": "炎",
+        "label": "Flame",
         "color": "#FF3300"
       },
       {
-        "label": "朱红",
+        "label": "Red 9",
         "color": "#FF4C00"
       },
       {
-        "label": "丹",
+        "label": "Red 10",
         "color": "#FF4E20"
       },
       {
-        "label": "粉红",
+        "label": "Pink 4",
         "color": "#FFB3A7"
       },
       {
-        "label": "藕荷",
+        "label": "Pale Pinkish Purple",
         "color": "#E4C6D0"
       },
       {
-        "label": "藕",
+        "label": "Lotus",
         "color": "#EDD1D8"
       },
       {
-        "label": "水红",
+        "label": "Water Red",
         "color": "#F3D3E7"
       },
       {
-        "label": "鱼肚白",
+        "label": "Fish Belly White",
         "color": "#FCEFE8"
       }
     ]
   },
   {
-    "label": "橙色系",
+    "label": "Orange",
     "data": [
       {
-        "label": "褐色",
+        "label": "Brown",
         "color": "#6E511E"
       },
       {
-        "label": "棕黑",
+        "label": "Brown Black",
         "color": "#7C4B00"
       },
       {
-        "label": "赭色",
+        "label": "Ocher",
         "color": "#955539"
       },
       {
-        "label": "棕红",
+        "label": "Brown Red",
         "color": "#9B4400"
       },
       {
-        "label": "赭",
+        "label": "Ocher 2",
         "color": "#9C5333"
       },
       {
-        "label": "驼色",
+        "label": "Camel",
         "color": "#A88462"
       },
       {
-        "label": "棕色",
+        "label": "Brown 2",
         "color": "#B25D25"
       },
       {
-        "label": "茶色",
+        "label": "Brown 3",
         "color": "#B35C44"
       },
       {
-        "label": "琥珀",
+        "label": "Amber",
         "color": "#CA6924"
       },
       {
-        "label": "黄栌",
+        "label": "Orange 2",
         "color": "#E29C45"
       },
       {
-        "label": "橙色",
+        "label": "Orange 3",
         "color": "#FA8C35"
       },
       {
-        "label": "橘红",
+        "label": "Orange 4",
         "color": "#FF7500"
       },
       {
-        "label": "橘黄",
+        "label": "Orange 5",
         "color": "#FF8936"
       },
       {
-        "label": "杏红",
+        "label": "Apricot Red",
         "color": "#FF8C31"
       },
       {
-        "label": "橙黄",
+        "label": "Orange 6",
         "color": "#FFA400"
       },
       {
-        "label": "杏黄",
+        "label": "Apricot Yellow",
         "color": "#FFA631"
       },
       {
-        "label": "姜黄",
+        "label": "Turmeric",
         "color": "#FFC773"
       }
     ]
   },
   {
-    "label": "黄色系",
+    "label": "Yellow",
     "data": [
       {
-        "label": "黧",
+        "label": "Dark",
         "color": "#5D513C"
       },
       {
-        "label": "黎",
+        "label": "Yellow 2",
         "color": "#75664D"
       },
       {
-        "label": "棕绿",
+        "label": "Brown Green",
         "color": "#827100"
       },
       {
-        "label": "秋色",
+        "label": "Autumn",
         "color": "#896C39"
       },
       {
-        "label": "苍黄",
+        "label": "Greenish Yellow",
         "color": "#A29B7C"
       },
       {
-        "label": "乌金",
+        "label": "Yellow 3",
         "color": "#A78E44"
       },
       {
-        "label": "棕黄",
+        "label": "Brown 4",
         "color": "#AE7000"
       },
       {
-        "label": "昏黄",
+        "label": "Dim",
         "color": "#C89B40"
       },
       {
-        "label": "枯黄",
+        "label": "Withered Yellow",
         "color": "#D3B17D"
       },
       {
-        "label": "秋香色",
+        "label": "Autumn 2",
         "color": "#D9B611"
       },
       {
-        "label": "金",
+        "label": "Gold",
         "color": "#EACD76"
       },
       {
-        "label": "牙",
+        "label": "Ivory",
         "color": "#EEDEB0"
       },
       {
-        "label": "缃色",
+        "label": "Yellow 4",
         "color": "#F0C239"
       },
       {
-        "label": "赤金",
+        "label": "Red Gold",
         "color": "#F2BE45"
       },
       {
-        "label": "鸭黄",
+        "label": "Duck Yellow",
         "color": "#FAFF72"
       },
       {
-        "label": "鹅黄",
+        "label": "Goose Yellow",
         "color": "#FFF143"
       },
       {
-        "label": "缟",
+        "label": "Onyx",
         "color": "#F2ECDE"
       },
       {
-        "label": "象牙白",
+        "label": "Ivory White",
         "color": "#FFFBF0"
       }
     ]
   },
   {
-    "label": "绿色系",
+    "label": "Green",
     "data": [
       {
-        "label": "竹青",
+        "label": "Bamboo Green",
         "color": "#789262"
       },
       {
-        "label": "黯",
+        "label": "Dark",
         "color": "#41555D"
       },
       {
-        "label": "黛绿",
+        "label": "Dark Green",
         "color": "#426666"
       },
       {
-        "label": "松花绿",
+        "label": "Pine Green",
         "color": "#057748"
       },
       {
-        "label": "绿沈",
+        "label": "Green Sink",
         "color": "#0C8918"
       },
       {
-        "label": "深绿",
+        "label": "Dark Green 2",
         "color": "#009900"
       },
       {
-        "label": "青葱",
+        "label": "Green Onions",
         "color": "#0AA344"
       },
       {
-        "label": "铜绿",
+        "label": "Patina",
         "color": "#549688"
       },
       {
-        "label": "苍翠",
+        "label": "Green 2",
         "color": "#519A73"
       },
       {
-        "label": "松柏绿",
+        "label": "Pine Green 2",
         "color": "#21A675"
       },
       {
-        "label": "葱青",
+        "label": "Green 3",
         "color": "#0EB83A"
       },
       {
-        "label": "油绿",
+        "label": "Oily Green",
         "color": "#00BC12"
       },
       {
-        "label": "绿",
+        "label": "Green 4",
         "color": "#00E500"
       },
       {
-        "label": "草绿",
+        "label": "Green Grass",
         "color": "#40DE5A"
       },
       {
-        "label": "豆青",
+        "label": "Bean Green",
         "color": "#96CE54"
       },
       {
-        "label": "豆绿",
+        "label": "Bean Green 2",
         "color": "#9ED048"
       },
       {
-        "label": "葱绿",
+        "label": "Light Green 2",
         "color": "#9ED900"
       },
       {
-        "label": "葱黄",
+        "label": "Green Onions 2",
         "color": "#A3D900"
       },
       {
-        "label": "柳绿",
+        "label": "Willow Green",
         "color": "#AFDD22"
       },
       {
-        "label": "嫩绿",
+        "label": "Green 5",
         "color": "#BDDD22"
       },
       {
-        "label": "柳黄",
+        "label": "Green 6",
         "color": "#C9DD22"
       },
       {
-        "label": "松花",
+        "label": "Green 7",
         "color": "#BCE672"
       },
       {
-        "label": "樱草色",
+        "label": "Primrose",
         "color": "#EAFF56"
       }
     ]
   },
   {
-    "label": "青色系",
+    "label": "Cyan",
     "data": [
       {
-        "label": "水",
+        "label": "Water",
         "color": "#88ADA6"
       },
       {
-        "label": "青碧",
+        "label": "Cyan 2",
         "color": "#48C0A3"
       },
       {
-        "label": "碧",
+        "label": "Cyan 3",
         "color": "#1BD1A5"
       },
       {
-        "label": "石青",
+        "label": "Cyan 4",
         "color": "#7BCFA6"
       },
       {
-        "label": "青翠",
+        "label": "Verdant",
         "color": "#00E079"
       },
       {
-        "label": "青",
+        "label": "Cyan 5",
         "color": "#00E09E"
       },
       {
-        "label": "碧绿",
+        "label": "Cyan 6",
         "color": "#2ADD9C"
       },
       {
-        "label": "玉",
+        "label": "Cyan 7",
         "color": "#2EDFA3"
       },
       {
-        "label": "翡翠",
+        "label": "Jade",
         "color": "#3DE1AD"
       },
       {
-        "label": "缥",
+        "label": "Misty",
         "color": "#7FECAD"
       },
       {
-        "label": "碧蓝",
+        "label": "Blue",
         "color": "#3EEDE7"
       },
       {
-        "label": "湖绿",
+        "label": "Lake Green",
         "color": "#25F8CD"
       },
       {
-        "label": "艾绿",
+        "label": "Cyan 8",
         "color": "#A4E2C6"
       },
       {
-        "label": "青白",
+        "label": "Cyan 9",
         "color": "#C0EBD7"
       },
       {
-        "label": "水绿",
+        "label": "Aquatic",
         "color": "#D4F2E7"
       },
       {
-        "label": "鸭卵青",
+        "label": "Cyan 10",
         "color": "#E0EEE8"
       },
       {
-        "label": "素",
+        "label": "White",
         "color": "#E0F0E9"
       },
       {
-        "label": "荼白",
+        "label": "Cyan 11",
         "color": "#F3F9F1"
       }
     ]
   },
   {
-    "label": "蓝色系",
+    "label": "Blue",
     "data": [
       {
-        "label": "藏蓝",
+        "label": "Navy Blue",
         "color": "#3B2E7E"
       },
       {
-        "label": "宝蓝",
+        "label": "Sapphire",
         "color": "#4B5CC4"
       },
       {
-        "label": "绀青",
+        "label": "Blue 2",
         "color": "#003371"
       },
       {
-        "label": "藏青",
+        "label": "Navy Blue 2",
         "color": "#2E4E7E"
       },
       {
-        "label": "靛蓝",
+        "label": "Indigo",
         "color": "#065279"
       },
       {
-        "label": "靛青",
+        "label": "Indigo 2",
         "color": "#177CB0"
       },
       {
-        "label": "群青",
+        "label": "Blue 3",
         "color": "#4C8DAE"
       },
       {
-        "label": "蓝",
+        "label": "Blue 4",
         "color": "#44CEF6"
       },
       {
-        "label": "湖蓝",
+        "label": "Lake Blue",
         "color": "#30DFF3"
       },
       {
-        "label": "蔚蓝",
+        "label": "Blue 5",
         "color": "#70F3FF"
       },
       {
-        "label": "月白",
+        "label": "White Moon",
         "color": "#D6ECF0"
       },
       {
-        "label": "水蓝",
+        "label": "Aqua Blue",
         "color": "#D2F0F4"
       },
       {
-        "label": "莹白",
+        "label": "Blue 6",
         "color": "#E3F9FD"
       },
       {
-        "label": "雪白",
+        "label": "Snow White",
         "color": "#F0FCFF"
       }
     ]
   },
   {
-    "label": "紫色系",
+    "label": "Purple",
     "data": [
       {
-        "label": "黛",
+        "label": "Purple 2",
         "color": "#4A4266"
       },
       {
-        "label": "紫檀",
+        "label": "Rosewood",
         "color": "#4C211B"
       },
       {
-        "label": "紫棠",
+        "label": "Purple 3",
         "color": "#56004F"
       },
       {
-        "label": "黛紫",
+        "label": "Purple 4",
         "color": "#574266"
       },
       {
-        "label": "绛紫",
+        "label": "Purple 5",
         "color": "#8C4356"
       },
       {
-        "label": "紫酱",
+        "label": "Purple 6",
         "color": "#815463"
       },
       {
-        "label": "酱紫",
+        "label": "Purple 7",
         "color": "#815476"
       },
       {
-        "label": "黝",
+        "label": "Dark Green",
         "color": "#6B6882"
       },
       {
-        "label": "青莲",
+        "label": "Purple 8",
         "color": "#801DAE"
       },
       {
-        "label": "紫",
+        "label": "Purple 9",
         "color": "#8D4BBB"
       },
       {
-        "label": "雪青",
+        "label": "Lilac",
         "color": "#B0A4E3"
       },
       {
-        "label": "丁香",
+        "label": "Clove",
         "color": "#CCA4E3"
       }
     ]
   },
   {
-    "label": "灰色系",
+    "label": "Grey",
     "data": [
       {
-        "label": "黑",
+        "label": "Black",
         "color": "#000000"
       },
       {
-        "label": "漆黑",
+        "label": "Pitch Black",
         "color": "#161823"
       },
       {
-        "label": "象牙黑",
+        "label": "Ivory Black",
         "color": "#312520"
       },
       {
-        "label": "乌黑",
+        "label": "Jet Black",
         "color": "#392F41"
       },
       {
-        "label": "玄青",
+        "label": "Black 1",
         "color": "#3D3B4F"
       },
       {
-        "label": "缁",
+        "label": "Black 2",
         "color": "#493131"
       },
       {
-        "label": "黝黑",
+        "label": "Black 3",
         "color": "#665757"
       },
       {
-        "label": "鸦青",
+        "label": "Black 4",
         "color": "#424C50"
       },
       {
-        "label": "黛蓝",
+        "label": "Black 5",
         "color": "#425066"
       },
       {
-        "label": "苍黑",
+        "label": "Black 6",
         "color": "#395260"
       },
       {
-        "label": "墨",
+        "label": "Black 7",
         "color": "#50616D"
       },
       {
-        "label": "灰",
+        "label": "Ash",
         "color": "#808080"
       },
       {
-        "label": "苍",
+        "label": "Black 8",
         "color": "#75878A"
       },
       {
-        "label": "墨灰",
+        "label": "Ink Grey",
         "color": "#758A99"
       },
       {
-        "label": "苍青",
+        "label": "Black 9",
         "color": "#7397AB"
       },
       {
-        "label": "蓝灰",
+        "label": "Blue Grey",
         "color": "#A1AFC9"
       },
       {
-        "label": "老银",
+        "label": "Old Silver",
         "color": "#BACAC6"
       },
       {
-        "label": "蟹壳青",
+        "label": "Crab Shell Green",
         "color": "#BBCDC5"
       },
       {
-        "label": "苍白",
+        "label": "Pale",
         "color": "#D1D9E0"
       },
       {
-        "label": "淡青",
+        "label": "Light Green",
         "color": "#D3E0F3"
       },
       {
-        "label": "银白",
+        "label": "Silver White",
         "color": "#E9E7EF"
       },
       {
-        "label": "霜",
+        "label": "Frost",
         "color": "#E9F1F6"
       },
       {
-        "label": "铅白",
+        "label": "Lead White",
         "color": "#F0F0F4"
       },
       {
-        "label": "精白",
+        "label": "White",
         "color": "#FFFFFF"
       }
     ]

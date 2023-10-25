@@ -32,13 +32,14 @@
       class="color-danger font-size-14 font-400 line-height-21 transition"
       :style="{ opacity: showError }"
     >
-      {{ errorMessage }}
+      {{ $t(errorMessage) }}
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import type { Icon } from '@/components/icon/v-icon.vue'
+import { LocalIcon } from '@/typings/icon'
+import { $t } from '@/locales'
 
 defineOptions({ name: 'VInput' })
 
@@ -48,7 +49,7 @@ interface Props {
   label?: string
   value: any
   rules?: any
-  icon?: Icon
+  icon?: LocalIcon
   placeholder?: string
   type?: InputType
   disabled?: boolean
@@ -82,7 +83,7 @@ const inputFocus = ref<boolean>()
 
 const error = ref<boolean>(false)
 
-const errorMessage = ref<string>()
+const errorMessage = ref<string>('')
 
 const inputValue = computed({
   get() {

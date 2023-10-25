@@ -1,7 +1,7 @@
 const fileBrowser: AuthRoute.Route = {
   name: 'file-browser',
   path: '/file-browser',
-  component: 'custom',
+  component: 'basic',
   children: [
     {
       name: 'file-browser',

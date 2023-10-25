@@ -1,11 +1,11 @@
 <template>
-  <global-content :show-padding="false" />
+  <content :show-padding="false" />
 </template>
 
 <script setup lang="ts">
-import { GlobalContent } from '../common';
+import Content from '@/layouts/blank-layout/components/content.vue'
 
-defineOptions({ name: 'BlankLayout' });
+defineOptions({ name: 'BlankLayout' })
 </script>
 
 <style scoped></style>

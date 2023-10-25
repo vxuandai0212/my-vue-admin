@@ -1,14 +1,25 @@
 const dashboard: AuthRoute.Route = {
   name: 'dashboard',
   path: '/dashboard',
-  component: 'custom',
+  component: 'basic',
+  children: [
+    {
+      name: 'dashboard',
+      path: '/dashboard',
+      component: 'self',
+      meta: {
+        title: 'Dashboard',
+        i18nTitle: 'routes.dashboard._value',
+        requiresAuth: true,
+        keepAlive: true,
+        activeMenu: 'dashboard',
+      },
+    },
+  ],
   meta: {
     title: 'Dashboard',
-    i18nHeaderTitle: 'routes.dashboard.headerTitle',
     i18nTitle: 'routes.dashboard._value',
     icon: 'dashboard',
-    activeMenu: 'dashboard',
-    requiresAuth: true,
     order: 1,
   },
 }

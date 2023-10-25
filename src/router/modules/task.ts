@@ -1,7 +1,7 @@
 const task: AuthRoute.Route = {
   name: 'task',
   path: '/task',
-  component: 'custom',
+  component: 'basic',
   children: [
     {
       name: 'task',

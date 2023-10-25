@@ -1,4 +1,10 @@
 export type LocalIcon =
+  | 'language'
+  | 'tick'
+  | 'attach'
+  | 'emoticon'
+  | 'dropbox'
+  | 'arrow'
   | 'bill'
   | 'delete'
   | 'description'

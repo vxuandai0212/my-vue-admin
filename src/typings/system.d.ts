@@ -182,7 +182,6 @@ declare namespace App {
       import('vue-router').RouteLocationNormalizedLoaded,
       'name' | 'fullPath' | 'meta'
     > {
-    /** 滚动的位置 */
     scrollPosition: {
       left: number
       top: number
@@ -211,7 +210,7 @@ declare namespace App {
 }
 
 declare namespace I18nType {
-  type LangType = 'en' | 'zh-CN' | 'km-KH'
+  type LangType = 'en' | 'vi'
 
   type Schema = {
     system: {
@@ -229,6 +228,25 @@ declare namespace I18nType {
       cancel: string
       pleaseCheckValue: string
       action: string
+      logout: {
+        title: string
+        content: string
+        confirm: string
+        cancel: string
+      }
+      header: {
+        search: {
+          placeholder: string
+        }
+        create: {
+          project: string
+          task: string
+          contact: string
+          event: string
+          product: string
+          invoice: string
+        }
+      }
     }
     routes: {
       dashboard: {
@@ -441,48 +459,138 @@ declare namespace I18nType {
         }
       }
     }
+    button: {
+      login: string
+      signup: string
+      send: string
+    }
     page: {
       login: {
         common: {
-          userNamePlaceholder: string
-          phonePlaceholder: string
-          codePlaceholder: string
-          passwordPlaceholder: string
-          confirmPasswordPlaceholder: string
-          codeLogin: string
-          confirm: string
-          back: string
-          validateSuccess: string
           loginSuccess: string
           welcomeBack: string
         }
-        pwdLogin: {
-          title: string
-          rememberMe: string
-          forgetPassword: string
-          register: string
-          otherAccountLogin: string
-          otherLoginMode: string
-          superAdmin: string
-          admin: string
-          user: string
+        welcome: string
+        welcomeDescription: string
+        loginWith: string
+        form: {
+          email: {
+            label: string
+            placeholder: string
+          }
+          password: {
+            label: string
+            placeholder: string
+          }
+          rememberLogin: {
+            label: string
+          }
+          recoverPassword: {
+            label: string
+          }
         }
-        codeLogin: {
-          title: string
-          getCode: string
-          imageCodePlaceholder: string
+        error: {
+          email: {
+            required: string
+          }
+          password: {
+            required: string
+          }
         }
-        register: {
-          title: string
-          agreement: string
-          protocol: string
-          policy: string
+      }
+      signup: {
+        welcome: string
+        welcomeDescription: string
+        loginWith: string
+        form: {
+          fullname: {
+            label: string
+            placeholder: string
+          }
+          email: {
+            label: string
+            placeholder: string
+          }
+          password: {
+            label: string
+            placeholder: string
+          }
+          agreement: {
+            label: string
+          }
         }
-        resetPwd: {
-          title: string
+        error: {
+          fullname: {
+            required: string
+          }
+          email: {
+            required: string
+          }
+          password: {
+            required: string
+          }
         }
-        bindWeChat: {
+      }
+      invoice: {
+        progress: {
           title: string
+          description: string
+          all: string
+          scheduled: string
+          unpaid: string
+          paid: string
+          sale: string
+          lead: string
+          income: string
+          duration: {
+            week: string
+            month: string
+          }
+        }
+        tab: {
+          all: string
+          draft: string
+          scheduled: string
+          paid: string
+        }
+        table: {
+          header: {
+            number: string
+            date: string
+            customer: string
+            status: string
+            amount: string
+          }
+        }
+        status: {
+          paid: string
+          scheduled: string
+          unpaid: string
+          pending: string
+          processing: string
+          finished: string
+        }
+        command: {
+          retry: string
+          edit: string
+          delete: string
+          view: string
+        },
+        detail: {
+          label: string
+          description: {
+            _value: string
+            item: string
+            hour: string
+            rate: string
+            amount: string
+            from: string
+            to: string
+            subtotal: string
+            tax: string
+            total: string
+          }
+          activity: string
         }
       }
     }

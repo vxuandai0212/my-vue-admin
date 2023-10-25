@@ -1,12 +1,11 @@
 <template>
   <n-config-provider
-    :theme="theme.naiveTheme"
     :theme-overrides="theme.naiveThemeOverrides"
-    :locale="enUS"
-    :date-locale="dateEnUS"
+    :locale="naiveLocale"
+    :date-locale="naiveDateLocale"
     class="h-full"
   >
-    <n-global-style  />
+    <n-global-style />
     <naive-provider>
       <router-view />
     </naive-provider>
@@ -14,11 +13,13 @@
 </template>
 
 <script setup lang="ts">
-import { dateEnUS, enUS } from "naive-ui/es"
-import { subscribeStore, useThemeStore } from "@/store"
-import { useGlobalEvents } from "@/composables"
+import { subscribeStore, useThemeStore } from '@/store'
+import { useGlobalEvents } from '@/composables'
+import { useNaiveUI } from '@/composables'
 
 const theme = useThemeStore()
+
+const { naiveDateLocale, naiveLocale } = useNaiveUI()
 
 subscribeStore()
 useGlobalEvents()

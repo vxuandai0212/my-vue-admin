@@ -6,17 +6,18 @@
     <div class="flex justify-between items-center">
       <div>
         <div class="color-primary-dark font-size-18 font-700 line-height-27">
-          {{ label }}
+          {{ $t(label) }}
         </div>
         <div class="color-primary-grey font-size-14 font-400 line-height-21">
-          {{ description }}
+          {{ $t(description) }}
         </div>
       </div>
       <div class="flex gap-4 items-center">
         <div class="color-primary-dark font-size-20 font-700 line-height-32">
           {{ valuePrefix }}{{ value }}
         </div>
-        <icon-local-arrow
+        <v-icon
+          icon="arrow"
           width="12px"
           height="12px"
           :style="{ fill: trendColor }"
@@ -37,11 +38,13 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import anime from 'animejs/lib/anime.es.js'
+import { $t } from '@/locales'
+import { I18nType } from '@/typings/system'
 
 defineOptions({ name: 'ProgressCard' })
 export interface ProgressCardProps {
-  label?: string
-  description?: string
+  label: I18nType.I18nKey
+  description: I18nType.I18nKey
   valuePrefix?: string
   value?: number
   progressColor: 'primary' | 'warning' | 'danger' | 'success'
@@ -61,7 +64,7 @@ const props = withDefaults(defineProps<ProgressCardProps>(), {
   progressColor: 'primary',
   trend: 'up',
   percent: 60,
-  backgroundColor: 'background-extra-light'
+  backgroundColor: 'background-extra-light',
 })
 
 const percentageValue = ref<number>(0)

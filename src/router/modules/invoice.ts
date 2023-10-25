@@ -1,7 +1,7 @@
 const invoice: AuthRoute.Route = {
   name: 'invoice',
   path: '/invoice',
-  component: 'custom',
+  component: 'basic',
   children: [
     {
       name: 'invoice',

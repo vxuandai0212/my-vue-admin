@@ -1,29 +1,26 @@
-import type { MockMethod } from "vite-plugin-mock"
-import { userModel } from "../model"
-import { Auth } from "../../src/typings/business"
+import type { MockMethod } from 'vite-plugin-mock'
+import { userModel } from '../model'
+import { Service } from '@/typings/system'
 
-/** 参数错误的状态码 */
 const ERROR_PARAM_CODE = 10000
 
-const ERROR_PARAM_MSG = "参数校验失败！"
+const ERROR_PARAM_MSG = 'Parameter verification failed!'
 
 const apis: MockMethod[] = [
-  // 获取验证码
   {
-    url: "/mock/getSmsCode",
-    method: "post",
+    url: '/mock/getSmsCode',
+    method: 'post',
     response: (): Service.MockServiceResult<boolean> => {
       return {
         code: 200,
-        message: "ok",
+        message: 'ok',
         data: true,
       }
     },
   },
-  // 用户+密码 登录
   {
-    url: "/mock/login",
-    method: "post",
+    url: '/mock/login',
+    method: 'post',
     response: (
       options: Service.MockOption
     ): Service.MockServiceResult<ApiAuth.Token | null> => {
@@ -44,7 +41,7 @@ const apis: MockMethod[] = [
       if (findItem) {
         return {
           code: 200,
-          message: "ok",
+          message: 'ok',
           data: {
             token: findItem.token,
             refreshToken: findItem.refreshToken,
@@ -53,33 +50,31 @@ const apis: MockMethod[] = [
       }
       return {
         code: 1000,
-        message: "用户名或密码错误！",
+        message: 'Wrong user name or password!',
         data: null,
       }
     },
   },
-  // 获取用户信息(请求头携带token, 根据token获取用户信息)
   {
-    url: "/mock/getUserInfo",
-    method: "get",
+    url: '/mock/getUserInfo',
+    method: 'get',
     response: (
       options: Service.MockOption
     ): Service.MockServiceResult<ApiAuth.UserInfo | null> => {
-      // 这里的mock插件得到的字段是authorization, 前端传递的是Authorization字段
-      const { authorization = "" } = options.headers
+      const { authorization = '' } = options.headers
       const REFRESH_TOKEN_CODE = 66666
 
       if (!authorization) {
         return {
           code: REFRESH_TOKEN_CODE,
-          message: "用户已失效或不存在！",
+          message: 'The user has expired or does not exist!',
           data: null,
         }
       }
       const userInfo: Auth.UserInfo = {
-        userId: "",
-        userName: "",
-        userRole: "user",
+        userId: '',
+        userName: '',
+        userRole: 'user',
       }
       const isInUser = userModel.some((item) => {
         const flag = item.token === authorization
@@ -93,25 +88,25 @@ const apis: MockMethod[] = [
       if (isInUser) {
         return {
           code: 200,
-          message: "ok",
+          message: 'ok',
           data: userInfo,
         }
       }
 
       return {
         code: REFRESH_TOKEN_CODE,
-        message: "用户信息异常！",
+        message: 'User information is abnormal!',
         data: null,
       }
     },
   },
   {
-    url: "/mock/updateToken",
-    method: "post",
+    url: '/mock/updateToken',
+    method: 'post',
     response: (
       options: Service.MockOption
     ): Service.MockServiceResult<ApiAuth.Token | null> => {
-      const { refreshToken = "" } = options.body
+      const { refreshToken = '' } = options.body
 
       const findItem = userModel.find(
         (item) => item.refreshToken === refreshToken
@@ -120,7 +115,7 @@ const apis: MockMethod[] = [
       if (findItem) {
         return {
           code: 200,
-          message: "ok",
+          message: 'ok',
           data: {
             token: findItem.token,
             refreshToken: findItem.refreshToken,
@@ -129,7 +124,7 @@ const apis: MockMethod[] = [
       }
       return {
         code: 3000,
-        message: "用户已失效或不存在！",
+        message: 'The user has expired or does not exist!',
         data: null,
       }
     },

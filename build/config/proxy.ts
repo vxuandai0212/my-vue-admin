@@ -1,4 +1,4 @@
-import type { ProxyOptions } from "vite"
+import type { ProxyOptions } from 'vite'
 
 export function createViteProxy(
   isOpenProxy: boolean,
@@ -11,7 +11,7 @@ export function createViteProxy(
       target: envConfig.url,
       changeOrigin: true,
       rewrite: (path) =>
-        path.replace(new RegExp(`^${envConfig.proxyPattern}`), ""),
+        path.replace(new RegExp(`^${envConfig.proxyPattern}`), ''),
     },
   }
 

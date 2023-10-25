@@ -49,7 +49,7 @@
 </template>
 <script setup lang="ts">
 import { computed, h, ref } from 'vue'
-import type { Icon } from '@/components/icon/v-icon.vue'
+import { LocalIcon } from '@/typings/icon'
 
 defineOptions({ name: 'VSelect' })
 
@@ -57,7 +57,7 @@ interface Props {
   label?: string
   value: any
   rules?: any
-  icon?: Icon
+  icon?: LocalIcon
   placeholder?: string
   disabled?: boolean
   options: any

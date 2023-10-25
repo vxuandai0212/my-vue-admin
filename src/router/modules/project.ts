@@ -1,7 +1,7 @@
 const project: AuthRoute.Route = {
   name: 'project',
   path: '/project',
-  component: 'custom',
+  component: 'basic',
   children: [
     {
       name: 'project',

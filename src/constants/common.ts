@@ -1,4 +1,6 @@
-export const dataTypeLabels: { [K in TypeUtil.DataTypeStringKey]: TypeUtil.DataTypeString<K> } = {
+export const dataTypeLabels: {
+  [K in TypeUtil.DataTypeStringKey]: TypeUtil.DataTypeString<K>
+} = {
   string: '[object String]',
   number: '[object Number]',
   boolean: '[object Boolean]',
@@ -14,5 +16,5 @@ export const dataTypeLabels: { [K in TypeUtil.DataTypeStringKey]: TypeUtil.DataT
   promise: '[object Promise]',
   set: '[object Set]',
   map: '[object Map]',
-  file: '[object File]'
-};
+  file: '[object File]',
+}

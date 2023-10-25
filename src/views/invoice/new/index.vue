@@ -52,7 +52,7 @@
             <resting-button class="p-14-43-15-43" label="Cancel" />
           </div>
         </div>
-        <div class="flex flex-col justify-between h-full">
+        <div class="flex flex-col grow shrink justify-between h-full">
           <advance-tab
             @update:active-tab="chooseTab"
             :active="activeTab"
@@ -70,7 +70,7 @@ import { ref } from 'vue'
 import type { Tab } from '@/components/tab/advance-tab.vue'
 import InvoiceDescription from '@/views/invoice/new/components/description.vue'
 import InvoiceBillTo from '@/views/invoice/new/components/bill-to.vue'
-import CustomHeader from '@/layouts/custom-layout/components/custom-header.vue'
+import CustomHeader from '@/layouts/basic-layout/components/custom-header.vue'
 
 const topTabs: Tab[] = [
   {

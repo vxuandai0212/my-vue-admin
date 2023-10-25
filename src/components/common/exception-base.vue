@@ -6,26 +6,25 @@
       <icon-local-service-error v-if="type === '500'" />
     </div>
     <router-link :to="{ name: routeHomePath }">
-      <n-button type="primary">回到首页</n-button>
+      <n-button type="primary">Back to the Homepage</n-button>
     </router-link>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { routeName } from '@/router';
+import { routeName } from '@/router'
 
-defineOptions({ name: 'ExceptionBase' });
+defineOptions({ name: 'ExceptionBase' })
 
-type ExceptionType = '403' | '404' | '500';
+type ExceptionType = '403' | '404' | '500'
 
 interface Props {
-  /** 异常类型 403 404 500 */
-  type: ExceptionType;
+  type: ExceptionType
 }
 
-defineProps<Props>();
+defineProps<Props>()
 
-const routeHomePath = routeName('root');
+const routeHomePath = routeName('root')
 </script>
 
 <style scoped></style>

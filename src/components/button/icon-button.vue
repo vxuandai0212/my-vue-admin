@@ -11,12 +11,12 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { Icon } from '@/components/icon/v-icon.vue'
-import { Color } from '~/src/typings/color'
+import { Color } from '@/typings/color'
+import { LocalIcon } from '@/typings/icon'
 defineOptions({ name: 'IconButton' })
 
 interface Props {
-  icon: Icon
+  icon: LocalIcon
   iconFillColor?: Color
   iconBackgroundColor?: Color
 }

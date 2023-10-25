@@ -29,7 +29,7 @@
           showInput ? 'margin-left: 18px' : 'margin-left: 0',
         ]"
         type="text"
-        placeholder="Start typing..."
+        :placeholder="$t('common.header.search.placeholder')"
         v-model="inputValue"
         @input="showDropdown = true"
       />
@@ -50,7 +50,8 @@
 import { DropdownRenderOption } from 'naive-ui/es/dropdown/src/interface'
 import { computed, watch } from 'vue'
 import { ref } from 'vue'
-import { useClick } from '~/src/hooks'
+import { useClick } from '@/hooks'
+import { $t } from '@/locales'
 
 const inputRef = ref(null)
 const inputValue = ref()

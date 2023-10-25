@@ -23,10 +23,10 @@
       </div>
       <div class="h-full p-0-21-28-30 overflow-y-no-scrollbar">
         <div class="color-primary-dark font-size-16 font-700 line-height-24">
-          Invoices breakdown
+          {{ $t('page.invoice.progress.title') }}
         </div>
         <div class="color-primary-grey font-size-14 font-400 line-height-21">
-          Learn more about invoices created
+          {{ $t('page.invoice.progress.description') }}
         </div>
         <div class="mt-20 flex flex-col gap-6">
           <progress-card
@@ -71,23 +71,23 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import InvoiceDetail from '@/views/invoice/list/components/detail.vue'
-import CustomHeader from '@/layouts/custom-layout/components/custom-header.vue'
-
+import CustomHeader from '@/layouts/basic-layout/components/custom-header.vue'
 import type { Header } from '@/components/table/v-table.vue'
+import { $t } from '@/locales'
 
 const showModal = ref<boolean>(false)
 
 const headers: Header[] = [
   {
     key: 'number',
-    label: 'Number',
+    label: 'page.invoice.table.header.number',
     type: 'icon-text',
     style: 'bold',
     width: 25,
   },
   {
     key: 'date',
-    label: 'Date',
+    label: 'page.invoice.table.header.date',
     type: 'text',
     format: {
       type: 'datetime',
@@ -97,20 +97,20 @@ const headers: Header[] = [
   },
   {
     key: 'customer',
-    label: 'Customer',
+    label: 'page.invoice.table.header.customer',
     type: 'image-text',
     width: 25,
   },
   {
     key: 'status',
-    label: 'Status',
+    label: 'page.invoice.table.header.status',
     type: 'tag',
     width: 20,
     align: 'center',
   },
   {
     key: 'amount',
-    label: 'Amount',
+    label: 'page.invoice.table.header.amount',
     type: 'text',
     style: 'bold',
     format: {
@@ -134,7 +134,7 @@ const data = [
       image: '@/assets/images/avatar.png',
       text: 'Sophia Wagner',
     },
-    status: { value: 'Paid', type: 'primary' },
+    status: { value: 'page.invoice.status.paid', type: 'primary' },
     amount: 1890.0,
   },
   {
@@ -145,7 +145,7 @@ const data = [
       image: '@/assets/images/avatar.png',
       text: 'Sophia Wagner',
     },
-    status: { value: 'Scheduled', type: 'success' },
+    status: { value: 'page.invoice.status.scheduled', type: 'success' },
     amount: 1890.0,
   },
   {
@@ -156,7 +156,7 @@ const data = [
       image: '@/assets/images/avatar.png',
       text: 'Sophia Wagner',
     },
-    status: { value: 'Unpaid', type: 'warning' },
+    status: { value: 'page.invoice.status.unpaid', type: 'warning' },
     amount: 1890.0,
   },
   {
@@ -167,11 +167,11 @@ const data = [
       image: '@/assets/images/avatar.png',
       text: 'Sophia Wagner',
     },
-    status: { value: 'Pending', type: 'danger' },
+    status: { value: 'page.invoice.status.pending', type: 'danger' },
     amount: 1890.0,
     commands: [
       {
-        label: 'Retry',
+        label: 'page.invoice.command.retry',
         key: 'invoice:retry',
         type: 'warning',
       },
@@ -185,15 +185,15 @@ const data = [
       image: '@/assets/images/avatar.png',
       text: 'Sophia Wagner',
     },
-    status: { value: 'Processing', type: 'info' },
+    status: { value: 'page.invoice.status.processing', type: 'info' },
     amount: 1890.0,
     commands: [
       {
-        label: 'Edit',
+        label: 'page.invoice.command.edit',
         key: 'invoice:edit',
       },
       {
-        label: 'Delete',
+        label: 'page.invoice.command.delete',
         key: 'invoice:delete',
         type: 'danger',
       },
@@ -207,19 +207,19 @@ const data = [
       image: '@/assets/images/avatar.png',
       text: 'Sophia Wagner',
     },
-    status: { value: 'Finished', type: 'default' },
+    status: { value: 'page.invoice.status.finished', type: 'default' },
     amount: 1890.0,
     commands: [
       {
-        label: 'View',
+        label: 'page.invoice.command.view',
         key: 'invoice:view',
       },
       {
-        label: 'Edit',
+        label: 'page.invoice.command.edit',
         key: 'invoice:edit',
       },
       {
-        label: 'Delete',
+        label: 'page.invoice.command.delete',
         key: 'invoice:delete',
         type: 'danger',
       },
@@ -229,24 +229,24 @@ const data = [
 
 const progressCards = [
   {
-    label: 'All Invoices',
-    description: 'Week comparison',
+    label: 'page.invoice.progress.all',
+    description: 'page.invoice.progress.duration.week',
     value: 1.345,
     progressColor: 'primary',
     trend: 'up',
     percent: 80,
   },
   {
-    label: 'Scheduled',
-    description: 'Month comparison',
+    label: 'page.invoice.progress.scheduled',
+    description: 'page.invoice.progress.duration.month',
     value: 3.82,
     progressColor: 'warning',
     trend: 'down',
     percent: 60,
   },
   {
-    label: 'Unpaid',
-    description: 'Week comparison',
+    label: 'page.invoice.progress.unpaid',
+    description: 'page.invoice.progress.duration.week',
     valuePrefix: '$',
     value: 4690,
     progressColor: 'danger',
@@ -254,42 +254,8 @@ const progressCards = [
     percent: 30,
   },
   {
-    label: 'Paid',
-    description: 'Month comparison',
-    valuePrefix: '$',
-    value: 3820,
-    progressColor: 'success',
-    trend: 'down',
-    percent: 85,
-  },
-  {
-    label: 'All Invoices',
-    description: 'Week comparison',
-    value: 1.345,
-    progressColor: 'primary',
-    trend: 'up',
-    percent: 80,
-  },
-  {
-    label: 'Scheduled',
-    description: 'Month comparison',
-    value: 3.82,
-    progressColor: 'warning',
-    trend: 'down',
-    percent: 60,
-  },
-  {
-    label: 'Unpaid',
-    description: 'Week comparison',
-    valuePrefix: '$',
-    value: 4690,
-    progressColor: 'danger',
-    trend: 'up',
-    percent: 30,
-  },
-  {
-    label: 'Paid',
-    description: 'Month comparison',
+    label: 'page.invoice.progress.paid',
+    description: 'page.invoice.progress.duration.month',
     valuePrefix: '$',
     value: 3820,
     progressColor: 'success',
@@ -317,26 +283,20 @@ function handleRetryInvoice(v: any) {
 
 const tabs = [
   {
-    label: 'All',
+    label: 'page.invoice.tab.all',
     value: 'all',
   },
   {
-    label: 'Draft',
+    label: 'page.invoice.tab.draft',
     value: 'draft',
   },
   {
-    label: 'Scheduled',
+    label: 'page.invoice.tab.scheduled',
     value: 'scheduled',
   },
   {
-    label: 'Paid',
+    label: 'page.invoice.tab.paid',
     value: 'paid',
   },
 ]
 </script>
-<style>
-.h-full--84 {
-  height: calc(100vh - 84px);
-}
-
-</style>

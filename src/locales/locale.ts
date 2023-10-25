@@ -1,11 +1,10 @@
-import zhCN from './lang/zh-CN';
-import en from './lang/en';
-import kmKH from './lang/km-KH';
+import vi from './lang/vi'
+import en from './lang/en'
+import { I18nType } from '@/typings/system'
 
 const locales: Record<I18nType.LangType, I18nType.Schema> = {
-  'zh-CN': zhCN,
   en,
-  'km-KH': kmKH
-};
+  vi,
+}
 
-export default locales;
+export default locales

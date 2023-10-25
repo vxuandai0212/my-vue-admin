@@ -1,7 +1,7 @@
 const message: AuthRoute.Route = {
   name: 'message',
   path: '/message',
-  component: 'custom',
+  component: 'basic',
   children: [
     {
       name: 'message',

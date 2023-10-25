@@ -4,7 +4,7 @@
       <div
         class="color-primary-grey font-size-14 font-700 line-height-21 height-36"
       >
-        Invoice #AA-04-19-1890
+        {{ $t('page.invoice.detail.label') }} #AA-04-19-1890
       </div>
       <div class="mt-28">
         <div class="flex justify-between items-center height-52">
@@ -12,7 +12,7 @@
             <div
               class="flex items-center justify-center background-color-background-light"
             >
-              <icon-local-dropbox class="fill-primary width-18 height-18" />
+              <v-icon icon="dropbox" class="fill-primary width-18 height-18" />
             </div>
             <div
               class="color-primary-dark font-size-20 font-700 line-height-32"
@@ -25,7 +25,7 @@
               13 Nov 2019
             </div>
           </div>
-          <tag class="p-9-28-10-28" label="Paid" type="success" />
+          <tag class="p-11-28-10-28" label="page.invoice.status.paid" type="success" />
         </div>
         <div
           class="mt-30 pb-27 border-bottom-1 border-bottom-solid border-bottom-color-EEE flex justify-between"
@@ -34,7 +34,7 @@
             <div
               class="color-primary-grey font-size-12 font-700 line-height-18"
             >
-              From:
+              {{ $t('page.invoice.detail.description.from') }}:
             </div>
             <div
               class="mt-26 color-primary-grey font-14 font-700 line-height-21"
@@ -83,7 +83,7 @@
             <div
               class="color-primary-grey font-size-12 font-700 line-height-18"
             >
-              Bill to:
+              {{$t('page.invoice.detail.description.to')}}:
             </div>
             <div
               class="mt-26 color-primary-grey font-14 font-700 line-height-21"
@@ -131,16 +131,16 @@
         </div>
         <div class="mt-22">
           <div class="color-primary-dark font-size-18 font-700 line-height-27">
-            Description
+            {{ $t('page.invoice.detail.description._value') }}
           </div>
           <div class="mt-17">
             <div
               class="p-0-14-0-14 height-39 rounded-6 flex background-color-background-light items-center color-primary-grey font-size-12 font-700 line-height-18"
             >
-              <div class="flex-grow">Item</div>
-              <div class="w%-14">Hours</div>
-              <div class="w%-14 text-center">Rate</div>
-              <div class="w%-14 text-right">Amount</div>
+              <div class="flex-grow">{{ $t('page.invoice.detail.description.item') }}</div>
+              <div class="w%-14">{{ $t('page.invoice.detail.description.hour') }}</div>
+              <div class="w%-14 text-center">{{ $t('page.invoice.detail.description.rate') }}</div>
+              <div class="w%-14 text-right">{{ $t('page.invoice.detail.description.amount') }}</div>
             </div>
             <div class="mt-16 flex flex-col gap-16">
               <div class="flex p-0-14-0-14">
@@ -162,7 +162,7 @@
                   <div
                     class="color-primary-dark font-size-14 font-700 line-height-21"
                   >
-                    Subtotal
+                  {{ $t('page.invoice.detail.description.subtotal') }}
                   </div>
                   <div
                     class="color-primary-dark font-size-14 font-400 line-height-21"
@@ -174,7 +174,7 @@
                   <div
                     class="color-primary-dark font-size-14 font-700 line-height-21"
                   >
-                    Tax 10%
+                  {{ $t('page.invoice.detail.description.tax') }} 10%
                   </div>
                   <div
                     class="color-primary-dark font-size-14 font-400 line-height-21"
@@ -186,7 +186,7 @@
                   <div
                     class="color-primary-dark font-size-16 font-700 line-height-24"
                   >
-                    Total
+                  {{ $t('page.invoice.detail.description.total') }}
                   </div>
                   <div
                     class="color-primary-dark font-size-16 font-700 line-height-24"
@@ -205,11 +205,11 @@
     >
       <div class="p-21-30-30-29">
         <div class="flex justify-end items-center height-36">
-          <three-dot />
+          <v-icon icon="three-dot" />
         </div>
         <div class="mt-28 height-52 flex flex-start items-center">
           <div class="color-primary-dark font-size-18 font-700 line-height-27">
-            Activities
+            {{ $t('page.invoice.detail.activity') }}
           </div>
         </div>
         <div
@@ -226,7 +226,7 @@
               />
               <div class="flex flex-col gap-5">
                 <div
-                  class="rounded-19-19-19-0 p-6-17-7-15 background-color-F6F6F6 color-primary-dark font-size-14 font-400 line-height-21"
+                  class="rounded-19-19-19-0 p-8-17-6-15 background-color-F6F6F6 color-primary-dark font-size-14 font-400 line-height-21"
                 >
                   Created invoice #AA-04-19-1890
                 </div>
@@ -247,7 +247,7 @@
               />
               <div class="flex flex-col gap-5">
                 <div
-                  class="rounded-19-19-19-0 p-6-17-7-15 background-color-F6F6F6 color-primary-dark font-size-14 font-400 line-height-21"
+                  class="rounded-19-19-19-0 p-8-17-6-15 background-color-F6F6F6 color-primary-dark font-size-14 font-400 line-height-21"
                 >
                   Set due date to 13 Nov 2019
                 </div>
@@ -263,7 +263,7 @@
             <div class="flex gap-8">
               <div class="flex flex-col gap-5 items-end">
                 <div
-                  class="rounded-17-17-0-17 p-6-17-7-15 background-color-primary color-white font-size-14 font-400 line-height-21"
+                  class="rounded-17-17-0-17 p-8-17-6-15 background-color-primary color-white font-size-14 font-400 line-height-21"
                 >
                   Invoice paid
                 </div>
@@ -289,7 +289,7 @@
               />
               <div class="flex flex-col gap-5">
                 <div
-                  class="rounded-19-19-19-0 p-6-17-7-15 background-color-F6F6F6 color-primary-dark font-size-14 font-400 line-height-21"
+                  class="rounded-19-19-19-0 p-8-17-6-15 background-color-F6F6F6 color-primary-dark font-size-14 font-400 line-height-21"
                 >
                   Created invoice #AA-04-19-1890
                 </div>
@@ -310,7 +310,7 @@
               />
               <div class="flex flex-col gap-5">
                 <div
-                  class="rounded-19-19-19-0 p-6-17-7-15 background-color-F6F6F6 color-primary-dark font-size-14 font-400 line-height-21"
+                  class="rounded-19-19-19-0 p-8-17-6-15 background-color-F6F6F6 color-primary-dark font-size-14 font-400 line-height-21"
                 >
                   Set due date to 13 Nov 2019
                 </div>
@@ -326,7 +326,7 @@
             <div class="flex gap-8">
               <div class="flex flex-col gap-5 items-end">
                 <div
-                  class="rounded-17-17-0-17 p-6-17-7-15 background-color-primary color-white font-size-14 font-400 line-height-21"
+                  class="rounded-17-17-0-17 p-8-17-6-15 background-color-primary color-white font-size-14 font-400 line-height-21"
                 >
                   Invoice paid
                 </div>
@@ -352,7 +352,7 @@
               />
               <div class="flex flex-col gap-5">
                 <div
-                  class="rounded-19-19-19-0 p-6-17-7-15 background-color-F6F6F6 color-primary-dark font-size-14 font-400 line-height-21"
+                  class="rounded-19-19-19-0 p-8-17-6-15 background-color-F6F6F6 color-primary-dark font-size-14 font-400 line-height-21"
                 >
                   Created invoice #AA-04-19-1890
                 </div>
@@ -373,7 +373,7 @@
               />
               <div class="flex flex-col gap-5">
                 <div
-                  class="rounded-19-19-19-0 p-6-17-7-15 background-color-F6F6F6 color-primary-dark font-size-14 font-400 line-height-21"
+                  class="rounded-19-19-19-0 p-8-17-6-15 background-color-F6F6F6 color-primary-dark font-size-14 font-400 line-height-21"
                 >
                   Set due date to 13 Nov 2019
                 </div>
@@ -389,7 +389,7 @@
             <div class="flex gap-8">
               <div class="flex flex-col gap-5 items-end">
                 <div
-                  class="rounded-17-17-0-17 p-6-17-7-15 background-color-primary color-white font-size-14 font-400 line-height-21"
+                  class="rounded-17-17-0-17 p-8-17-6-15 background-color-primary color-white font-size-14 font-400 line-height-21"
                 >
                   Invoice paid
                 </div>
@@ -415,7 +415,7 @@
               />
               <div class="flex flex-col gap-5">
                 <div
-                  class="rounded-19-19-19-0 p-6-17-7-15 background-color-F6F6F6 color-primary-dark font-size-14 font-400 line-height-21"
+                  class="rounded-19-19-19-0 p-8-17-6-15 background-color-F6F6F6 color-primary-dark font-size-14 font-400 line-height-21"
                   style="max-width: 255px"
                 >
                   Created invoice #AA-04-19-1890
@@ -437,7 +437,7 @@
               />
               <div class="flex flex-col gap-5">
                 <div
-                  class="rounded-19-19-19-0 p-6-17-7-15 background-color-F6F6F6 color-primary-dark font-size-14 font-400 line-height-21"
+                  class="rounded-19-19-19-0 p-8-17-6-15 background-color-F6F6F6 color-primary-dark font-size-14 font-400 line-height-21"
                 >
                   Set due date to 13 Nov 2019
                 </div>
@@ -453,7 +453,7 @@
             <div class="flex gap-8">
               <div class="flex flex-col gap-5 items-end">
                 <div
-                  class="rounded-17-17-0-17 p-6-17-7-15 background-color-primary color-white font-size-14 font-400 line-height-21"
+                  class="rounded-17-17-0-17 p-8-17-6-15 background-color-primary color-white font-size-14 font-400 line-height-21"
                 >
                   Invoice paid
                 </div>
@@ -488,16 +488,25 @@
           <div class="flex items-center gap-9 relative">
             <emoji-picker
               ref="emojiPickerRef"
-              :style="[showEmojiPicker ? 'opacity: 1; left: -126px; z-index: 1;' : 'opacity: 0; left:160px; z-index: -1;']"
-              style="bottom: 30px;"
+              :style="[
+                showEmojiPicker
+                  ? 'opacity: 1; left: -126px; z-index: 1;'
+                  : 'opacity: 0; left:160px; z-index: -1;',
+              ]"
+              style="bottom: 30px"
               class="absolute transition"
               :native="true"
               @select="onSelectEmoji"
             />
-            <icon-local-emoticon ref="emojiIconRef" @click="onClickEmotionPicker" class="fill-primary-grey cursor-pointer" />
-            <icon-local-attach class="fill-primary-grey" />
+            <v-icon
+              icon="emoticon"
+              ref="emojiIconRef"
+              @click="onClickEmotionPicker"
+              class="fill-primary-grey cursor-pointer"
+            />
+            <v-icon icon="attach" class="fill-primary-grey" />
           </div>
-          <primary-button class="p-9-33-10-34" label="Send" />
+          <primary-button class="p-9-33-8-34" :label="$t('button.send')" />
         </div>
       </div>
     </div>
@@ -508,6 +517,7 @@ import { onMounted, ref, watch } from 'vue'
 import EmojiPicker from 'vue3-emoji-picker'
 import 'vue3-emoji-picker/css'
 import { useClick } from '@/hooks'
+import { $t } from '@/locales'
 
 defineOptions({ name: 'InvoiceDetail' })
 const chatContainerRef: any = ref(null)
@@ -522,12 +532,16 @@ onMounted(() => {
 
 const { el } = useClick()
 
-watch(el, newValue => {
+watch(el, (newValue) => {
   if (!showEmojiPicker.value) return
   const emojiPickerEl: any = emojiPickerRef.value.$el
   const emojiIconEl: any = emojiIconRef.value.$el
   if (!emojiPickerEl) return
-  if (showEmojiPicker.value && !emojiPickerEl.contains(newValue) && !emojiIconEl.contains(newValue)) {
+  if (
+    showEmojiPicker.value &&
+    !emojiPickerEl.contains(newValue) &&
+    !emojiIconEl.contains(newValue)
+  ) {
     showEmojiPicker.value = false
   }
 })
@@ -548,6 +562,4 @@ function onClickEmotionPicker() {
   showEmojiPicker.value = true
 }
 </script>
-<style scoped>
-
-</style>
+<style scoped></style>

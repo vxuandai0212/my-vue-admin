@@ -3,9 +3,10 @@ import {
   themeScrollModeOptions,
   themeTabModeOptions,
   themeHorizontalMenuPositionOptions,
-  themeAnimateModeOptions
-} from '@/constants';
-import jsonSetting from './theme.json';
+  themeAnimateModeOptions,
+} from '@/constants'
+import jsonSetting from './theme.json'
+import { Theme } from '@/typings/system'
 
 const themeColorList = [
   '#1890ff',
@@ -31,8 +32,8 @@ const themeColorList = [
   '#ffb300',
   '#fdd835',
   '#6d4c41',
-  '#546e7a'
-];
+  '#546e7a',
+]
 
 const defaultThemeSetting: Theme.Setting = {
   darkMode: false,
@@ -41,7 +42,7 @@ const defaultThemeSetting: Theme.Setting = {
   layout: {
     minWidth: 900,
     mode: 'vertical',
-    modeList: themeLayoutModeOptions
+    modeList: themeLayoutModeOptions,
   },
   scrollMode: 'content',
   scrollModeList: themeScrollModeOptions,
@@ -51,7 +52,7 @@ const defaultThemeSetting: Theme.Setting = {
     info: '#2080f0',
     success: '#52c41a',
     warning: '#faad14',
-    error: '#f5222d'
+    error: '#f5222d',
   },
   isCustomizeInfoColor: false,
   fixedHeaderAndTab: true,
@@ -61,15 +62,15 @@ const defaultThemeSetting: Theme.Setting = {
     height: 56,
     crumb: {
       visible: true,
-      showIcon: true
-    }
+      showIcon: true,
+    },
   },
   tab: {
     visible: true,
     height: 44,
     mode: 'chrome',
     modeList: themeTabModeOptions,
-    isCache: true
+    isCache: true,
   },
   sider: {
     inverted: false,
@@ -77,24 +78,25 @@ const defaultThemeSetting: Theme.Setting = {
     collapsedWidth: 64,
     mixWidth: 80,
     mixCollapsedWidth: 48,
-    mixChildMenuWidth: 200
+    mixChildMenuWidth: 200,
   },
   menu: {
     horizontalPosition: 'flex-start',
-    horizontalPositionList: themeHorizontalMenuPositionOptions
+    horizontalPositionList: themeHorizontalMenuPositionOptions,
   },
   footer: {
     visible: true,
     fixed: false,
     right: true,
     height: 48,
-    inverted: false
+    inverted: false,
   },
   page: {
     animate: true,
     animateMode: 'fade-slide',
-    animateModeList: themeAnimateModeOptions
-  }
-};
+    animateModeList: themeAnimateModeOptions,
+  },
+}
 
-export const themeSetting = (jsonSetting as Theme.Setting) || defaultThemeSetting;
+export const themeSetting =
+  (jsonSetting as Theme.Setting) || defaultThemeSetting

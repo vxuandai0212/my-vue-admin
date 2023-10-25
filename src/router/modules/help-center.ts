@@ -1,7 +1,7 @@
 const helpCenter: AuthRoute.Route = {
   name: 'help-center',
   path: '/help-center',
-  component: 'custom',
+  component: 'basic',
   children: [
     {
       name: 'help-center',

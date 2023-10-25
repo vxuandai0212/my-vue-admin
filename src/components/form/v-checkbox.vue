@@ -20,7 +20,8 @@
             background: outerCheckboxBackground(item.value),
           }"
         >
-          <icon-local-tick
+          <v-icon
+            icon="tick"
             :class="{ opacity70: disabled }"
             width="10.728px"
             height="8px"
@@ -34,13 +35,14 @@
           ]"
           class="font-size-14 font-700 transition"
         >
-          {{ item.label }}
+          {{ $t(item.label) }}
         </div>
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
+import { $t } from '@/locales'
 defineOptions({ name: 'VCheckbox' })
 
 interface Options {

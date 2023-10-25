@@ -1,6 +1,8 @@
+import { I18nType } from '@/typings/system'
+
 const locale: I18nType.Schema = {
   system: {
-    title: 'SoybeanAdmin'
+    title: 'SoybeanAdmin',
   },
   common: {
     add: 'Add',
@@ -13,7 +15,26 @@ const locale: I18nType.Schema = {
     confirm: 'Confirm',
     cancel: 'Cancel',
     pleaseCheckValue: 'Please check the value is valid',
-    action: 'Action'
+    action: 'Action',
+    logout: {
+      title: 'Logout',
+      content: 'Do you sure want to logout?',
+      confirm: 'Confirm',
+      cancel: 'Cancel',
+    },
+    header: {
+      search: {
+        placeholder: 'Start typing...',
+      },
+      create: {
+        project: 'New Project',
+        task: 'New Task',
+        contact: 'New Contact',
+        event: 'New Event',
+        product: 'New Product',
+        invoice: 'New Invoice',
+      },
+    },
   },
   routes: {
     document: {
@@ -22,47 +43,47 @@ const locale: I18nType.Schema = {
       vite: 'Vite Document',
       naive: 'NaiveUI Document',
       project: 'Project Document',
-      'project-link': 'Project Document(href)'
+      'project-link': 'Project Document(href)',
     },
     component: {
       _value: 'Component',
       button: 'Button',
       card: 'Card',
-      table: 'Table'
+      table: 'Table',
     },
     plugin: {
       _value: 'Plugin',
       charts: {
         _value: 'Chart',
         echarts: 'ECharts',
-        antv: 'AntV'
+        antv: 'AntV',
       },
       copy: 'Copy',
       editor: {
         _value: 'Editor',
         quill: 'Quill',
-        markdown: 'Markdown'
+        markdown: 'Markdown',
       },
       icon: 'Icon',
       map: 'Map',
       print: 'Print',
       swiper: 'Swiper',
-      video: 'Video'
+      video: 'Video',
     },
     'auth-demo': {
       _value: 'Auth Demo',
       permission: 'Toggle Permission',
-      super: 'Super Auth'
+      super: 'Super Auth',
     },
     function: {
       _value: 'Function',
-      tab: 'System Tab'
+      tab: 'System Tab',
     },
     exception: {
       _value: 'Exception',
       403: '403',
       404: '404',
-      500: '500'
+      500: '500',
     },
     'multi-menu': {
       _value: 'Multi Degree Menu',
@@ -71,16 +92,16 @@ const locale: I18nType.Schema = {
         second: 'Second Degree',
         'second-new': {
           _value: 'Second Degree With Children',
-          third: 'Third Degree'
-        }
-      }
+          third: 'Third Degree',
+        },
+      },
     },
     management: {
       _value: 'System Management',
       auth: 'Auth',
       role: 'Role',
       route: 'Route',
-      user: 'User'
+      user: 'User',
     },
     about: 'About',
     dashboard: {
@@ -89,52 +110,52 @@ const locale: I18nType.Schema = {
     calendar: {
       _value: 'Calendar',
       list: 'Calendar',
-      new: 'New Event'
+      new: 'New Event',
     },
     contact: {
       _value: 'Contacts',
       list: 'Contact',
-      new: 'New Contact'
+      new: 'New Contact',
     },
     'file-browser': {
       _value: 'File Browser',
       list: 'File Browser',
-      new: 'Upload File'
+      new: 'Upload File',
     },
     'help-center': {
       _value: 'Help Center',
       list: 'Help Center',
-      new: 'New Ticket'
+      new: 'New Ticket',
     },
     invoice: {
       _value: 'Invoices',
       list: 'Invoice',
-      new: 'New Invoice'
+      new: 'New Invoice',
     },
     kanban: {
       _value: 'Kanban',
       list: 'Kanban',
-      new: 'New Kanban'
+      new: 'New Kanban',
     },
     message: {
       _value: 'Messages',
       list: 'Message',
-      new: 'New Message'
+      new: 'New Message',
     },
     notification: {
       _value: 'Notifications',
       list: 'Notification',
-      new: 'New Event'
+      new: 'New Event',
     },
     product: {
       _value: 'Products',
       list: 'Product',
-      new: 'New Product'
+      new: 'New Product',
     },
     project: {
       _value: 'Projects',
       list: 'Project',
-      new: 'New Project'
+      new: 'New Project',
     },
     report: {
       _value: 'Reports',
@@ -143,8 +164,8 @@ const locale: I18nType.Schema = {
     task: {
       _value: 'Tasks',
       list: 'Task',
-      new: 'New Task'
-    }
+      new: 'New Task',
+    },
   },
   layout: {
     settingDrawer: {
@@ -160,7 +181,7 @@ const locale: I18nType.Schema = {
       scrollMode: 'scrollMode',
       scrollModeList: {
         wrapper: 'Outer layer scroll',
-        content: 'Main body scroll'
+        content: 'Main body scroll',
       },
       fixedHeaderAndTab: 'Fixed header and multiple tabs',
       header: {
@@ -168,8 +189,8 @@ const locale: I18nType.Schema = {
         height: 'Head Height',
         crumb: {
           visible: 'Crumb',
-          icon: 'Crumb icon'
-        }
+          icon: 'Crumb icon',
+        },
       },
       tab: {
         visible: 'Multi-page tab',
@@ -177,28 +198,28 @@ const locale: I18nType.Schema = {
         modeList: {
           mode: 'Multi-tab style',
           chrome: 'Google style',
-          button: 'Button style'
+          button: 'Button style',
         },
-        isCache: 'Multiple tab caching'
+        isCache: 'Multiple tab caching',
       },
       sider: {
         inverted: 'Dark sidebar',
         width: 'Sidebar expanded width',
-        mixWidth: 'Left hybrid sidebar expanded width'
+        mixWidth: 'Left hybrid sidebar expanded width',
       },
       menu: {
         horizontalPosition: 'Top menu position',
         horizontalPositionList: {
           flexStart: 'Right',
           center: 'center',
-          flexEnd: 'Left'
-        }
+          flexEnd: 'Left',
+        },
       },
       footer: {
         inverted: 'Dark bottom',
         visible: 'Show bottom',
         fixed: 'Fixed bottom',
-        right: 'Bottom to the right'
+        right: 'Bottom to the right',
       },
       page: {
         animate: 'switch animation',
@@ -209,11 +230,11 @@ const locale: I18nType.Schema = {
           fadeSlide: 'Slide',
           fade: 'Fade away',
           fadeBottom: 'Bottom fade',
-          fadeScale: 'Resizing fade away'
-        }
+          fadeScale: 'Resizing fade away',
+        },
       },
       systemTheme: {
-        moreColors: 'More colors'
+        moreColors: 'More colors',
       },
       themeConfiguration: {
         title: 'Theme configuration',
@@ -221,56 +242,147 @@ const locale: I18nType.Schema = {
         reset: 'Reset the current configuration',
         resetSuccess: 'The configuration has been reset, please copy it again!',
         operateSuccess: 'Successful operation',
-        copySuccess: 'Copy success, please replace the content of src/settings/theme.json!',
-        confirmCopy: 'Confirm'
-      }
-    }
+        copySuccess:
+          'Copy success, please replace the content of src/settings/theme.json!',
+        confirmCopy: 'Confirm',
+      },
+    },
+  },
+  button: {
+    login: 'Sign In',
+    signup: 'Sign Up',
+    send: 'Send',
   },
   page: {
     login: {
       common: {
-        userNamePlaceholder: 'Please enter user name',
-        phonePlaceholder: 'Please enter phone number',
-        codePlaceholder: 'Please enter verification code',
-        passwordPlaceholder: 'Please enter password',
-        confirmPasswordPlaceholder: 'Please enter password again',
-        codeLogin: 'Verification code login',
-        confirm: 'Confirm',
-        back: 'Back',
-        validateSuccess: 'Verification passed',
         loginSuccess: 'Login success',
-        welcomeBack: 'Welcome back, {userName}!'
+        welcomeBack: 'Welcome back, {userName}!',
       },
-      pwdLogin: {
-        title: 'Password Login',
-        rememberMe: 'Remember me',
-        forgetPassword: 'Forget password?',
-        register: 'Register account',
-        otherAccountLogin: 'Other Account Login',
-        otherLoginMode: 'Other Login Mode',
-        superAdmin: 'Super Administrator',
-        admin: 'Administrator',
-        user: 'Ordinary User'
+      welcome: 'Welcome to our CRM.\nSign In to see latest updates.',
+      welcomeDescription: 'Enter your details to proceed further',
+      loginWith: 'Or sign in with',
+      form: {
+        email: {
+          label: 'Email',
+          placeholder: 'Start typing...',
+        },
+        password: {
+          label: 'Password',
+          placeholder: 'Start typing...',
+        },
+        rememberLogin: {
+          label: 'Remember me',
+        },
+        recoverPassword: {
+          label: 'Recover password',
+        },
       },
-      codeLogin: {
-        title: 'Verification Code Login',
-        getCode: 'Get verification code',
-        imageCodePlaceholder: 'Please enter image verification code'
+      error: {
+        email: {
+          required: 'Please enter your email',
+        },
+        password: {
+          required: 'Please enter your password',
+        },
       },
-      register: {
-        title: 'Register Account',
-        agreement: 'I have read and agree to',
-        protocol: '《User Agreement》',
-        policy: '《Privacy Policy》'
+    },
+    signup: {
+      welcome: 'Welcome to our CRM.\nSign Up to getting started.',
+      welcomeDescription: 'Enter your details to proceed further',
+      loginWith: 'Or sign in with',
+      form: {
+        fullname: {
+          label: 'Full name',
+          placeholder: 'Start typing...',
+        },
+        email: {
+          label: 'Email',
+          placeholder: 'Start typing...',
+        },
+        password: {
+          label: 'Password',
+          placeholder: 'Start typing...',
+        },
+        agreement: {
+          label: 'I agree with terms & conditions',
+        },
       },
-      resetPwd: {
-        title: 'Reset Password'
+      error: {
+        fullname: {
+          required: 'Please enter your full name',
+        },
+        email: {
+          required: 'Please enter your email',
+        },
+        password: {
+          required: 'Please enter your password',
+        },
       },
-      bindWeChat: {
-        title: 'Bind WeChat'
-      }
-    }
-  }
-};
+    },
+    invoice: {
+      progress: {
+        title: 'Invoices breakdown',
+        description: 'Learn more about invoices created',
+        all: 'All Invoices',
+        scheduled: 'Scheduled',
+        unpaid: 'Unpaid',
+        paid: 'Paid',
+        sale: 'Sales',
+        lead: 'Leads',
+        income: 'Income',
+        duration: {
+          week: 'Week comparison',
+          month: 'Month comparison',
+        },
+      },
+      tab: {
+        all: 'All',
+        draft: 'Draft',
+        scheduled: 'Scheduled',
+        paid: 'Paid',
+      },
+      table: {
+        header: {
+          number: 'Number',
+          date: 'Date',
+          customer: 'Customer',
+          status: 'Status',
+          amount: 'Amount',
+        },
+      },
+      status: {
+        paid: 'Paid',
+        scheduled: 'Scheduled',
+        unpaid: 'Unpaid',
+        pending: 'Pending',
+        processing: 'Processing',
+        finished: 'Finished',
+      },
+      command: {
+        retry: 'Retry',
+        edit: 'Edit',
+        delete: 'Delete',
+        view: 'View',
+      },
+      detail: {
+        label: 'Invoice',
+        description: {
+          _value: 'Description',
+          item: 'Item',
+          hour: 'Hours',
+          rate: 'Rate',
+          amount: 'Amount',
+          from: 'From',
+          to: 'Bill to',
+          subtotal: 'Subtotal',
+          tax: 'Tax',
+          total: 'Total',
+        },
+        activity: 'Activities',
+      },
+    },
+  },
+}
 
-export default locale;
+export default locale

@@ -1,7 +1,7 @@
 const calendar: AuthRoute.Route = {
   name: 'calendar',
   path: '/calendar',
-  component: 'custom',
+  component: 'basic',
   children: [
     {
       name: 'calendar_new',

@@ -3,7 +3,7 @@
     <template #trigger>
       <n-button size="small" type="primary">
         <icon-ant-design-setting-outlined class="mr-4px text-16px" />
-        表格列设置
+        Table column settings
       </n-button>
     </template>
     <div class="w-180px">
@@ -25,9 +25,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from "vue"
-import type { DataTableColumn } from "naive-ui/es"
-import VueDraggable from "vuedraggable"
+import { ref, watch } from 'vue'
+import type { DataTableColumn } from 'naive-ui/es'
+import VueDraggable from 'vuedraggable'
 
 type Column = DataTableColumn<UserManagement.User>
 
@@ -38,7 +38,7 @@ interface Props {
 const props = defineProps<Props>()
 
 interface Emits {
-  (e: "update:columns", columns: Column[]): void
+  (e: 'update:columns', columns: Column[]): void
 }
 
 const emit = defineEmits<Emits>()
@@ -63,7 +63,7 @@ watch(
       return column
     }) as Column[]
 
-    emit("update:columns", columns)
+    emit('update:columns', columns)
   },
   { deep: true }
 )

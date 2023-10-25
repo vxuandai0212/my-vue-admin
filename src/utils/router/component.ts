@@ -1,5 +1,5 @@
 import type { RouteComponent } from 'vue-router'
-import { BasicLayout, BlankLayout, CustomLayout } from '@/layouts'
+import { BasicLayout, BlankLayout } from '@/layouts'
 import { views } from '@/views'
 import { isFunction } from '@/utils/common'
 
@@ -18,14 +18,15 @@ export function getLayoutComponent(layoutType: UnionKey.LayoutComponentType) {
   const layoutComponent: LayoutComponent = {
     basic: BasicLayout,
     blank: BlankLayout,
-    custom: CustomLayout,
   }
   return layoutComponent[layoutType]
 }
 
 export function getViewComponent(routeKey: AuthRoute.LastDegreeRouteKey) {
   if (!views[routeKey]) {
-    throw new Error(`Route "${routeKey}" does not have a corresponding component file!`)
+    throw new Error(
+      `Route "${routeKey}" does not have a corresponding component file!`
+    )
   }
   return setViewComponentName(views[routeKey], routeKey)
 }

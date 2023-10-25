@@ -1,26 +1,33 @@
 <template>
   <div class="overflow-hidden">
-    <n-card title="用户管理" :bordered="false" class="h-full rounded-8px shadow-sm">
+    <n-card
+      title="User Management"
+      :bordered="false"
+      class="h-full rounded-8px shadow-sm"
+    >
       <div class="flex-col h-full">
         <n-space class="pb-12px" justify="space-between">
           <n-space>
             <n-button type="primary" @click="handleAddTable">
               <icon-ic-round-plus class="mr-4px text-20px" />
-              新增
+              New
             </n-button>
             <n-button type="error">
               <icon-ic-round-delete class="mr-4px text-20px" />
-              删除
+              Delete
             </n-button>
             <n-button type="success">
               <icon-uil:export class="mr-4px text-20px" />
-              导出Excel
+              Export Excel
             </n-button>
           </n-space>
           <n-space align="center" :size="18">
             <n-button size="small" type="primary" @click="getTableData">
-              <icon-mdi-refresh class="mr-4px text-16px" :class="{ 'animate-spin': loading }" />
-              刷新表格
+              <icon-mdi-refresh
+                class="mr-4px text-16px"
+                :class="{ 'animate-spin': loading }"
+              />
+              Refresh
             </n-button>
             <column-setting v-model:columns="columns" />
           </n-space>
@@ -33,158 +40,171 @@
           flex-height
           class="flex-1-hidden"
         />
-        <table-action-modal v-model:visible="visible" :type="modalType" :edit-data="editData" />
+        <table-action-modal
+          v-model:visible="visible"
+          :type="modalType"
+          :edit-data="editData"
+        />
       </div>
     </n-card>
   </div>
 </template>
 
 <script setup lang="tsx">
-import { reactive, ref } from 'vue';
-import type { Ref } from 'vue';
-import { NButton, NPopconfirm, NSpace, NTag } from 'naive-ui';
-import type { DataTableColumns, PaginationProps } from 'naive-ui';
-import { genderLabels, userStatusLabels } from '@/constants';
-import { fetchUserList } from '@/service';
-import { useBoolean, useLoading } from '@/hooks';
-import TableActionModal from './components/table-action-modal.vue';
-import type { ModalType } from './components/table-action-modal.vue';
-import ColumnSetting from './components/column-setting.vue';
+import { reactive, ref } from 'vue'
+import type { Ref } from 'vue'
+import { NButton, NPopconfirm, NSpace, NTag } from 'naive-ui'
+import type { DataTableColumns, PaginationProps } from 'naive-ui'
+import { genderLabels, userStatusLabels } from '@/constants'
+import { fetchUserList } from '@/service'
+import { useBoolean, useLoading } from '@/hooks'
+import TableActionModal from './components/table-action-modal.vue'
+import type { ModalType } from './components/table-action-modal.vue'
+import ColumnSetting from './components/column-setting.vue'
 
-const { loading, startLoading, endLoading } = useLoading(false);
-const { bool: visible, setTrue: openModal } = useBoolean();
+const { loading, startLoading, endLoading } = useLoading(false)
+const { bool: visible, setTrue: openModal } = useBoolean()
 
-const tableData = ref<UserManagement.User[]>([]);
+const tableData = ref<UserManagement.User[]>([])
 function setTableData(data: UserManagement.User[]) {
-  tableData.value = data;
+  tableData.value = data
 }
 
 async function getTableData() {
-  startLoading();
-  const { data } = await fetchUserList();
+  startLoading()
+  const { data } = await fetchUserList()
   if (data) {
     setTimeout(() => {
-      setTableData(data);
-      endLoading();
-    }, 1000);
+      setTableData(data)
+      endLoading()
+    }, 1000)
   }
 }
 
 const columns: Ref<DataTableColumns<UserManagement.User>> = ref([
   {
     type: 'selection',
-    align: 'center'
+    align: 'center',
   },
   {
     key: 'index',
-    title: '序号',
-    align: 'center'
+    title: 'No',
+    align: 'center',
   },
   {
     key: 'userName',
-    title: '用户名',
-    align: 'center'
+    title: 'Username',
+    align: 'center',
   },
   {
     key: 'age',
-    title: '用户年龄',
-    align: 'center'
+    title: 'Age',
+    align: 'center',
   },
   {
     key: 'gender',
-    title: '性别',
+    title: 'Gender',
     align: 'center',
-    render: row => {
+    render: (row) => {
       if (row.gender) {
         const tagTypes: Record<UserManagement.GenderKey, NaiveUI.ThemeColor> = {
           '0': 'success',
-          '1': 'warning'
-        };
+          '1': 'warning',
+        }
 
-        return <NTag type={tagTypes[row.gender]}>{genderLabels[row.gender]}</NTag>;
+        return (
+          <NTag type={tagTypes[row.gender]}>{genderLabels[row.gender]}</NTag>
+        )
       }
 
-      return <span></span>;
-    }
+      return <span></span>
+    },
   },
   {
     key: 'phone',
-    title: '手机号码',
-    align: 'center'
+    title: 'Phone',
+    align: 'center',
   },
   {
     key: 'email',
-    title: '邮箱',
-    align: 'center'
+    title: 'Email',
+    align: 'center',
   },
   {
     key: 'userStatus',
-    title: '状态',
+    title: 'Status',
     align: 'center',
-    render: row => {
+    render: (row) => {
       if (row.userStatus) {
-        const tagTypes: Record<UserManagement.UserStatusKey, NaiveUI.ThemeColor> = {
+        const tagTypes: Record<
+          UserManagement.UserStatusKey,
+          NaiveUI.ThemeColor
+        > = {
           '1': 'success',
           '2': 'error',
           '3': 'warning',
-          '4': 'default'
-        };
+          '4': 'default',
+        }
 
-        return <NTag type={tagTypes[row.userStatus]}>{userStatusLabels[row.userStatus]}</NTag>;
+        return (
+          <NTag type={tagTypes[row.userStatus]}>
+            {userStatusLabels[row.userStatus]}
+          </NTag>
+        )
       }
-      return <span></span>;
-    }
+      return <span></span>
+    },
   },
   {
     key: 'actions',
-    title: '操作',
+    title: 'Action',
     align: 'center',
-    render: row => {
+    render: (row) => {
       return (
         <NSpace justify={'center'}>
           <NButton size={'small'} onClick={() => handleEditTable(row.id)}>
-            编辑
+            Edit
           </NButton>
           <NPopconfirm onPositiveClick={() => handleDeleteTable(row.id)}>
             {{
-              default: () => '确认删除',
-              trigger: () => <NButton size={'small'}>删除</NButton>
+              default: () => 'Confirm delete',
+              trigger: () => <NButton size={'small'}>Delete</NButton>,
             }}
           </NPopconfirm>
         </NSpace>
-      );
-    }
-  }
-]) as Ref<DataTableColumns<UserManagement.User>>;
+      )
+    },
+  },
+]) as Ref<DataTableColumns<UserManagement.User>>
 
-const modalType = ref<ModalType>('add');
+const modalType = ref<ModalType>('add')
 
 function setModalType(type: ModalType) {
-  modalType.value = type;
+  modalType.value = type
 }
 
-const editData = ref<UserManagement.User | null>(null);
+const editData = ref<UserManagement.User | null>(null)
 
 function setEditData(data: UserManagement.User | null) {
-  editData.value = data;
+  editData.value = data
 }
 
 function handleAddTable() {
-  openModal();
-  setModalType('add');
+  openModal()
+  setModalType('add')
 }
 
 function handleEditTable(rowId: string) {
-  const findItem = tableData.value.find(item => item.id === rowId);
+  const findItem = tableData.value.find((item) => item.id === rowId)
   if (findItem) {
-    setEditData(findItem);
+    setEditData(findItem)
   }
-  setModalType('edit');
-  openModal();
+  setModalType('edit')
+  openModal()
 }
 
 function handleDeleteTable(rowId: string) {
-  window.$message?.info(`点击了删除，rowId为${rowId}`);
+  window.$message?.info(`Clicked delete, rowId is ${rowId}`)
 }
 
 const pagination: PaginationProps = reactive({
@@ -193,20 +213,19 @@ const pagination: PaginationProps = reactive({
   showSizePicker: true,
   pageSizes: [10, 15, 20, 25, 30],
   onChange: (page: number) => {
-    pagination.page = page;
+    pagination.page = page
   },
   onUpdatePageSize: (pageSize: number) => {
-    pagination.pageSize = pageSize;
-    pagination.page = 1;
-  }
-});
+    pagination.pageSize = pageSize
+    pagination.page = 1
+  },
+})
 
 function init() {
-  getTableData();
+  getTableData()
 }
 
-// 初始化
-init();
+init()
 </script>
 
 <style scoped></style>

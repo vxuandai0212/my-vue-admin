@@ -3,44 +3,44 @@
     <div
       class="background-color-white w%-55 rounded-0-16-16-0 flex justify-center"
     >
-      <div class="mt-108 mb-110 width-371">
+      <div class="mt-108 mb-110 width-372">
         <div
-          class="color-primary-dark font-size-32 font-700 line-height-42 cursor-default"
+          class="color-primary-dark font-size-32 font-700 line-height-42 cursor-default whitespace-pre-line"
         >
-          Welcome to our CRM. Sign Up to getting started.
+          {{ $t('page.signup.welcome') }}
         </div>
         <div
           class="mt-11 color-primary-grey font-size-14 font-400 line-height-21 cursor-default"
         >
-          Enter your details to proceed further
+          {{ $t('page.signup.welcomeDescription') }}
         </div>
         <div class="mt-62">
           <div class="flex flex-col gap-5">
             <v-input
-              label="Full name"
+              :label="$t('page.signup.form.fullname.label')"
               :value="model.fullname"
               :rules="rules.fullname"
               @update:value="setFullname"
               icon="fullname"
-              placeholder="Start typing…"
+              :placeholder="$t('page.signup.form.fullname.placeholder')"
               type="text"
             />
             <v-input
-              label="Email"
+              :label="$t('page.signup.form.email.label')"
               :value="model.email"
               :rules="rules.email"
               @update:value="setEmail"
               icon="email"
-              placeholder="Start typing…"
+              :placeholder="$t('page.signup.form.email.placeholder')"
               type="text"
             />
             <v-input
-              label="Password"
+              :label="$t('page.signup.form.password.label')"
               :value="model.password"
               :rules="rules.password"
               @update:value="setPassword"
               icon="password"
-              placeholder="Start typing…"
+              :placeholder="$t('page.signup.form.password.placeholder')"
               type="password"
             />
           </div>
@@ -50,15 +50,15 @@
             @update:value="setCheckboxValue"
             :options="checkboxOptions"
           />
-          <div class="flex justify-between mt-38">
+          <div class="flex gap-9 mt-38">
             <primary-button
-              class="p-14-64-15-65"
-              label="Sign Up"
+              class="h-46px basis-1/2 grow-0 shrink-0 overflow-hidden flex items-center justify-center"
+              :label="$t('button.signup')"
               @click="handleSignUpBtnClick"
             />
             <resting-button
-              class="p-14-69-15-67"
-              label="Sign In"
+              class="h-46px basis-1/2 grow-0 shrink-0 overflow-hidden flex items-center justify-center"
+              :label="$t('button.login')"
               @click="handleSignInBtnClick"
             />
           </div>
@@ -77,7 +77,7 @@
             <div
               class="color-primary-grey font-size-14 font-400 line-height-21 cursor-default"
             >
-              Or sign in with
+              {{ $t('page.signup.loginWith') }}
             </div>
           </div>
         </div>
@@ -94,21 +94,24 @@
     >
       <svg-signup width="45vw" />
     </div>
-    <!-- todo: select, select autocomplete, tag, datepicker, datetime picker, tab, table, pagination -->
+    <div class="absolute left-30px bottom-30px">
+      <lang-button placement="right" />
+    </div>
   </div>
 </template>
 
 <script setup lang="tsx">
-import { ref } from 'vue'
-import { reactive } from 'vue'
+import { ref, reactive } from 'vue'
 import IconLocalTwitter from '@/components/svg/svg-twitter.vue'
 import IconLocalGoogle from '@/components/svg/svg-google.vue'
 import IconLocalFacebook from '@/components/svg/svg-facebook.vue'
+import { $t } from '@/locales'
+import { useRouterPush } from '@/composables'
 
 const model = reactive({
-  fullname: 'aaa',
-  email: null,
-  password: null,
+  fullname: '',
+  email: '',
+  password: '',
   agreement: false,
 })
 
@@ -117,21 +120,21 @@ const rules: any = {
     {
       required: true,
       trigger: ['blur', 'input'],
-      message: 'Please enter your full name',
+      message: 'page.signup.error.fullname.required',
     },
   ],
   email: [
     {
       required: true,
       trigger: ['blur', 'input'],
-      message: 'Please enter your email',
+      message: 'page.signup.error.email.required',
     },
   ],
   password: [
     {
       required: true,
       trigger: ['blur', 'change'],
-      message: 'Please enter your password',
+      message: 'page.signup.error.password.required',
     },
   ],
 }
@@ -155,7 +158,7 @@ const checkboxOptions = [
   {
     key: 1,
     value: 1,
-    label: 'I agree with terms & conditions',
+    label: 'page.signup.form.agreement.label',
   },
 ]
 
@@ -171,12 +174,14 @@ function setPassword(v: any) {
   model.password = v
 }
 
+const { routerPush } = useRouterPush()
+
 function handleSignUpBtnClick() {
   console.log('handleSignUpBtnClick')
 }
 
 function handleSignInBtnClick() {
-  console.log('handleSignInBtnClick')
+  routerPush({ name: 'login' })
 }
 </script>
 

@@ -35,7 +35,7 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { Icon } from '@/components/icon/v-icon.vue'
+import { LocalIcon } from '@/typings/icon'
 
 defineOptions({ name: 'AdvanceTab' })
 
@@ -43,7 +43,7 @@ export type Tab = {
   key: any
   label: string
   description: string
-  icon: Icon
+  icon: LocalIcon
 }
 
 interface Props {

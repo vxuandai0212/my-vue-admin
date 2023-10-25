@@ -1,13 +1,15 @@
 <template>
   <div
-    class="width-114 height-36 rounded-8 flex justify-center items-center font-size-14 font-700 cursor-default"
+    class="width-145 height-36 rounded-8 flex justify-center items-center font-size-14 font-700 cursor-default"
     :style="{ backgroundColor: `var(--${backgroundColor})`, color: `var(--${textColor})` }"
   >
-    {{ label }}
+    {{ $t(label) }}
   </div>
 </template>
 <script setup lang="ts">
 import {computed} from 'vue'
+import { $t } from '@/locales'
+
 defineOptions({ name: 'Tag' })
 interface Props {
   label: string

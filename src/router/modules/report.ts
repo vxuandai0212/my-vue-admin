@@ -1,7 +1,7 @@
 const report: AuthRoute.Route = {
   name: 'report',
   path: '/report',
-  component: 'custom',
+  component: 'basic',
   children: [
     {
       name: 'report',

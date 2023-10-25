@@ -1,7 +1,7 @@
 const notification: AuthRoute.Route = {
   name: 'notification',
   path: '/notification',
-  component: 'custom',
+  component: 'basic',
   children: [
     {
       name: 'notification',

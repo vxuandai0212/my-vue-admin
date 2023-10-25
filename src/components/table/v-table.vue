@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-col gap-36 h-full">
-    <div class="flex flex-col gap-38 grow shrink overflow-hidden">
+    <div class="flex flex-col gap-22 grow shrink overflow-hidden">
       <div
-        class="flex basis-32px grow-0 shrink-0 overflow-hidden p-14-25-0-45 background-color-FBFBFD cursor-default"
+        class="flex basis-48px grow-0 shrink-0 overflow-hidden p-14-25-0-45 background-color-FBFBFD cursor-default"
       >
         <div
           v-for="item in props.headers"
@@ -12,7 +12,7 @@
             textAlign: item.align ? item.align : 'left',
           }"
         >
-          {{ item.label }}
+          {{ $t(item.label) }}
         </div>
         <div v-if="hasCommand" class="width-80"></div>
       </div>
@@ -103,7 +103,8 @@
 <script setup lang="ts">
 import { ref, computed, h } from 'vue'
 import { Icon } from '@iconify/vue'
-import dayjs from 'dayjs'
+import { $t } from '@/locales'
+import { useDatetime } from '@/composables'
 
 defineOptions({ name: 'VTable' })
 
@@ -124,7 +125,7 @@ function dropdownOnClickOutside() {
 
 export interface Header {
   key?: string
-  label?: string
+  label: string
   type: 'text' | 'tag' | 'icon-text' | 'image-text'
   format?: Format
   style?: 'italic' | 'bold'
@@ -157,7 +158,7 @@ function render(arg: any) {
         selectedId.value = null
       },
     },
-    arg.option.label
+    $t(arg.option.label)
   )
 }
 
@@ -209,12 +210,14 @@ function getJustifyContent(key: any) {
   return align ? align : 'left'
 }
 
+const { datetime } = useDatetime()
+
 function getFormatText(key: any, value: any) {
   if (!isShowField(key)) return
   const format = props.headers.filter((item) => item.key === key)[0].format
   if (format) {
     if (format.type === 'datetime') {
-      return dayjs(value).locale('en').format(format.value)
+      return datetime(value).format(format.value)
     } else if (format.type === 'currency') {
       return new Intl.NumberFormat(format.value.locale, {
         style: format.value.style,

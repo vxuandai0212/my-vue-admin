@@ -1,12 +1,11 @@
-
 export const ROOT_ROUTE: AuthRoute.Route = {
   name: 'root',
   path: '/',
   redirect: import.meta.env.VITE_ROUTE_HOME_PATH,
   meta: {
-    title: 'Root'
-  }
-};
+    title: 'Root',
+  },
+}
 
 export const constantRoutes: AuthRoute.Route[] = [
   ROOT_ROUTE,
@@ -16,8 +15,8 @@ export const constantRoutes: AuthRoute.Route[] = [
     component: 'self',
     meta: {
       title: 'Login',
-      singleLayout: 'blank'
-    }
+      singleLayout: 'blank',
+    },
   },
   {
     name: 'signup',
@@ -25,8 +24,8 @@ export const constantRoutes: AuthRoute.Route[] = [
     component: 'self',
     meta: {
       title: 'Signup',
-      singleLayout: 'blank'
-    }
+      singleLayout: 'blank',
+    },
   },
   {
     name: '403',
@@ -34,8 +33,8 @@ export const constantRoutes: AuthRoute.Route[] = [
     component: 'self',
     meta: {
       title: 'Permission Denied',
-      singleLayout: 'blank'
-    }
+      singleLayout: 'blank',
+    },
   },
   {
     name: '404',
@@ -43,8 +42,8 @@ export const constantRoutes: AuthRoute.Route[] = [
     component: 'self',
     meta: {
       title: 'Page Not Found',
-      singleLayout: 'blank'
-    }
+      singleLayout: 'blank',
+    },
   },
   {
     name: 'not-found',
@@ -52,7 +51,7 @@ export const constantRoutes: AuthRoute.Route[] = [
     component: 'blank',
     meta: {
       title: 'Page Not Found',
-      singleLayout: 'blank'
-    }
-  }
-];
+      singleLayout: 'blank',
+    },
+  },
+]

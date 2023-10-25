@@ -1,4 +1,3 @@
-import { useIconRender } from '@/composables'
 import { $t } from '@/locales'
 import { App } from '@/typings/system'
 
@@ -22,7 +21,6 @@ export function transformAuthRouteToMenu(
         i18nTitle: meta.i18nTitle,
       },
       icon: meta.icon,
-      localIcon: meta.localIcon,
       children: menuChildren,
     })
 
@@ -104,22 +102,11 @@ function hideInMenu(route: AuthRoute.Route) {
 function addPartialProps(config: {
   menu: App.GlobalMenuOption
   icon?: string
-  localIcon?: string
   children?: App.GlobalMenuOption[]
 }) {
-  const { iconRender } = useIconRender()
-
   const item = { ...config.menu }
 
-  const { icon, localIcon, children } = config
-
-  if (localIcon) {
-    Object.assign(item, { iconVNode: iconRender({ localIcon }) })
-  }
-
-  if (icon) {
-    Object.assign(item, { iconVNode: iconRender({ icon }) })
-  }
+  const { icon, children } = config
 
   if (icon) {
     Object.assign(item, { icon })

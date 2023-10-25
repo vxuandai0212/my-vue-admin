@@ -8,19 +8,19 @@
     "modeList": [
       {
         "value": "vertical",
-        "label": "左侧菜单模式"
+        "label": "Vertical"
       },
       {
         "value": "vertical-mix",
-        "label": "左侧菜单混合模式"
+        "label": "Vertical Mix"
       },
       {
         "value": "horizontal",
-        "label": "顶部菜单模式"
+        "label": "Horizontal"
       },
       {
         "value": "horizontal-mix",
-        "label": "顶部菜单混合模式"
+        "label": "Horizontal Mix"
       }
     ]
   },
@@ -28,11 +28,11 @@
   "scrollModeList": [
     {
       "value": "wrapper",
-      "label": "外层滚动"
+      "label": "Wrapper"
     },
     {
       "value": "content",
-      "label": "主体滚动"
+      "label": "Content"
     }
   ],
   "themeColor": "#646cff",
@@ -86,11 +86,11 @@
     "modeList": [
       {
         "value": "chrome",
-        "label": "谷歌风格"
+        "label": "Chrome"
       },
       {
         "value": "button",
-        "label": "按钮风格"
+        "label": "Button"
       }
     ],
     "isCache": true
@@ -108,15 +108,15 @@
     "horizontalPositionList": [
       {
         "value": "flex-start",
-        "label": "居左"
+        "label": "Flex Start"
       },
       {
         "value": "center",
-        "label": "居中"
+        "label": "Center"
       },
       {
         "value": "flex-end",
-        "label": "居右"
+        "label": "Flex End"
       }
     ]
   },
@@ -133,27 +133,27 @@
     "animateModeList": [
       {
         "value": "fade-slide",
-        "label": "滑动"
+        "label": "Fade Slide"
       },
       {
         "value": "fade",
-        "label": "消退"
+        "label": "Fade"
       },
       {
         "value": "fade-bottom",
-        "label": "底部消退"
+        "label": "Fade Bottom"
       },
       {
         "value": "fade-scale",
-        "label": "缩放消退"
+        "label": "Fade Scale"
       },
       {
         "value": "zoom-fade",
-        "label": "渐变"
+        "label": "Zoom Fade"
       },
       {
         "value": "zoom-out",
-        "label": "闪现"
+        "label": "Zoom Out"
       }
     ]
   }

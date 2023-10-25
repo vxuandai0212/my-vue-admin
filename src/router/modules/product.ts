@@ -1,7 +1,7 @@
 const product: AuthRoute.Route = {
   name: 'product',
   path: '/product',
-  component: 'custom',
+  component: 'basic',
   children: [
     {
       name: 'product',

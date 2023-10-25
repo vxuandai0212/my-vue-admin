@@ -1,7 +1,7 @@
 const kanban: AuthRoute.Route = {
   name: 'kanban',
   path: '/kanban',
-  component: 'custom',
+  component: 'basic',
   children: [
     {
       name: 'kanban',

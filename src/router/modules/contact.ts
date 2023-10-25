@@ -1,7 +1,7 @@
 const contact: AuthRoute.Route = {
   name: 'contact',
   path: '/contact',
-  component: 'custom',
+  component: 'basic',
   children: [
     {
       name: 'contact',

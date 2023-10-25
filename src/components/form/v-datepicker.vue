@@ -47,8 +47,8 @@
 </template>
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
-import type { Icon } from '@/components/icon/v-icon.vue'
 import { useClick } from '@/hooks'
+import { LocalIcon } from '@/typings/icon'
 
 defineOptions({ name: 'VDatepicker' })
 
@@ -66,7 +66,7 @@ interface Props {
   label?: string
   value: any
   rules?: any
-  icon?: Icon
+  icon?: LocalIcon
   placeholder?: string
   disabled?: boolean
   type: DatepickerType
@@ -92,12 +92,16 @@ const showDatePicker = ref<boolean>(false)
 
 const { el } = useClick()
 
-watch(el, newValue => {
+watch(el, (newValue) => {
   if (!showDatePicker.value) return
   const inputWrapperEl: any = inputWrapperRef.value
   const datePickerEl: any = (datePickerRef.value as any).$el
   if (!inputWrapperEl && !datePickerEl) return
-  if (showDatePicker.value && !inputWrapperEl.contains(newValue) && !datePickerEl.contains(newValue)) {
+  if (
+    showDatePicker.value &&
+    !inputWrapperEl.contains(newValue) &&
+    !datePickerEl.contains(newValue)
+  ) {
     showDatePicker.value = false
   }
 })

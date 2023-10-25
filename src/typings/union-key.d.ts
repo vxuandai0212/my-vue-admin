@@ -4,7 +4,7 @@ declare namespace UnionKey {
     | 'application/x-www-form-urlencoded'
     | 'multipart/form-data'
 
-  type LayoutComponentType = 'basic' | 'blank' | 'custom'
+  type LayoutComponentType = 'basic' | 'blank'
 
   type LoginModule =
     | 'pwd-login'

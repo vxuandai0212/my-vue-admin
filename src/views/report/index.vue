@@ -239,7 +239,7 @@ import { SimpleTabItem } from '@/components/tab/simple-tab.vue'
 import CategoryCard, {
   CategoryCardProps,
 } from '~/src/components/card/category-card.vue'
-import CustomHeader from '@/layouts/custom-layout/components/custom-header.vue'
+import CustomHeader from '@/layouts/basic-layout/components/custom-header.vue'
 
 const dateFilters: SimpleTabItem[] = [
   {
@@ -325,8 +325,8 @@ const categories: CategoryCardProps[] = [
 
 const progressCards: ProgressCardProps[] = [
   {
-    label: 'Sales',
-    description: 'Week comparison',
+    label: 'page.invoice.progress.sale',
+    description: 'page.invoice.progress.duration.week',
     value: 1.345,
     progressColor: 'primary',
     trend: 'up',
@@ -334,8 +334,8 @@ const progressCards: ProgressCardProps[] = [
     backgroundColor: 'white',
   },
   {
-    label: 'Leads',
-    description: 'Month comparison',
+    label: 'page.invoice.progress.lead',
+    description: 'page.invoice.progress.duration.month',
     value: 3.82,
     progressColor: 'warning',
     trend: 'down',
@@ -343,8 +343,8 @@ const progressCards: ProgressCardProps[] = [
     backgroundColor: 'white',
   },
   {
-    label: 'Income',
-    description: 'Week comparison',
+    label: 'page.invoice.progress.income',
+    description: 'page.invoice.progress.duration.week',
     valuePrefix: '$',
     value: 4690,
     progressColor: 'danger',

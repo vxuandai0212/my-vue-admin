@@ -3,36 +3,35 @@
     <div
       class="background-color-white w%-55 rounded-0-16-16-0 flex justify-center"
     >
-      <div class="mt-108 mb-110 width-405">
+      <div class="mt-108 mb-110 width-406">
         <div
-          class="color-primary-dark font-size-32 font-700 line-height-42 cursor-default"
+          class="color-primary-dark font-size-32 font-700 line-height-42 cursor-default whitespace-pre-line"
         >
-          Welcome to our CRM. <br />
-          Sign In to see latest updates.
+          {{ $t('page.login.welcome') }}
         </div>
         <div
           class="mt-11 color-primary-grey font-size-14 font-400 line-height-21 cursor-default"
         >
-          Enter your details to proceed further
+          {{ $t('page.login.welcomeDescription') }}
         </div>
         <div class="mt-62 width-361">
           <div class="flex flex-col gap-5">
             <v-input
-              label="Email"
+              :label="$t('page.login.form.email.label')"
               :value="model.email"
               :rules="rules.email"
               @update:value="setEmail"
               icon="email"
-              placeholder="Start typing…"
+              :placeholder="$t('page.login.form.email.placeholder')"
               type="text"
             />
             <v-input
-              label="Password"
+              :label="$t('page.login.form.password.label')"
               :value="model.password"
               :rules="rules.password"
               @update:value="setPassword"
               icon="password"
-              placeholder="Start typing…"
+              :placeholder="$t('page.login.form.password.placeholder')"
               type="password"
             />
           </div>
@@ -45,19 +44,19 @@
             <div
               class="cursor-pointer color-primary hover:color-primary-hover font-size-14 font-700"
             >
-              Recover password
+              {{ $t('page.login.form.recoverPassword.label') }}
             </div>
           </div>
-          <div class="flex justify-between mt-38">
+          <div class="flex gap-9 mt-38">
             <primary-button
-              class="p-14-64-15-64"
-              label="Sign In"
+              class="h-46px basis-1/2 grow-0 shrink-0 overflow-hidden flex items-center justify-center"
+              :label="$t('button.login')"
               :loading="auth.loginLoading"
               @click="handleSignInBtnClick"
             />
             <resting-button
-              class="p-14-64-15-64"
-              label="Sign Up"
+              class="h-46px basis-1/2 grow-0 shrink-0 overflow-hidden flex items-center justify-center"
+              :label="$t('button.signup')"
               @click="handleSignUpBtnClick"
             />
           </div>
@@ -76,7 +75,7 @@
             <div
               class="color-primary-grey font-size-14 font-400 line-height-21 cursor-default"
             >
-              Or sign in with
+              {{ $t('page.login.loginWith') }}
             </div>
           </div>
         </div>
@@ -93,16 +92,20 @@
     >
       <svg-login width="45vw" />
     </div>
+    <div class="absolute left-30px bottom-30px">
+      <lang-button placement="right" />
+    </div>
   </div>
 </template>
 
 <script setup lang="tsx">
-import { ref } from 'vue'
-import { reactive } from 'vue'
+import { ref, reactive } from 'vue'
 import IconLocalTwitter from '@/components/svg/svg-twitter.vue'
 import IconLocalGoogle from '@/components/svg/svg-google.vue'
 import IconLocalFacebook from '@/components/svg/svg-facebook.vue'
-import { useAuthStore } from '~/src/store'
+import { useAuthStore } from '@/store'
+import { $t } from '@/locales'
+import { useRouterPush } from '@/composables'
 
 const model = reactive({
   email: '',
@@ -115,14 +118,14 @@ const rules: any = {
     {
       required: true,
       trigger: ['blur', 'input'],
-      message: 'Please enter your email',
+      message: 'page.login.error.email.required',
     },
   ],
   password: [
     {
       required: true,
       trigger: ['blur', 'change'],
-      message: 'Please enter your password',
+      message: 'page.login.error.password.required',
     },
   ],
 }
@@ -142,13 +145,13 @@ function setCheckboxValue(v: any) {
   }
 }
 
-const checkboxOptions = [
+const checkboxOptions = reactive([
   {
     key: 1,
     value: 1,
-    label: 'Remember me',
+    label: 'page.login.form.rememberLogin.label',
   },
-]
+])
 
 function setEmail(v: any) {
   model.email = v
@@ -158,8 +161,10 @@ function setPassword(v: any) {
   model.password = v
 }
 
+const { routerPush } = useRouterPush()
+
 function handleSignUpBtnClick() {
-  console.log('handleSignUpBtnClick')
+  routerPush({ name: 'signup' })
 }
 
 const auth = useAuthStore()

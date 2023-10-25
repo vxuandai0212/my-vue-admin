@@ -28,9 +28,6 @@ export function transformAuthRouteToVueRoute(item: AuthRoute.Route) {
       blank() {
         itemRoute.component = getLayoutComponent('blank')
       },
-      custom() {
-        itemRoute.component = getLayoutComponent('custom')
-      },
       multi() {
         if (hasChildren(item)) {
           Object.assign(itemRoute, { meta: { ...itemRoute.meta, multi: true } })
