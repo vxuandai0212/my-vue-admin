@@ -1,9 +1,9 @@
 <template>
-  <div class="flex background-color-3061EA w-screen min-h-screen">
+  <div class="flex background-color-3061EA w-screen h-screen overflow-hidden">
     <div
-      class="background-color-white w%-55 rounded-0-16-16-0 flex justify-center"
+      class="background-color-white grow shrink overflow-hidden rounded-0-16-16-0 flex justify-center"
     >
-      <div class="mt-108 mb-110 width-406">
+      <div class="mt-108 lg:mt-40 mb-110 width-406">
         <div
           class="color-primary-dark font-size-32 font-700 line-height-42 cursor-default whitespace-pre-line"
         >
@@ -82,6 +82,7 @@
       </div>
     </div>
     <div
+      class="overflow-hidden basis-9/20 <md:basis-0"
       style="
         background: radial-gradient(
           98.58% 98.58% at 57.43% 48.15%,
