@@ -32,7 +32,6 @@ declare module 'vue' {
     NLoadingBarProvider: typeof import('naive-ui')['NLoadingBarProvider']
     NMessageProvider: typeof import('naive-ui')['NMessageProvider']
     NNotificationProvider: typeof import('naive-ui')['NNotificationProvider']
-    NProgress: typeof import('naive-ui')['NProgress']
     PieChart: typeof import('./../components/chart/pie-chart.vue')['default']
     PolarBarChart: typeof import('./../components/chart/polar-bar-chart.vue')['default']
     PrimaryButton: typeof import('./../components/button/primary-button.vue')['default']

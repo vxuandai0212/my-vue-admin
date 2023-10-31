@@ -3,10 +3,10 @@
     class="flex background-color-3061EA w-screen h-screen overflow-y-no-scrollbar <lg:landscape:h-auto"
   >
     <div
-      class="background-color-white grow shrink rounded-0-16-16-0 <lg:portrait:rounded-0 flex flex-col items-center justify-between"
+      class="background-color-white grow shrink rounded-0-16-16-0 <lg:portrait:rounded-0 flex flex-col items-center justify-between gap-50"
     >
       <div
-        class="2xl:mt-108 xl:mt-55 lg:mt-40 md:portrait:mt-140 <md:portrait:mt-20 md:landscape:mt-30 mb-110 width-406 <md:portrait:width-306"
+        class="2xl:mt-108 xl:mt-55 lg:mt-40 md:portrait:mt-140 <md:portrait:mt-20 md:landscape:mt-30 width-406 <md:portrait:width-306"
       >
         <div
           class="color-primary-dark font-size-32 font-700 line-height-42 cursor-default whitespace-pre-line"
