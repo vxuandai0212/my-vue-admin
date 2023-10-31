@@ -246,6 +246,9 @@ declare namespace I18nType {
           product: string
           invoice: string
         }
+      },
+      language: {
+        change: string
       }
     }
     routes: {

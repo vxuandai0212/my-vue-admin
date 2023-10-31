@@ -35,6 +35,9 @@ const locale: I18nType.Schema = {
         invoice: 'New Invoice',
       },
     },
+    language: {
+      change: 'Change language'
+    }
   },
   routes: {
     document: {

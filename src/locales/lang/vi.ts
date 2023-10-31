@@ -35,6 +35,9 @@ const locale: I18nType.Schema = {
         invoice: 'Thêm hóa đơn',
       },
     },
+    language: {
+      change: 'Chọn ngôn ngữ'
+    }
   },
   routes: {
     document: {

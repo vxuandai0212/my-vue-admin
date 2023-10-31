@@ -13,21 +13,33 @@
     "
   >
     <div
-      class="cursor-pointer flex items-center justify-center width-36 height-36 rounded-6"
-      :style="[
-        showDropdown
-          ? 'background-color: var(--primary)'
-          : 'background-color: var(--background-3)',
-      ]"
+      class="flex items-center gap-10 cursor-pointer"
       @click="showDropdown = true"
     >
-      <v-icon
-        class="width-16 height-16"
+      <div
+        class="flex items-center justify-center width-36 height-36 rounded-6"
         :style="[
-          showDropdown ? 'fill: var(--white)' : 'fill: var(--primary-grey)',
+          showDropdown
+            ? 'background-color: var(--primary)'
+            : 'background-color: var(--background-3)',
         ]"
-        icon="language"
-      />
+      >
+        <v-icon
+          class="width-16 height-16"
+          :style="[
+            showDropdown ? 'fill: var(--white)' : 'fill: var(--primary-grey)',
+          ]"
+          icon="language"
+        />
+      </div>
+      <div
+        class="font-size-14 font-400 line-height-21 lg:hidden"
+        :style="[
+          showDropdown ? 'color: var(--primary)' : 'color: var(--primary-grey)',
+        ]"
+      >
+        {{ $t('common.language.change') }}
+      </div>
     </div>
   </n-dropdown>
 </template>
@@ -38,6 +50,7 @@ import { useI18n } from 'vue-i18n'
 import { localStg } from '@/utils'
 import { I18nType } from '@/typings/system'
 import { DropdownRenderOption } from 'naive-ui/es/dropdown/src/interface'
+import { $t } from '@/locales'
 
 defineOptions({ name: 'LangButton' })
 

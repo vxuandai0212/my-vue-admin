@@ -1,9 +1,13 @@
 <template>
-  <div class="flex background-color-3061EA w-screen h-screen overflow-hidden">
+  <div
+    class="flex background-color-3061EA w-screen h-screen overflow-y-no-scrollbar <lg:landscape:h-auto"
+  >
     <div
-      class="background-color-white grow shrink overflow-hidden rounded-0-16-16-0 flex justify-center"
+      class="background-color-white grow shrink rounded-0-16-16-0 <lg:portrait:rounded-0 flex flex-col items-center justify-between"
     >
-      <div class="mt-108 lg:mt-40 mb-110 width-406">
+      <div
+        class="2xl:mt-108 xl:mt-55 lg:mt-40 md:portrait:mt-140 <md:portrait:mt-20 md:landscape:mt-30 mb-110 width-406 <md:portrait:width-306"
+      >
         <div
           class="color-primary-dark font-size-32 font-700 line-height-42 cursor-default whitespace-pre-line"
         >
@@ -14,7 +18,7 @@
         >
           {{ $t('page.login.welcomeDescription') }}
         </div>
-        <div class="mt-62 width-361">
+        <div class="mt-62 width-361 <md:portrait:width-290">
           <div class="flex flex-col gap-5">
             <v-input
               :label="$t('page.login.form.email.label')"
@@ -80,9 +84,10 @@
           </div>
         </div>
       </div>
+      <div class="self-start m-0-0-30-30"><lang-button placement="right" /></div>
     </div>
     <div
-      class="overflow-hidden basis-9/20 <md:basis-0"
+      class="basis-9/20 <lg:portrait:basis-0"
       style="
         background: radial-gradient(
           98.58% 98.58% at 57.43% 48.15%,
@@ -91,10 +96,7 @@
         );
       "
     >
-      <svg-login width="45vw" />
-    </div>
-    <div class="absolute left-30px bottom-30px">
-      <lang-button placement="right" />
+      <svg-login class="h-full w-full" />
     </div>
   </div>
 </template>
