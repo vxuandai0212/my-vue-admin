@@ -1,7 +1,7 @@
 <template>
   <div class="fixed-center flex-col">
-    <img src="/vite.svg" alt="Logo">
-    <div class="w-56px h-56px my-36px">
+    <div class="w-56px h-56px my-36px relative">
+      <img class="absolute top-14 left-11" src="/vite.svg" alt="Logo">
       <div class="relative h-full animate-spin">
         <div
           v-for="(item, index) in loadingClasses"

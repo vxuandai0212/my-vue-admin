@@ -2,7 +2,7 @@ import { I18nType } from '@/typings/system'
 
 const locale: I18nType.Schema = {
   system: {
-    title: 'SoybeanAdmin',
+    title: 'My Vue Admin',
   },
   common: {
     add: 'Add',
