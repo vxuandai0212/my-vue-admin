@@ -5,6 +5,7 @@
 import { ref } from 'vue'
 import type { Ref } from 'vue'
 import { type ECOption, useEcharts } from '@/composables'
+import { $t } from '@/locales'
 
 defineOptions({ name: 'LineChart' })
 
@@ -19,7 +20,7 @@ const lineOptions = ref<ECOption>({
     },
   },
   legend: {
-    data: ['下载量', '注册数'],
+    data: [$t('page.invoice.table.header.customer'), $t('page.invoice.table.header.amount')],
     textStyle: {
       fontStyle: 'normal',
       fontFamily: 'Lato',
@@ -71,7 +72,7 @@ const lineOptions = ref<ECOption>({
   series: [
     {
       color: '#8e9dff',
-      name: '下载量',
+      name: $t('page.invoice.table.header.customer'),
       type: 'line',
       smooth: true,
       stack: 'Total',
@@ -101,7 +102,7 @@ const lineOptions = ref<ECOption>({
     },
     {
       color: '#26deca',
-      name: '注册数',
+      name: $t('page.invoice.table.header.amount'),
       type: 'line',
       smooth: true,
       stack: 'Total',

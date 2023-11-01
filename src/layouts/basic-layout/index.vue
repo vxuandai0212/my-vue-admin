@@ -1,6 +1,7 @@
 <template>
   <div class="background-color-background-light flex h-screen overflow-hidden">
     <div
+      v-if="!isMobile"
       class="pb-10 background-color-white border-right-1 border-right-color-outline border-right-solid transition flex flex-col grow-0 shrink-0"
       :class="[collapsed ? 'basis-89px' : 'basis-242px']"
     >
@@ -119,8 +120,11 @@ import { translateCustomMenuLabel } from '@/utils'
 import { App } from '@/typings/system'
 import { useRouterPush } from '@/composables'
 import { $t } from '@/locales'
+import { useScreen } from '@/composables'
 
 defineOptions({ name: 'BasicLayout' })
+
+const { isMobile } = useScreen()
 
 const { routerPush } = useRouterPush()
 

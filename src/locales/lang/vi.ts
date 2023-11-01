@@ -332,7 +332,7 @@ const locale: I18nType.Schema = {
         unpaid: 'Chưa thanh toán',
         paid: 'Đã thanh toán',
         sale: 'Bán hàng',
-        lead: 'Khách hàng tiềm năng',
+        lead: 'Khách hàng',
         income: 'Lợi nhuận',
         duration: {
           week: 'Trong tuần',

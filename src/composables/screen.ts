@@ -3,15 +3,15 @@ import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 export function useScreen() {
   const breakpoints = useBreakpoints(breakpointsTailwind)
 
-  const isLaptop = breakpoints.smaller('lg')
+  const isNotPC = breakpoints.smaller('2xl')
 
-  const isTablet = breakpoints.smaller('md')
+  const isTablet = breakpoints.smaller('xl')
 
-  const isMobile = breakpoints.smaller('sm')
+  const isMobile = breakpoints.smaller('lg')
 
   return {
     isMobile,
     isTablet,
-    isLaptop
+    isNotPC
   }
 }

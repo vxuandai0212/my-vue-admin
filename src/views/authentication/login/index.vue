@@ -1,12 +1,12 @@
 <template>
   <div
-    class="flex background-color-3061EA w-screen h-screen overflow-y-no-scrollbar <lg:landscape:h-auto"
+    class="flex background-color-3061EA w-screen h-screen overflow-y-no-scrollbar <2xl:landscape:h-auto"
   >
     <div
       class="background-color-white grow shrink rounded-0-16-16-0 <lg:portrait:rounded-0 flex flex-col items-center justify-between gap-50"
     >
       <div
-        class="2xl:mt-108 xl:mt-55 lg:mt-40 md:portrait:mt-140 <md:portrait:mt-20 md:landscape:mt-30 width-406 <md:portrait:width-306"
+        class="2xl:mt-108 xl:mt-55 lg:mt-40 <md:portrait:mt-20 <lg:landscape:mt-30 width-406 <md:portrait:width-306"
       >
         <div
           class="color-primary-dark font-size-32 font-700 line-height-42 cursor-default whitespace-pre-line"
@@ -84,7 +84,7 @@
           </div>
         </div>
       </div>
-      <div class="self-start m-0-0-30-30"><lang-button placement="right" /></div>
+      <div class="self-start m-0-0-30-30"><lang-button placement="right" show-button-label /></div>
     </div>
     <div
       class="basis-9/20 <lg:portrait:basis-0"

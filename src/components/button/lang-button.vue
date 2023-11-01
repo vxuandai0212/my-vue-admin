@@ -33,6 +33,7 @@
         />
       </div>
       <div
+        v-if="showButtonLabel"
         class="font-size-14 font-400 line-height-21 lg:hidden"
         :style="[
           showDropdown ? 'color: var(--primary)' : 'color: var(--primary-grey)',
@@ -70,10 +71,12 @@ type PopoverPlacement =
 
 interface LangButtonProps {
   placement?: PopoverPlacement
+  showButtonLabel?: boolean
 }
 
 const props = withDefaults(defineProps<LangButtonProps>(), {
   placement: 'bottom',
+  showButtonLabel: false
 })
 
 const showDropdown = ref<boolean>(false)
