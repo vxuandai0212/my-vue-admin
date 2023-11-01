@@ -16,6 +16,7 @@ declare module 'vue' {
     CountTo: typeof import('./../components/custom/count-to.vue')['default']
     EventCard: typeof import('./../components/card/event-card.vue')['default']
     ExceptionBase: typeof import('./../components/common/exception-base.vue')['default']
+    HamburgerMenu: typeof import('./../components/button/hamburger-menu.vue')['default']
     HoverContainer: typeof import('./../components/common/hover-container.vue')['default']
     IconButton: typeof import('./../components/button/icon-button.vue')['default']
     ImageVerify: typeof import('./../components/custom/image-verify.vue')['default']

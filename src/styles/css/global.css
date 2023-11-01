@@ -35,6 +35,20 @@ body,
   overflow-y: auto;
 }
 
+.overflow-x-no-scrollbar {
+  overflow: hidden;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.overflow-x-no-scrollbar::-webkit-scrollbar {
+  display: none
+}
+
+.overflow-x-no-scrollbar:hover {
+  overflow-x: auto;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
 }

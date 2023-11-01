@@ -32,6 +32,7 @@ const pieOptions = ref<ECOption>({
         borderColor: '#fff',
         borderWidth: 1,
       },
+      bottom: 30,
       label: {
         show: false,
         position: 'center',

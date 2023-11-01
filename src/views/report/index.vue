@@ -6,23 +6,25 @@
       <div class="grid grid-cols-3">
         <teleport v-if="isMounted" to="#sider" :disabled="!isNotPC">
           <div
-            class="col-span-3 flex 2xl:flex-col 2xl:gap-5 gap-10 <2xl:items-center 2xl:mt-55 2xl:p-28-23-10-28 p-28-23-28-28 background-color-white rounded-12"
+            class="col-span-3 flex 2xl:flex-col 2xl:gap-5 gap-15 <2xl:items-center 2xl:mt-55 2xl:p-28-23-10-28 p-28-23-28-28 background-color-white rounded-12"
           >
             <img
               class="2xl:width-98 2xl:height-98 width-40 height-40"
               src="@/assets/images/company.png"
               alt="Company"
             />
-            <div
-              class="color-primary-dark font-size-22 font-400"
-              style="letter-spacing: 0.4px"
-            >
-              Welcome,
-            </div>
-            <div
-              class="color-primary-dark font-size-26 font-700 line-height-38"
-            >
-              WhiteUI.Store
+            <div class="flex 2xl:flex-col <md:flex-col <md:items-start <2xl:items-center gap-5">
+              <div
+                class="color-primary-dark font-size-22 font-400"
+                style="letter-spacing: 0.4px"
+              >
+                Welcome,
+              </div>
+              <div
+                class="color-primary-dark font-size-26 font-700 line-height-38"
+              >
+                WhiteUI.Store
+              </div>
             </div>
           </div>
           <div
@@ -87,15 +89,15 @@
           <div
             class="col-span-2 <lg:col-span-3 flex flex-col gap-28 p-28-0-28-0 background-color-white rounded-12"
           >
-            <div class="flex justify-between items-center p-0-23-0-28">
+            <div class="flex justify-between items-center p-0-23-0-28 <md:gap-20">
               <div
                 class="color-primary-dark font-size-18 font-700 line-height-27"
               >
                 Orders
               </div>
-              <div class="flex gap-8">
+              <div class="flex gap-8 items-center overflow-x-no-scrollbar">
                 <simple-tab :tabs="dateFilters" init-active-tab="day" />
-                <icon-button icon="date" />
+                <icon-button icon="date" class="grow-0 shrink-0" />
               </div>
             </div>
             <line-chart class="height-320 grow" />
@@ -226,15 +228,15 @@
           <div
             class="col-span-2 <lg:col-span-3 flex flex-col gap-28 p-28-0-28-0 background-color-white rounded-12"
           >
-            <div class="flex justify-between items-center p-0-23-0-28">
+            <div class="flex justify-between items-center p-0-23-0-28 <md:gap-20">
               <div
-                class="color-primary-dark font-size-18 font-700 line-height-27"
+                class="color-primary-dark font-size-18 font-700 line-height-27 grow-0 shrink-0"
               >
                 Your Sales
               </div>
-              <div class="flex gap-8">
+              <div class="flex gap-8 items-center overflow-x-no-scrollbar">
                 <simple-tab :tabs="dateFilters" init-active-tab="day" />
-                <icon-button icon="date" />
+                <icon-button icon="date" class="grow-0 shrink-0" />
               </div>
             </div>
             <line-chart class="height-320 grow" />
@@ -242,9 +244,9 @@
           <div
             class="col-span-1 <lg:col-span-3 flex flex-col gap-28 p-28-0-28-0 background-color-white rounded-12"
           >
-            <div class="flex gap-8 p-0-23-0-28">
+            <div class="flex gap-8 p-0-23-0-28 items-center overflow-x-no-scrollbar">
               <simple-tab :tabs="dateFilters" init-active-tab="day" />
-              <icon-button icon="date" />
+              <icon-button icon="date" class="grow-0 shrink-0" />
             </div>
             <pie-chart class="height-320 grow" />
           </div>

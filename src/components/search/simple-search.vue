@@ -19,7 +19,7 @@
           ? 'background: white;box-shadow: 0px 6px 20px 0px rgba(153, 155, 168, 0.1)'
           : 'background: rgba(129, 129, 165, 0.1)',
       ]"
-      class="flex items-center height-36 rounded-6 cursor-pointer transition"
+      class="flex items-center height-36 rounded-6 <md:hidden cursor-pointer transition"
     >
       <input
         ref="inputRef"

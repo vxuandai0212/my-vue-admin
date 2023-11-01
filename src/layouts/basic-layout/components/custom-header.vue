@@ -1,7 +1,8 @@
 <template>
   <div class="flex justify-between items-center height-84">
     <div class="flex items-center">
-      <icon-button icon="hamburger" @click="app.toggleSiderCollapse" />
+      <icon-button v-if="!isMobile" icon="hamburger" @click="app.toggleSiderCollapse" />
+      <hamburger-menu v-else />
       <div
         class="ml-20 color-primary-dark font-size-20 font-700 line-height-32 cursor-default"
       >
@@ -21,7 +22,9 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useAppStore } from '@/store'
 import { $t } from '@/locales'
-import { usePermission } from '@/composables'
+import { usePermission, useScreen } from '@/composables'
+
+const { isMobile } = useScreen()
 
 const route = useRoute()
 
