@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col gap-36 h-full">
-    <div class="flex flex-col gap-22 grow shrink overflow-hidden">
+  <div class="flex flex-col gap-36 h-full min-w-1000px">
+    <div class="flex flex-col gap-22 grow shrink">
       <div
         class="flex basis-48px grow-0 shrink-0 overflow-hidden p-14-25-0-45 background-color-FBFBFD cursor-default"
       >

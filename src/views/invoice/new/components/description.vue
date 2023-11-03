@@ -15,10 +15,25 @@
             </div>
           </div>
           <div class="flex flex-col gap-12">
-            <v-input class="flex-grow" label="Item description" icon="cart" placeholder="Start typing..." />
+            <v-input
+              class="flex-grow"
+              label="Item description"
+              icon="cart"
+              placeholder="Start typing..."
+            />
             <div class="flex gap-30">
-              <v-input class="flex-grow" label="Hours" icon="hour" placeholder="Start typing..." />
-              <v-input class="flex-grow" label="Rate" icon="money" placeholder="Start typing..." />
+              <v-input
+                class="flex-grow"
+                label="Hours"
+                icon="hour"
+                placeholder="Start typing..."
+              />
+              <v-input
+                class="flex-grow"
+                label="Rate"
+                icon="money"
+                placeholder="Start typing..."
+              />
             </div>
           </div>
         </div>
@@ -34,12 +49,25 @@
               </div>
             </div>
           </div>
-          <div class="flex flex-col gap-12">
-            <v-input class="flex-grow" label="Item description" icon="cart" placeholder="Start typing..." />
-            <div class="flex gap-30">
-              <v-input  label="Hours" icon="hour" placeholder="Start typing..." class="grow"/>
-              <v-input  label="Rate" icon="money" placeholder="Start typing..." class="grow"/>
-            </div>
+          <div class="grid grid-cols-2 gap-y-12px gap-x-30px">
+            <v-input
+              class="col-span-2"
+              label="Item description"
+              icon="cart"
+              placeholder="Start typing..."
+            />
+            <v-input
+              class="col-span-1 <md:col-span-2"
+              label="Hours"
+              icon="hour"
+              placeholder="Start typing..."
+            />
+            <v-input
+              class="col-span-1 <md:col-span-2"
+              label="Rate"
+              icon="money"
+              placeholder="Start typing..."
+            />
           </div>
         </div>
       </div>
