@@ -13,7 +13,9 @@
               src="@/assets/images/company.png"
               alt="Company"
             />
-            <div class="flex 2xl:flex-col <md:flex-col <md:items-start <2xl:items-center gap-5">
+            <div
+              class="flex 2xl:flex-col <md:flex-col <md:items-start <2xl:items-center gap-5"
+            >
               <div
                 class="color-primary-dark font-size-22 font-400"
                 style="letter-spacing: 0.4px"
@@ -74,11 +76,9 @@
         </teleport>
       </div>
     </div>
-    <div
-      class="p-0-28-28-28 grow shrink overflow-hidden flex flex-col h-screen"
-    >
+    <div class="p-0-28-0-28 grow shrink overflow-hidden flex flex-col h-screen">
       <custom-header class="basis-84px grow-0 shrink-0 overflow-hidden" />
-      <div class="flex flex-col gap-28 overflow-y-no-scrollbar">
+      <div class="flex flex-col gap-28 overflow-y-no-scrollbar p-0-0-28-0">
         <div class="grid grid-cols-3 gap-28 2xl:hidden" id="sider"></div>
         <div class="grid grid-cols-3 gap-28">
           <progress-card
@@ -89,7 +89,9 @@
           <div
             class="col-span-2 <lg:col-span-3 flex flex-col gap-28 p-28-0-28-0 background-color-white rounded-12"
           >
-            <div class="flex justify-between items-center p-0-23-0-28 <md:gap-20">
+            <div
+              class="flex justify-between items-center p-0-23-0-28 <md:gap-20"
+            >
               <div
                 class="color-primary-dark font-size-18 font-700 line-height-27"
               >
@@ -228,7 +230,9 @@
           <div
             class="col-span-2 <lg:col-span-3 flex flex-col gap-28 p-28-0-28-0 background-color-white rounded-12"
           >
-            <div class="flex justify-between items-center p-0-23-0-28 <md:gap-20">
+            <div
+              class="flex justify-between items-center p-0-23-0-28 <md:gap-20"
+            >
               <div
                 class="color-primary-dark font-size-18 font-700 line-height-27 grow-0 shrink-0"
               >
@@ -244,7 +248,9 @@
           <div
             class="col-span-1 <lg:col-span-3 flex flex-col gap-28 p-28-0-28-0 background-color-white rounded-12"
           >
-            <div class="flex gap-8 p-0-23-0-28 items-center overflow-x-no-scrollbar">
+            <div
+              class="flex gap-8 p-0-23-0-28 items-center overflow-x-no-scrollbar"
+            >
               <simple-tab :tabs="dateFilters" init-active-tab="day" />
               <icon-button icon="date" class="grow-0 shrink-0" />
             </div>

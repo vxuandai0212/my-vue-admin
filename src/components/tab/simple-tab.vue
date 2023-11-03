@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-6 overflow-x-no-scrollbar p-0-25-0-25">
+  <div class="flex gap-6 overflow-x-no-scrollbar">
     <div
       v-for="item in tabs"
       class="grow-0 shrink-0 hover:background-color-info hover:border-color-info hover:color-white cursor-pointer rounded-8 border-1 border-solid p-11-29-11-29 font-size-14 font-700 transition"

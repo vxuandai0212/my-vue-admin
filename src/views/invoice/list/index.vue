@@ -54,7 +54,9 @@
         <div
           class="flex flex-col grow-0 shrink-0 p-20-0-25-0 gap-25 rounded-12 background-color-white"
         >
-          <simple-tab :tabs="tabs" :initActiveTab="tabs[0]['value']" />
+          <div class="p-0-25-0-25">
+            <simple-tab :tabs="tabs" :initActiveTab="tabs[0]['value']" />
+          </div>
           <div class="overflow-x-no-scrollbar">
             <v-table
               @invoice:view="handleCreateInvoice"
