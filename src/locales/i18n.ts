@@ -6,7 +6,7 @@ import messages from './locale'
 import { I18nType } from '@/typings/system'
 
 const i18n = createI18n({
-  locale: localStg.get('lang') || 'zh-CN',
+  locale: localStg.get('lang') || 'vi',
   fallbackLocale: 'en',
   messages,
   legacy: false,
