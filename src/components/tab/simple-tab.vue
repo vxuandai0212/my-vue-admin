@@ -32,9 +32,16 @@ export interface SimpleTabProps {
 
 const props = withDefaults(defineProps<SimpleTabProps>(), {})
 
+interface Emits {
+  (e: 'update:value', value: any): void
+}
+
+const emit = defineEmits<Emits>()
+
 const activeTab = ref<string>(props.initActiveTab)
 
 function chooseTab(v: any) {
   activeTab.value = v
+  emit('update:value', v)
 }
 </script>

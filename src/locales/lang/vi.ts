@@ -37,6 +37,11 @@ const locale: I18nType.Schema = {
     },
     language: {
       change: 'Chọn ngôn ngữ'
+    },
+    tab: {
+      day: 'Hôm nay',
+      week: 'Trong tuần',
+      month: 'Trong tháng'
     }
   },
   routes: {
@@ -385,6 +390,15 @@ const locale: I18nType.Schema = {
         activity: 'Hoạt động',
       },
     },
+    report: {
+      visitChart: {
+        title: 'Lượt khách tham quan',
+        legend: {
+          abroad: 'Du lịch nước ngoài',
+          domestic: 'Du lịch trong nước'
+        }
+      }
+    }
   },
 }
 

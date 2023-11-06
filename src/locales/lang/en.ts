@@ -37,6 +37,11 @@ const locale: I18nType.Schema = {
     },
     language: {
       change: 'Change language'
+    },
+    tab: {
+      day: 'Day',
+      week: 'Week',
+      month: 'Month'
     }
   },
   routes: {
@@ -385,6 +390,15 @@ const locale: I18nType.Schema = {
         activity: 'Activities',
       },
     },
+    report: {
+      visitChart: {
+        title: 'Visits',
+        legend: {
+          abroad: 'Abroad tourism',
+          domestic: 'Domestic tourism'
+        }
+      }
+    }
   },
 }
 

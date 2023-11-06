@@ -1,5 +1,7 @@
 <template>
-  <component :is="LOADING[props.type]" />
+  <div class="w-full h-full flex items-center justify-center">
+    <component :is="LOADING[props.type]" />
+  </div>
 </template>
 <script setup lang="ts">
 import BarLoading from '@/components/loading/bar-loading.vue'
@@ -20,6 +22,6 @@ const LOADING: Loading = {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  type: 'bar-loading'
+  type: 'bar-loading',
 })
 </script>

@@ -20,3 +20,8 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
 # Icon
 ## Remote icon
 https://icones.js.org/
+
+# Component state
+- Loading state
+- Empty state
+- Full content state

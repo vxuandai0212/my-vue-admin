@@ -86,24 +86,9 @@
             v-for="item in progressCards"
             v-bind="item"
           />
-          <div
+          <visit-chart
             class="col-span-2 <lg:col-span-3 flex flex-col gap-28 p-28-0-28-0 background-color-white rounded-12"
-          >
-            <div
-              class="flex justify-between items-center p-0-23-0-28 <md:gap-20"
-            >
-              <div
-                class="color-primary-dark font-size-18 font-700 line-height-27"
-              >
-                Orders
-              </div>
-              <div class="flex gap-8 items-center overflow-x-no-scrollbar">
-                <simple-tab :tabs="dateFilters" init-active-tab="day" />
-                <icon-button icon="date" class="grow-0 shrink-0" />
-              </div>
-            </div>
-            <line-chart class="height-320 grow" />
-          </div>
+          />
           <div
             class="col-span-1 <lg:col-span-3 flex flex-col gap-28 p-28-0-28-0 background-color-white rounded-12"
           >
@@ -115,7 +100,7 @@
               </div>
               <icon-button icon="date" />
             </div>
-            <line-chart class="height-320 grow" />
+            <!-- <line-chart class="height-320 grow" /> -->
           </div>
           <div
             class="pt-20 gap-20 col-span-1 <lg:col-span-3 flex flex-col background-color-white rounded-12"
@@ -195,7 +180,7 @@
           <div
             class="pt-20 col-span-1 <lg:col-span-3 flex flex-col gap-20 background-color-white rounded-12"
           >
-            <line-chart class="height-270 grow" />
+            <!-- <line-chart class="height-270 grow" /> -->
             <div
               class="height-75 border-top-1 border-top-solid border-top-color-border flex"
             >
@@ -243,7 +228,7 @@
                 <icon-button icon="date" class="grow-0 shrink-0" />
               </div>
             </div>
-            <line-chart class="height-320 grow" />
+            <!-- <line-chart class="height-320 grow" /> -->
           </div>
           <div
             class="col-span-1 <lg:col-span-3 flex flex-col gap-28 p-28-0-28-0 background-color-white rounded-12"
@@ -274,6 +259,7 @@ import CustomHeader from '@/layouts/basic-layout/components/custom-header.vue'
 import { useScreen } from '@/composables'
 import { ref } from 'vue'
 import { onMounted } from 'vue'
+import VisitChart from '@/views/report/components/visit-chart.vue'
 
 const { isNotPC } = useScreen()
 const isMounted = ref<boolean>(false)

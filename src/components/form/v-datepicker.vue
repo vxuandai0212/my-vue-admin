@@ -31,8 +31,8 @@
     </div>
     <n-date-picker
       ref="datePickerRef"
-      :class="[showDatePicker ? 'opacity-100' : 'opacity-0']"
-      class="absolute border-1 border-solid border-color-resting-outline transition z-1"
+      :class="[showDatePicker ? 'opacity-100 z-1' : 'opacity-0 -z-1']"
+      class="absolute border-1 border-solid border-color-resting-outline transition"
       @confirm="() => (showDatePicker = false)"
       panel
       :type="type"

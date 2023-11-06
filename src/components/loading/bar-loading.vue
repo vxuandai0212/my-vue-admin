@@ -18,32 +18,32 @@ defineOptions({ name: 'BarLoading'})
   justify-content: space-evenly;
   width: 4.5em;
   height: 3.5em;
-  gap: 0.3em;
+  gap: 0.1em;
 }
 #bar1 {
-  animation-delay: 0.2s;
+  animation-delay: 0.1s;
 }
 #bar2 {
-  animation-delay: 0.4s;
+  animation-delay: 0.2s;
 }
 #bar3 {
-  animation-delay: 0.6s;
+  animation-delay: 0.3s;
 }
 #bar4 {
-  animation-delay: 0.8s;
+  animation-delay: 0.4s;
 }
 #bar5 {
-  animation-delay: 1s;
+  animation-delay: 0.5s;
 }
 #bar6 {
-  animation-delay: 1.2s;
+  animation-delay: 0.6s;
 }
 #bar7 {
-  animation-delay: 1.5s;
+  animation-delay: 0.7s;
 }
 .bar {
-  width: 1em;
-  height: auto;
+  width: 2px;
+  height: 10px;
   opacity: 0;
   background-color: gray;
   border-radius: 100%;

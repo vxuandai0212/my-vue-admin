@@ -249,6 +249,11 @@ declare namespace I18nType {
       },
       language: {
         change: string
+      },
+      tab: {
+        day: string
+        week: string
+        month: string
       }
     }
     routes: {
@@ -594,6 +599,15 @@ declare namespace I18nType {
             total: string
           }
           activity: string
+        }
+      }
+      report: {
+        visitChart: {
+          title: string
+          legend: {
+            abroad: string
+            domestic: string
+          }
         }
       }
     }

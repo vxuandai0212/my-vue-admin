@@ -1,8 +1,31 @@
 import type { MockMethod } from 'vite-plugin-mock'
 import { mock } from 'mockjs'
 import { Service } from '@/typings/system'
-import { useDatetime } from '@/composables'
-import { visitModel } from '~/mock/model'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import 'dayjs/locale/vi'
+
+dayjs.extend(relativeTime)
+
+export function useDatetime() {
+  function datetime(value: any) {
+    return dayjs(value).locale('vi')
+  }
+
+  function now() {
+    return dayjs().locale('vi')
+  }
+
+  function timeFromNow(value: any) {
+    return dayjs(value).locale('vi').fromNow(true)
+  }
+
+  return {
+    now,
+    datetime,
+    timeFromNow,
+  }
+}
 
 const { now, datetime } = useDatetime()
 
@@ -141,10 +164,10 @@ const apis: MockMethod[] = [
     ): Service.MockServiceResult<ApiReport.Visit | null> => {
       const fromDate: number = options.body.fromDate
       const toDate: number = options.body.toDate
-      // nếu hơn 48 tiếng thì hiển thị theo ngày
-      // nếu nhỏ hơn hoặc bằng 48 tiếng thì hiển thị theo giờ
-      // nếu nhỏ hơn hoặc bằng 1h giờ thì hiển thị theo phút
-      // nếu nhỏ hơn hoặc bằng 5 phút thì hiển thị theo giây
+      // > 48 hours -> group by day
+      // <= 48 hours -> group by hour
+      // <= 1h hour -> group by minute
+      // <= 5 mins -> group by second
       if (!fromDate || !toDate) {
         return {
           code: 1000,
@@ -156,41 +179,14 @@ const apis: MockMethod[] = [
 
       let timeGroupBy: TimeGroupBy = 'day'
 
-      if (timeDiff <= 5 * 60) {
+      if (timeDiff <= 5 * 60 * 1000) {
         timeGroupBy = 'second'
-      } else if (timeDiff <= 60 * 60) {
+      } else if (timeDiff <= 60 * 60 * 1000) {
         timeGroupBy = 'minute'
-      } else if (timeDiff <= 48 * 60 * 60) {
+      } else if (timeDiff <= 48 * 60 * 60 * 1000) {
         timeGroupBy = 'hour'
       } else {
         timeGroupBy = 'day'
-      }
-
-      const groupDomesticVisit: {
-        [key: string]: number
-      } = {}
-
-      const { domesticVisit, abroadVisit } = visitModel
-      for (let i = 0; domesticVisit.length; i++) {
-        const unix = domesticVisit[i]
-        if (!(unix in groupDomesticVisit)) {
-          groupDomesticVisit[unix] = 0
-        } else {
-          groupDomesticVisit[unix]++
-        }
-      }
-
-      const groupAbroadVisit: {
-        [key: string]: number
-      } = {}
-
-      for (let i = 0; abroadVisit.length; i++) {
-        const unix = abroadVisit[i]
-        if (!(unix in groupAbroadVisit)) {
-          groupAbroadVisit[unix] = 0
-        } else {
-          groupAbroadVisit[unix]++
-        }
       }
 
       const domesticVisitSlot: number[] = []
@@ -199,86 +195,54 @@ const apis: MockMethod[] = [
       const timeSlot: string[] = []
       // implement gap later
       if (timeGroupBy === 'second') {
-        for (let i = fromDate; i <= toDate; i++) {
-          timeSlot.push(datetime(i).format('DD/MM/YYYY HH:mm:ss'))
-          if (i in groupDomesticVisit) {
-            domesticVisitSlot.push(groupDomesticVisit[i])
-          } else {
-            domesticVisitSlot.push(0)
-          }
-          if (i in abroadVisitSlot) {
-            abroadVisitSlot.push(groupAbroadVisit[i])
-          } else {
-            abroadVisitSlot.push(0)
-          }
+        const diff = Math.ceil(dayjs(toDate).diff(fromDate, 'seconds', true))
+        for (let i = 0; i < diff; i++) {
+          timeSlot.push(
+            datetime(fromDate).add(i, 'seconds').format('DD/MM/YYYY HH:mm:ss')
+          )
+          domesticVisitSlot.push(mock('@integer(0,10)'))
+          abroadVisitSlot.push(mock('@integer(0,10)'))
         }
       } else if (timeGroupBy === 'minute') {
-        const fromMinute = datetime(
-          datetime(fromDate).format('DD/MM/YYYY HH:mm[:00]')
-        ).second()
-        const toMinute = datetime(
-          datetime(toDate).format('DD/MM/YYYY HH:mm[:00]')
-        ).second()
-        for (let i = fromMinute; i <= toMinute; i += 60) {
-          timeSlot.push(datetime(i).format('DD/MM/YYYY HH:mm[:00]'))
-          domesticVisitSlot.push(reduceTime(i, i + 59, groupDomesticVisit))
-          abroadVisitSlot.push(reduceTime(i, i + 59, groupAbroadVisit))
+        const diff = Math.ceil(dayjs(toDate).diff(fromDate, 'minutes', true))
+        for (let i = 0; i < diff; i++) {
+          timeSlot.push(
+            datetime(fromDate).add(i, 'minutes').format('DD/MM/YYYY HH:mm[:00]')
+          )
+          domesticVisitSlot.push(mock('@integer(10, 100)'))
+          abroadVisitSlot.push(mock('@integer(10, 100)'))
         }
       } else if (timeGroupBy === 'hour') {
-        const fromHour = datetime(
-          datetime(fromDate).format('DD/MM/YYYY HH[:00]')
-        ).second()
-        const toHour = datetime(
-          datetime(toDate).format('DD/MM/YYYY HH[:00]')
-        ).second()
-        for (let i = fromHour; i <= toHour; i += 3600) {
-          timeSlot.push(datetime(i).format('DD/MM/YYYY HH[:00]'))
-          domesticVisitSlot.push(reduceTime(i, i + 3599, groupDomesticVisit))
-          abroadVisitSlot.push(reduceTime(i, i + 3599, groupAbroadVisit))
+        const diff = Math.ceil(dayjs(toDate).diff(fromDate, 'hours', true))
+        for (let i = 0; i < diff; i++) {
+          timeSlot.push(
+            datetime(fromDate).add(i, 'hours').format('DD/MM/YYYY HH[:00]')
+          )
+          domesticVisitSlot.push(mock('@integer(100,1000)'))
+          abroadVisitSlot.push(mock('@integer(100,1000)'))
         }
       } else {
-        const fromDay = datetime(
-          datetime(fromDate).format('DD/MM/YYYY')
-        ).second()
-        const toDay = datetime(datetime(toDate).format('DD/MM/YYYY')).second()
-        for (let i = fromDay; i <= toDay; i += 86400) {
-          timeSlot.push(datetime(i).format('DD/MM/YYYY'))
-          domesticVisitSlot.push(reduceTime(i, i + 86399, groupDomesticVisit))
-          abroadVisitSlot.push(reduceTime(i, i + 86399, groupAbroadVisit))
+        const diff = Math.ceil(dayjs(toDate).diff(fromDate, 'days', true))
+        for (let i = 0; i < diff; i++) {
+          timeSlot.push(datetime(fromDate).add(i, 'days').format('DD/MM/YYYY'))
+          domesticVisitSlot.push(mock('@integer(1000,10000)'))
+          abroadVisitSlot.push(mock('@integer(1000,10000)'))
         }
-      }
-
-      const data = {
-        x: timeSlot,
-        y: {
-          domestic: domesticVisitSlot,
-          abroad: abroadVisitSlot,
-        },
       }
 
       return {
         code: 200,
         message: 'ok',
-        data,
+        data: {
+          x: timeSlot,
+          y: {
+            domestic: domesticVisitSlot,
+            abroad: abroadVisitSlot,
+          },
+        },
       }
     },
   },
 ]
-
-function reduceTime(
-  from: number,
-  to: number,
-  object: {
-    [key: string]: number
-  } = {}
-) {
-  let count = 0
-  for (let i = from; i <= to; i++) {
-    if (i in object) {
-      count += object[i]
-    }
-  }
-  return count
-}
 
 export default apis

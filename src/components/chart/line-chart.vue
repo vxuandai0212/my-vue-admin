@@ -6,8 +6,23 @@ import { ref } from 'vue'
 import type { Ref } from 'vue'
 import { type ECOption, useEcharts } from '@/composables'
 import { $t } from '@/locales'
+import { I18nType } from '@/typings/system'
 
 defineOptions({ name: 'LineChart' })
+
+export interface LineChartProps {
+  option: {
+    legend: I18nType.I18nKey[]
+    x: string[] | number[]
+    y: {
+      name: I18nType.I18nKey
+      color: string
+      data: any[]
+    }[]
+  }
+}
+
+const props = withDefaults(defineProps<LineChartProps>(), {})
 
 const lineOptions = ref<ECOption>({
   tooltip: {
@@ -20,13 +35,13 @@ const lineOptions = ref<ECOption>({
     },
   },
   legend: {
-    data: [$t('page.invoice.table.header.customer'), $t('page.invoice.table.header.amount')],
+    data: props.option.legend.map((i) => $t(i)),
     textStyle: {
       fontStyle: 'normal',
       fontFamily: 'Lato',
       fontSize: 14,
-      fontWeight: 400
-    }
+      fontWeight: 400,
+    },
   },
   grid: {
     left: '3%',
@@ -38,24 +53,13 @@ const lineOptions = ref<ECOption>({
     {
       type: 'category',
       boundaryGap: false,
-      data: [
-        '06:00',
-        '08:00',
-        '10:00',
-        '12:00',
-        '14:00',
-        '16:00',
-        '18:00',
-        '20:00',
-        '22:00',
-        '24:00',
-      ],
+      data: props.option.x,
       axisLabel: {
         fontStyle: 'normal',
         fontFamily: 'Lato',
         fontSize: 13,
-        fontWeight: 400
-      }
+        fontWeight: 400,
+      },
     },
   ],
   yAxis: [
@@ -65,72 +69,40 @@ const lineOptions = ref<ECOption>({
         fontStyle: 'normal',
         fontFamily: 'Lato',
         fontSize: 13,
-        fontWeight: 400
-      }
+        fontWeight: 400,
+      },
     },
   ],
-  series: [
-    {
-      color: '#8e9dff',
-      name: $t('page.invoice.table.header.customer'),
-      type: 'line',
-      smooth: true,
-      stack: 'Total',
-      areaStyle: {
-        color: {
-          type: 'linear',
-          x: 0,
-          y: 0,
-          x2: 0,
-          y2: 1,
-          colorStops: [
-            {
-              offset: 0.25,
-              color: '#8e9dff',
-            },
-            {
-              offset: 1,
-              color: '#fff',
-            },
-          ],
-        },
+  series: props.option.y.map((i) => ({
+    color: i.color,
+    name: $t(i.name),
+    type: 'line',
+    smooth: true,
+    stack: 'Total',
+    areaStyle: {
+      color: {
+        type: 'linear',
+        x: 0,
+        y: 0,
+        x2: 0,
+        y2: 1,
+        colorStops: [
+          {
+            offset: 0.25,
+            color: i.color,
+          },
+          {
+            offset: 1,
+            color: '#fff',
+          },
+        ],
       },
-      emphasis: {
-        focus: 'series',
-      },
-      data: [4623, 6145, 6268, 6411, 1890, 4251, 2978, 3880, 3606, 4311],
     },
-    {
-      color: '#26deca',
-      name: $t('page.invoice.table.header.amount'),
-      type: 'line',
-      smooth: true,
-      stack: 'Total',
-      areaStyle: {
-        color: {
-          type: 'linear',
-          x: 0,
-          y: 0,
-          x2: 0,
-          y2: 1,
-          colorStops: [
-            {
-              offset: 0.25,
-              color: '#26deca',
-            },
-            {
-              offset: 1,
-              color: '#fff',
-            },
-          ],
-        },
-      },
-      emphasis: {
-        focus: 'series',
-      },
-      data: [2208, 2016, 2916, 4512, 8281, 2008, 1963, 2367, 2956, 678],
+    emphasis: {
+      focus: 'series',
     },
-  ],
+    data: i.data,
+  })),
 }) as Ref<ECOption>
 const { domRef: lineRef } = useEcharts(lineOptions)
 </script>
