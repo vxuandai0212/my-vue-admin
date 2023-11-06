@@ -1,10 +1,8 @@
 import { nextTick } from 'vue'
 import { defineStore } from 'pinia'
 import type { Socket } from 'socket.io-client'
-import { LAYOUT_SCROLL_EL_ID } from '@soybeanjs/vue-materials'
 
 interface AppState {
-  scrollElId: string
   disableMainXScroll: boolean
   reloadFlag: boolean
   settingDrawerVisible: boolean
@@ -15,7 +13,6 @@ interface AppState {
 
 export const useAppStore = defineStore('app-store', {
   state: (): AppState => ({
-    scrollElId: LAYOUT_SCROLL_EL_ID,
     disableMainXScroll: false,
     reloadFlag: true,
     settingDrawerVisible: false,
@@ -24,17 +21,6 @@ export const useAppStore = defineStore('app-store', {
     socket: null,
   }),
   actions: {
-    getScrollConfig() {
-      const scrollEl = document.querySelector(`#${this.scrollElId}`)
-
-      const { scrollLeft = 0, scrollTop = 0 } = scrollEl || {}
-
-      return {
-        scrollEl,
-        scrollLeft,
-        scrollTop,
-      }
-    },
     async reloadPage(duration = 0) {
       this.reloadFlag = false
       await nextTick()

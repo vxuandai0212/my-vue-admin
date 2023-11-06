@@ -19,15 +19,15 @@ declare namespace ApiUserManagement {
     id: string
     userName: string | null
     age: number | null
-    gender: "0" | "1" | null
+    gender: '0' | '1' | null
     phone: string
     email: string | null
-    userStatus: "1" | "2" | "3" | "4" | null
+    userStatus: '1' | '2' | '3' | '4' | null
   }
 }
 
 declare namespace ApiReport {
-  type LatestUpdateType = 
+  type LatestUpdateType =
     | 'item-sale'
     | 'lead-created'
     | 'item-upload-complete'
@@ -47,24 +47,16 @@ declare namespace ApiReport {
     startAt: number
   }
 
-  type Category = 
-    | 'electronic'
-    | 'accessory'
-    | 'digital-good'
+  type Category = 'electronic' | 'accessory' | 'digital-good'
 
   interface PopularCategory {
     type: Category
     value: number
   }
 
-  type Stat = 
-    | 'sale'
-    | 'lead'
-    | 'profit'
-  
-  type Duration =
-    | 'weekly'
-    | 'monthly'
+  type Stat = 'sale' | 'lead' | 'profit'
+
+  type Duration = 'weekly' | 'monthly'
 
   interface OverviewStat {
     type: Stat
@@ -76,10 +68,10 @@ declare namespace ApiReport {
 
   type LineChartXAxis = string[] | number[]
   type LineChartYAxis = {
-    [key: string]: string[]| number[]
+    [key: string]: string[] | number[]
   }
 
-  interface Order {
+  interface Visit {
     x: LineChartXAxis
     y: LineChartYAxis
   }

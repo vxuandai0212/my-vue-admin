@@ -1,5 +1,4 @@
 import 'uno.css'
-import '@soybeanjs/vue-materials/dist/style.css'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'

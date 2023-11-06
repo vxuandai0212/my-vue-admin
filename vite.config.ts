@@ -45,8 +45,6 @@ export default defineConfig((configEnv) => {
     },
     optimizeDeps: {
       include: [
-        "@antv/data-set",
-        "@antv/g2",
         "@better-scroll/core",
         "echarts",
         "swiper",
