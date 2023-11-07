@@ -246,10 +246,10 @@ declare namespace I18nType {
           product: string
           invoice: string
         }
-      },
+      }
       language: {
         change: string
-      },
+      }
       tab: {
         day: string
         week: string
@@ -583,7 +583,7 @@ declare namespace I18nType {
           edit: string
           delete: string
           view: string
-        },
+        }
         detail: {
           label: string
           description: {
@@ -608,6 +608,75 @@ declare namespace I18nType {
             abroad: string
             domestic: string
           }
+          unit: string
+        }
+        transportationChart: {
+          title: string
+          car: string
+          bicycle: string
+          bus: string
+          train: string
+          walking: string
+        }
+        spreadConsumptionChart: {
+          title: string
+          legend: {
+            margarine: string
+            lowfat: string
+            butter: string
+          }
+          unit: string
+        }
+        smokingChart: {
+          men: string
+          women: string
+          menSale: string
+          womenSale: string
+          unit: string
+        }
+        saleChart: {
+          housing: string
+          food: string
+          clothing: string
+          travelOrTransport: string
+          entertainment: string
+          luxuryGood: string
+          title: string
+        }
+        roadTransportSpendChart: {
+          italia: string
+          portugal: string
+          uk: string
+          usa: string
+          unit: string
+        }
+        airPollutantChart: {
+          title: string
+          legend: {
+            transport: string
+            industry: string
+            airPollutant: string
+            household: string
+          }
+          unit: string
+        }
+        welcome: string
+        latestUpdate: {
+          title: string
+          itemSale: string
+          newLeadCreated: string
+          itemUploadComplete: string
+          emailNotificationSent: string
+        }
+        upComingEvent: {
+          title: string
+        }
+        popularCategory: {
+          title: string
+          description: string
+          electronic: string
+          accessory: string
+          digitalGood: string
         }
       }
     }

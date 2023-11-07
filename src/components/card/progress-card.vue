@@ -14,7 +14,7 @@
       </div>
       <div class="flex gap-4 items-center">
         <div class="color-primary-dark font-size-20 font-700 line-height-32">
-          {{ valuePrefix }}{{ value }}
+          {{ valuePrefix }}{{ props.value }}
         </div>
         <v-icon
           icon="arrow"
@@ -30,14 +30,13 @@
       :color="COLOR[progressColor]"
       rail-color="#F6F6F6"
       :height="4"
-      :percentage="percentageValue"
+      :percentage="props.percent"
       :show-indicator="false"
     />
   </div>
 </template>
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import anime from 'animejs/lib/anime.es.js'
+import { computed } from 'vue'
 import { $t } from '@/locales'
 import { I18nType } from '@/typings/system'
 
@@ -65,15 +64,6 @@ const props = withDefaults(defineProps<ProgressCardProps>(), {
   trend: 'up',
   percent: 60,
   backgroundColor: 'background-extra-light',
-})
-
-const percentageValue = ref<number>(0)
-
-anime({
-  targets: percentageValue,
-  value: props.percent,
-  duration: 500,
-  easing: 'linear',
 })
 
 const trendColor = computed(() =>

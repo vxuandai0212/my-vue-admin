@@ -5,15 +5,25 @@
 import { ref } from 'vue'
 import type { Ref } from 'vue'
 import { type ECOption, useEcharts } from '@/composables'
+import { COLOR } from '@/utils'
 
 defineOptions({ name: 'PolarBarChart' })
 
+export interface LineChartProps {
+  option: {
+    dimensions: string[]
+    source: number[]
+  }
+}
+
+const props = withDefaults(defineProps<LineChartProps>(), {})
+
 const polarBarOptions = ref<ECOption>({
   polar: {
-    radius: [30, '80%'],
+    radius: [40, '100%'],
   },
   angleAxis: {
-    max: 4,
+    max: 100,
     startAngle: 90,
     axisLine: {
       show: false,
@@ -33,7 +43,7 @@ const polarBarOptions = ref<ECOption>({
   },
   radiusAxis: {
     type: 'category',
-    data: ['a', 'b', 'c', 'd'],
+    data: props.option.dimensions,
     axisLine: {
       show: false,
     },
@@ -53,37 +63,14 @@ const polarBarOptions = ref<ECOption>({
   tooltip: {},
   series: {
     type: 'bar',
-    data: [
-      {
-        value: 2,
-        itemStyle: {
-          color: '#FF808B',
-          borderRadius: [6.5, 6.5, 6.5, 6.5],
-        },
+    data: props.option.source.map((item, index) => ({
+      value: item,
+      itemStyle: {
+        color: COLOR[index],
+        borderRadius: [6.5, 6.5, 6.5, 6.5],
       },
-      {
-        value: 1.2,
-        itemStyle: {
-          color: '#9698D6',
-          borderRadius: [6.5, 6.5, 6.5, 6.5],
-        },
-      },
-      {
-        value: 2.4,
-        itemStyle: {
-          color: '#5E81F4',
-          borderRadius: [6.5, 6.5, 6.5, 6.5],
-        },
-      },
-      {
-        value: 3.6,
-        itemStyle: {
-          color: '#7CE7AC',
-          borderRadius: [6.5, 6.5, 6.5, 6.5],
-        },
-      },
-    ],
-    barWidth: '8',
+    })),
+    barWidth: '10',
     showBackground: true,
     backgroundStyle: {
       color: '#EEEEEE',

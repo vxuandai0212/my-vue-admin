@@ -8,6 +8,18 @@ import { type ECOption, useEcharts } from '@/composables'
 
 defineOptions({ name: 'BarChart' })
 
+export interface LineChartProps {
+  option: {
+    dimensions: string[]
+    source: { [key: string]: any }
+    yAxis?: {
+      name?: string
+    }
+  }
+}
+
+const props = withDefaults(defineProps<LineChartProps>(), {})
+
 const barOptions = ref<ECOption>({
   grid: {
     bottom: '20px',
@@ -16,13 +28,8 @@ const barOptions = ref<ECOption>({
   legend: {},
   tooltip: {},
   dataset: {
-    dimensions: ['product', '2015', '2016', '2017'],
-    source: [
-      { product: 'Matcha Latte', 2015: 43.3, 2016: 85.8, 2017: 93.7 },
-      { product: 'Milk Tea', 2015: 83.1, 2016: 73.4, 2017: 55.1 },
-      { product: 'Cheese Cocoa', 2015: 86.4, 2016: 65.2, 2017: 82.5 },
-      { product: 'Walnut Brownie', 2015: 72.4, 2016: 53.9, 2017: 39.1 },
-    ],
+    dimensions: props.option.dimensions,
+    source: props.option.source,
   },
   xAxis: {
     type: 'category',
@@ -34,38 +41,31 @@ const barOptions = ref<ECOption>({
     },
   },
   yAxis: {
+    name: props.option.yAxis?.name,
     axisLabel: {
       fontStyle: 'normal',
       fontFamily: 'Lato',
       fontSize: 13,
       fontWeight: 400,
     },
+    nameLocation: 'end',
+    nameTextStyle: {
+      fontStyle: 'normal',
+      fontFamily: 'Lato',
+      fontSize: 13,
+      fontWeight: 400,
+      align: 'left',
+    },
   },
   // Declare several bar series, each will be mapped
   // to a column of dataset.source by default.
-  series: [
-    {
-      type: 'bar',
-      itemStyle: {
-        borderRadius: [6.5, 6.5, 0, 0],
-      },
-      barWidth: '3',
+  series: props.option.dimensions.map(() => ({
+    type: 'bar',
+    itemStyle: {
+      borderRadius: [6.5, 6.5, 0, 0],
     },
-    {
-      type: 'bar',
-      itemStyle: {
-        borderRadius: [6.5, 6.5, 0, 0],
-      },
-      barWidth: '3',
-    },
-    {
-      type: 'bar',
-      itemStyle: {
-        borderRadius: [6.5, 6.5, 0, 0],
-      },
-      barWidth: '3',
-    },
-  ],
+    barWidth: '5',
+  })),
 }) as Ref<ECOption>
 const { domRef: barRef } = useEcharts(barOptions)
 </script>

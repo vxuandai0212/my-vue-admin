@@ -76,50 +76,39 @@ declare namespace ApiReport {
     y: LineChartYAxis
   }
 
-  interface PlannedIncome {
+  interface SpreadConsumption {
     x: LineChartXAxis
     y: LineChartYAxis
   }
 
-  type CategorySaleItem = {
+  interface AirPollutant {
+    x: LineChartXAxis
+    y: LineChartYAxis
+  }
+
+  interface Smoking {
+    x: LineChartXAxis
+    y: LineChartYAxis
+    totalMen: number
+    totalWomen: number
+  }
+
+  type RoadTransportSpendItem = {
     [key: string]: string | number
   }
 
-  interface CategorySale {
-    data: CategorySaleItem[]
-    totalSale: number
-    totalSpend: number
-  }
-
-  type BudgetSpendItem = {
-    [key: string]: number
-  }
-
-  interface BudgetSpend {
-    data: BudgetSpendItem[]
-    total: number
-    totalSale: number
-    totalSpend: number
-  }
-
-  interface StudyTopic {
-    x: LineChartXAxis
-    y: LineChartYAxis
-    totalSale: number
-    totalSpend: number
+  interface RoadTransportSpend {
+    dimensions: string[]
+    source: RoadTransportSpendItem[]
   }
 
   interface Sale {
-    x: LineChartXAxis
-    y: LineChartYAxis
+    dimensions: string[]
+    source: number[]
   }
 
-  type CustomerInsideItem = {
+  interface Transportation {
     name: string
     value: number
-  }
-
-  interface CustomerInside {
-    data: CustomerInside[]
   }
 }

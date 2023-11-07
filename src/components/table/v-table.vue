@@ -105,6 +105,7 @@ import { ref, computed, h } from 'vue'
 import { Icon } from '@iconify/vue'
 import { $t } from '@/locales'
 import { useDatetime } from '@/composables'
+import { moneyFormat } from '@/utils/common/currency-format'
 
 defineOptions({ name: 'VTable' })
 
@@ -219,10 +220,12 @@ function getFormatText(key: any, value: any) {
     if (format.type === 'datetime') {
       return datetime(value).format(format.value)
     } else if (format.type === 'currency') {
-      return new Intl.NumberFormat(format.value.locale, {
-        style: format.value.style,
-        currency: format.value.currency,
-      }).format(value)
+      moneyFormat(
+        format.value.locale,
+        format.value.style,
+        format.value.currency,
+        value
+      )
     } else {
       return value
     }

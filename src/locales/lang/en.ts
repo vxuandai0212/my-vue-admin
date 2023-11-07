@@ -36,13 +36,13 @@ const locale: I18nType.Schema = {
       },
     },
     language: {
-      change: 'Change language'
+      change: 'Change language',
     },
     tab: {
       day: 'Day',
       week: 'Week',
-      month: 'Month'
-    }
+      month: 'Month',
+    },
   },
   routes: {
     document: {
@@ -395,10 +395,79 @@ const locale: I18nType.Schema = {
         title: 'Visits',
         legend: {
           abroad: 'Abroad tourism',
-          domestic: 'Domestic tourism'
-        }
-      }
-    }
+          domestic: 'Domestic tourism',
+        },
+        unit: '(visitor)',
+      },
+      transportationChart: {
+        title: 'Transportation usage',
+        car: 'Car',
+        bicycle: 'Bicycle',
+        bus: 'Bus',
+        train: 'Train',
+        walking: 'Walking',
+      },
+      spreadConsumptionChart: {
+        title: 'Consumption of Spreads',
+        legend: {
+          margarine: 'Margarine',
+          lowfat: 'Low Fat',
+          butter: 'Butter',
+        },
+        unit: '(gam)',
+      },
+      smokingChart: {
+        men: 'Men',
+        women: 'Women',
+        menSale: 'Men Sale',
+        womenSale: 'Women Sale',
+        unit: 'Money spend on smoking ($)',
+      },
+      saleChart: {
+        housing: 'Housing',
+        food: 'Food',
+        clothing: 'Clothing',
+        travelOrTransport: 'Travel / Transport',
+        entertainment: 'Entertainment',
+        luxuryGood: 'Luxury Good',
+        title: 'Sale',
+      },
+      roadTransportSpendChart: {
+        italia: 'Italia',
+        portugal: 'Portugal',
+        uk: 'UK',
+        usa: 'USA',
+        unit: 'Percentage country budget for road and transportation (%)',
+      },
+      airPollutantChart: {
+        title: 'Source of air pollution',
+        legend: {
+          transport: 'Transport',
+          industry: 'Industry',
+          airPollutant: 'Air pollutant',
+          household: 'Household',
+        },
+        unit: '(tons)',
+      },
+      welcome: 'Welcome',
+      latestUpdate: {
+        title: 'Latest updates',
+        itemSale: 'Item sale',
+        newLeadCreated: 'New lead created',
+        itemUploadComplete: 'Items upload complete',
+        emailNotificationSent: 'Email notifications sent',
+      },
+      upComingEvent: {
+        title: 'Upcoming events',
+      },
+      popularCategory: {
+        title: 'Popular categories',
+        description: 'Explore most popular product categories',
+        electronic: 'Electronics',
+        accessory: 'Accessories',
+        digitalGood: 'Digital goods',
+      },
+    },
   },
 }
 

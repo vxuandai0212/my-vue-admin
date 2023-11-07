@@ -26,7 +26,7 @@
           class="absolute top-50px right-10px border-1 border-solid border-color-resting-outline transition"
           @confirm="chooseRange"
           panel
-          v-model:value="visitChartRange"
+          v-model:value="chartRange"
           type="datetimerange"
         />
       </div>
@@ -67,12 +67,12 @@ watch(el, (newValue) => {
   }
 })
 
-const visitChartRange = ref()
+const chartRange = ref()
 
 function chooseRange() {
   showDatePicker.value = false
-  fromDate.value = visitChartRange.value[0]
-  toDate.value = visitChartRange.value[1]
+  fromDate.value = chartRange.value[0]
+  toDate.value = chartRange.value[1]
   getChartData()
 }
 
@@ -121,22 +121,23 @@ function setChartData(data: ApiReport.Visit) {
   const { domestic, abroad } = y
   chartData.value = {
     legend: [
-      'page.report.visitChart.legend.abroad',
-      'page.report.visitChart.legend.domestic',
+      $t('page.report.visitChart.legend.abroad'),
+      $t('page.report.visitChart.legend.domestic'),
     ],
     x,
     y: [
       {
-        name: 'page.report.visitChart.legend.abroad',
-        color: '#8e9dff',
+        name: $t('page.report.visitChart.legend.abroad'),
         data: abroad,
       },
       {
-        name: 'page.report.visitChart.legend.domestic',
-        color: '#26deca',
+        name: $t('page.report.visitChart.legend.domestic'),
         data: domestic,
       },
     ],
+    yAxis: {
+      name: $t('page.report.visitChart.unit'),
+    }
   }
 }
 

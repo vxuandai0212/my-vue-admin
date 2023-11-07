@@ -5,20 +5,21 @@
 import { ref } from 'vue'
 import type { Ref } from 'vue'
 import { type ECOption, useEcharts } from '@/composables'
-import { $t } from '@/locales'
-import { I18nType } from '@/typings/system'
+import { COLOR } from '@/utils'
 
 defineOptions({ name: 'LineChart' })
 
 export interface LineChartProps {
   option: {
-    legend: I18nType.I18nKey[]
+    legend: string[]
     x: string[] | number[]
     y: {
-      name: I18nType.I18nKey
-      color: string
+      name: string
       data: any[]
     }[]
+    yAxis?: {
+      name?: string
+    }
   }
 }
 
@@ -35,7 +36,7 @@ const lineOptions = ref<ECOption>({
     },
   },
   legend: {
-    data: props.option.legend.map((i) => $t(i)),
+    data: props.option.legend,
     textStyle: {
       fontStyle: 'normal',
       fontFamily: 'Lato',
@@ -64,6 +65,7 @@ const lineOptions = ref<ECOption>({
   ],
   yAxis: [
     {
+      name: props.option.yAxis?.name,
       type: 'value',
       axisLabel: {
         fontStyle: 'normal',
@@ -71,11 +73,18 @@ const lineOptions = ref<ECOption>({
         fontSize: 13,
         fontWeight: 400,
       },
+      nameTextStyle: {
+        fontStyle: 'normal',
+        fontFamily: 'Lato',
+        fontSize: 13,
+        fontWeight: 400,
+        align: 'left'
+      },
     },
   ],
-  series: props.option.y.map((i) => ({
-    color: i.color,
-    name: $t(i.name),
+  series: props.option.y.map((i, index) => ({
+    color: COLOR[index],
+    name: i.name,
     type: 'line',
     smooth: true,
     stack: 'Total',
@@ -89,7 +98,7 @@ const lineOptions = ref<ECOption>({
         colorStops: [
           {
             offset: 0.25,
-            color: i.color,
+            color: COLOR[index],
           },
           {
             offset: 1,

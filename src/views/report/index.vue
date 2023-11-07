@@ -20,7 +20,7 @@
                 class="color-primary-dark font-size-22 font-400"
                 style="letter-spacing: 0.4px"
               >
-                Welcome,
+                {{ $t('page.report.welcome') }},
               </div>
               <div
                 class="color-primary-dark font-size-26 font-700 line-height-38"
@@ -35,7 +35,7 @@
             <div
               class="color-primary-dark font-size-16 font-700 line-height-24"
             >
-              Latest updates
+              {{ $t('page.report.latestUpdate.title') }}
             </div>
             <div class="flex flex-col gap-9">
               <item-card v-for="item in items" v-bind="item" />
@@ -47,7 +47,7 @@
             <div
               class="color-primary-dark font-size-16 font-700 line-height-24"
             >
-              Upcoming events
+              {{ $t('page.report.upComingEvent.title') }}
             </div>
             <div class="flex flex-col gap-9">
               <event-card v-for="item in events" v-bind="item" />
@@ -60,15 +60,14 @@
               <div
                 class="color-primary-dark font-size-16 font-700 line-height-24"
               >
-                Popular categories
+                {{ $t('page.report.popularCategory.title') }}
               </div>
               <div
                 class="color-primary-grey font-size-14 font-400 line-height-21"
               >
-                Explore most popular product categories
+                {{ $t('page.report.popularCategory.description') }}
               </div>
             </div>
-
             <div class="flex flex-col gap-9">
               <category-card v-for="item in categories" v-bind="item" />
             </div>
@@ -81,166 +80,28 @@
       <div class="flex flex-col gap-28 overflow-y-no-scrollbar p-0-0-28-0">
         <div class="grid grid-cols-3 gap-28 2xl:hidden" id="sider"></div>
         <div class="grid grid-cols-3 gap-28">
-          <progress-card
-            class="col-span-1 <lg:col-span-3"
-            v-for="item in progressCards"
-            v-bind="item"
-          />
+          <overview-stat />
           <visit-chart
             class="col-span-2 <lg:col-span-3 flex flex-col gap-28 p-28-0-28-0 background-color-white rounded-12"
           />
-          <div
+          <spread-consumption-chart
             class="col-span-1 <lg:col-span-3 flex flex-col gap-28 p-28-0-28-0 background-color-white rounded-12"
-          >
-            <div class="flex justify-between items-center p-0-23-0-28">
-              <div
-                class="color-primary-dark font-size-18 font-700 line-height-27"
-              >
-                Planned Income
-              </div>
-              <icon-button icon="date" />
-            </div>
-            <!-- <line-chart class="height-320 grow" /> -->
-          </div>
-          <div
+          />
+          <road-transport-spend-chart
             class="pt-20 gap-20 col-span-1 <lg:col-span-3 flex flex-col background-color-white rounded-12"
-          >
-            <div class="flex justify-center items-end">
-              <bar-chart class="height-270 grow" />
-            </div>
-            <div
-              class="height-75 border-top-1 border-top-solid border-top-color-border flex"
-            >
-              <div
-                class="flex flex-col justify-center items-center grow border-right-1 border-right-solid border-right-color-border"
-              >
-                <div
-                  class="color-primary-dark font-size-16 font-700 line-height-24"
-                >
-                  $342.000
-                </div>
-                <div
-                  class="color-primary-grey font-size-14 font-400 line-height-21"
-                >
-                  Total sales
-                </div>
-              </div>
-              <div class="flex flex-col justify-center items-center grow">
-                <div
-                  class="color-primary-dark font-size-16 font-700 line-height-24"
-                >
-                  $200.000
-                </div>
-                <div
-                  class="color-primary-grey font-size-14 font-400 line-height-21"
-                >
-                  Spendings
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
+          />
+          <sale-chart
             class="pt-20 col-span-1 <lg:col-span-3 flex flex-col gap-20 background-color-white rounded-12"
-          >
-            <div class="flex justify-center items-center">
-              <polar-bar-chart class="height-270 grow" />
-              <!-- <pie-chart class="height-270 grow" /> -->
-            </div>
-            <div
-              class="height-75 border-top-1 border-top-solid border-top-color-border flex"
-            >
-              <div
-                class="flex flex-col justify-center items-center grow border-right-1 border-right-solid border-right-color-border"
-              >
-                <div
-                  class="color-primary-dark font-size-16 font-700 line-height-24"
-                >
-                  $342.000
-                </div>
-                <div
-                  class="color-primary-grey font-size-14 font-400 line-height-21"
-                >
-                  Total sales
-                </div>
-              </div>
-              <div class="flex flex-col justify-center items-center grow">
-                <div
-                  class="color-primary-dark font-size-16 font-700 line-height-24"
-                >
-                  $200.000
-                </div>
-                <div
-                  class="color-primary-grey font-size-14 font-400 line-height-21"
-                >
-                  Spendings
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
+          />
+          <smoking-chart
             class="pt-20 col-span-1 <lg:col-span-3 flex flex-col gap-20 background-color-white rounded-12"
-          >
-            <!-- <line-chart class="height-270 grow" /> -->
-            <div
-              class="height-75 border-top-1 border-top-solid border-top-color-border flex"
-            >
-              <div
-                class="flex flex-col justify-center items-center grow border-right-1 border-right-solid border-right-color-border"
-              >
-                <div
-                  class="color-primary-dark font-size-16 font-700 line-height-24"
-                >
-                  $342.000
-                </div>
-                <div
-                  class="color-primary-grey font-size-14 font-400 line-height-21"
-                >
-                  Total sales
-                </div>
-              </div>
-              <div class="flex flex-col justify-center items-center grow">
-                <div
-                  class="color-primary-dark font-size-16 font-700 line-height-24"
-                >
-                  $200.000
-                </div>
-                <div
-                  class="color-primary-grey font-size-14 font-400 line-height-21"
-                >
-                  Spendings
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
+          />
+          <air-pollutant-chart
             class="col-span-2 <lg:col-span-3 flex flex-col gap-28 p-28-0-28-0 background-color-white rounded-12"
-          >
-            <div
-              class="flex justify-between items-center p-0-23-0-28 <md:gap-20"
-            >
-              <div
-                class="color-primary-dark font-size-18 font-700 line-height-27 grow-0 shrink-0"
-              >
-                Your Sales
-              </div>
-              <div class="flex gap-8 items-center overflow-x-no-scrollbar">
-                <simple-tab :tabs="dateFilters" init-active-tab="day" />
-                <icon-button icon="date" class="grow-0 shrink-0" />
-              </div>
-            </div>
-            <!-- <line-chart class="height-320 grow" /> -->
-          </div>
-          <div
+          />
+          <transportation-chart
             class="col-span-1 <lg:col-span-3 flex flex-col gap-28 p-28-0-28-0 background-color-white rounded-12"
-          >
-            <div
-              class="flex gap-8 p-0-23-0-28 items-center overflow-x-no-scrollbar"
-            >
-              <simple-tab :tabs="dateFilters" init-active-tab="day" />
-              <icon-button icon="date" class="grow-0 shrink-0" />
-            </div>
-            <pie-chart class="height-320 grow" />
-          </div>
+          />
         </div>
       </div>
     </div>
@@ -248,18 +109,26 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import ItemCard, { ItemCardProps } from '@/components/card/item-card.vue'
 import EventCard, { EventCardProps } from '@/components/card/event-card.vue'
-import { ProgressCardProps } from '~/src/components/card/progress-card.vue'
-import { SimpleTabItem } from '@/components/tab/simple-tab.vue'
 import CategoryCard, {
   CategoryCardProps,
-} from '~/src/components/card/category-card.vue'
+} from '@/components/card/category-card.vue'
 import CustomHeader from '@/layouts/basic-layout/components/custom-header.vue'
 import { useScreen } from '@/composables'
-import { ref } from 'vue'
-import { onMounted } from 'vue'
-import VisitChart from '@/views/report/components/visit-chart.vue'
+import VisitChart from '@/views/report/components/chart/visit-chart.vue'
+import SpreadConsumptionChart from '@/views/report/components/chart/spread-consumption-chart.vue'
+import RoadTransportSpendChart from '@/views/report/components/chart/road-transport-spend-chart.vue'
+import SaleChart from '@/views/report/components/chart/sale-chart.vue'
+import SmokingChart from '@/views/report/components/chart/smoking-chart.vue'
+import AirPollutantChart from '@/views/report/components/chart/air-pollutant-chart.vue'
+import TransportationChart from '@/views/report/components/chart/transportantion-chart.vue'
+import OverviewStat from '@/views/report/components/overview-stat.vue'
+import LatestUpdate from '@/views/report/components/latest-update.vue'
+import UpcomingEvent from '@/views/report/components/upcoming-event.vue'
+import PopularCategory from '@/views/report/components/popular-category.vue'
+import { $t } from '@/locales'
 
 const { isNotPC } = useScreen()
 const isMounted = ref<boolean>(false)
@@ -267,21 +136,6 @@ const isMounted = ref<boolean>(false)
 onMounted(() => {
   isMounted.value = true
 })
-
-const dateFilters: SimpleTabItem[] = [
-  {
-    label: 'Day',
-    value: 'day',
-  },
-  {
-    label: 'Week',
-    value: 'week',
-  },
-  {
-    label: 'Month',
-    value: 'month',
-  },
-]
 
 const items: ItemCardProps[] = [
   {
@@ -350,34 +204,5 @@ const categories: CategoryCardProps[] = [
   },
 ]
 
-const progressCards: ProgressCardProps[] = [
-  {
-    label: 'page.invoice.progress.sale',
-    description: 'page.invoice.progress.duration.week',
-    value: 1.345,
-    progressColor: 'primary',
-    trend: 'up',
-    percent: 80,
-    backgroundColor: 'white',
-  },
-  {
-    label: 'page.invoice.progress.lead',
-    description: 'page.invoice.progress.duration.month',
-    value: 3.82,
-    progressColor: 'warning',
-    trend: 'down',
-    percent: 60,
-    backgroundColor: 'white',
-  },
-  {
-    label: 'page.invoice.progress.income',
-    description: 'page.invoice.progress.duration.week',
-    valuePrefix: '$',
-    value: 4690,
-    progressColor: 'danger',
-    trend: 'up',
-    percent: 30,
-    backgroundColor: 'white',
-  },
-]
+
 </script>

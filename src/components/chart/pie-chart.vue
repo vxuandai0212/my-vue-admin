@@ -5,9 +5,18 @@
 import { ref } from 'vue'
 import type { Ref } from 'vue'
 import { type ECOption, useEcharts } from '@/composables'
-import { $t } from '@/locales'
+import { COLOR } from '@/utils'
 
 defineOptions({ name: 'PieChart' })
+
+export interface LineChartProps {
+  option: {
+    name: string
+    data: { name: string; value: number }[]
+  }
+}
+
+const props = withDefaults(defineProps<LineChartProps>(), {})
 
 const pieOptions = ref<ECOption>({
   tooltip: {
@@ -22,8 +31,8 @@ const pieOptions = ref<ECOption>({
   },
   series: [
     {
-      color: ['#5da8ff', '#8e9dff', '#fedc69', '#26deca'],
-      name: $t('page.invoice.detail.activity'),
+      color: props.option.data.map((_item, index) => COLOR[index]),
+      name: props.option.name,
       type: 'pie',
       radius: ['45%', '75%'],
       avoidLabelOverlap: false,
@@ -46,12 +55,7 @@ const pieOptions = ref<ECOption>({
       labelLine: {
         show: false,
       },
-      data: [
-        { value: 20, name: $t('page.invoice.table.header.customer') },
-        { value: 10, name: $t('page.invoice.table.header.amount') },
-        { value: 30, name: $t('page.invoice.table.header.status') },
-        { value: 40, name: $t('page.invoice.table.header.date') },
-      ],
+      data: props.option.data,
     },
   ],
 }) as Ref<ECOption>

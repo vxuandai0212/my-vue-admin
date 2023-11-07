@@ -36,13 +36,13 @@ const locale: I18nType.Schema = {
       },
     },
     language: {
-      change: 'Chọn ngôn ngữ'
+      change: 'Chọn ngôn ngữ',
     },
     tab: {
       day: 'Hôm nay',
       week: 'Trong tuần',
-      month: 'Trong tháng'
-    }
+      month: 'Trong tháng',
+    },
   },
   routes: {
     document: {
@@ -395,10 +395,79 @@ const locale: I18nType.Schema = {
         title: 'Lượt khách tham quan',
         legend: {
           abroad: 'Du lịch nước ngoài',
-          domestic: 'Du lịch trong nước'
-        }
-      }
-    }
+          domestic: 'Du lịch trong nước',
+        },
+        unit: '(khách)',
+      },
+      transportationChart: {
+        title: 'Các phương thức di chuyển',
+        car: 'Ô tô',
+        bicycle: 'Xe đạp',
+        bus: 'Xe buýt',
+        train: 'Tàu',
+        walking: 'Đi bộ',
+      },
+      spreadConsumptionChart: {
+        title: 'Tiêu thụ',
+        legend: {
+          margarine: 'Bơ thực vật',
+          lowfat: 'Ít béo',
+          butter: 'Bơ',
+        },
+        unit: '(gam)',
+      },
+      smokingChart: {
+        men: 'Đàn ông',
+        women: 'Phụ nữ',
+        menSale: 'Đàn ông',
+        womenSale: 'Phụ nữ',
+        unit: 'Doanh thu bán hàng ($)',
+      },
+      saleChart: {
+        housing: 'Nhà ở',
+        food: 'Thực phẩm',
+        clothing: 'Quần áo',
+        travelOrTransport: 'Di chuyển / Du lịch',
+        entertainment: 'Giải trí',
+        luxuryGood: 'Đồ xa xỉ',
+        title: 'Biểu đồ chi tiêu',
+      },
+      roadTransportSpendChart: {
+        italia: 'Ý',
+        portugal: 'Bồ Đào Nha',
+        uk: 'Anh',
+        usa: 'Mỹ',
+        unit: 'Ngân sách dành cho hạ tầng giao thông (%)',
+      },
+      airPollutantChart: {
+        title: 'Nguồn ô nhiễm không khí',
+        legend: {
+          transport: 'Giao thông',
+          industry: 'Công nghiệp',
+          airPollutant: 'Chất gây ô nhiễm',
+          household: 'Gia đình',
+        },
+        unit: '(tấn)',
+      },
+      welcome: 'Chào mừng',
+      latestUpdate: {
+        title: 'Cập nhật mới nhất',
+        itemSale: 'Bán sản phẩm',
+        newLeadCreated: 'Thêm mới khách hàng tiềm năng',
+        itemUploadComplete: 'Tải lên tệp',
+        emailNotificationSent: 'Gửi thông báo email',
+      },
+      upComingEvent: {
+        title: 'Các sự kiện sắp tới',
+      },
+      popularCategory: {
+        title: 'Danh mục phổ biến',
+        description: 'Khám phá danh mục sản phẩm',
+        electronic: 'Điện tử',
+        accessory: 'Trang sức',
+        digitalGood: 'Thiết bị công nghệ',
+      },
+    },
   },
 }
 
