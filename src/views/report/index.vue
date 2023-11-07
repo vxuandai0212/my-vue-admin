@@ -29,49 +29,9 @@
               </div>
             </div>
           </div>
-          <div
-            class="2xl:col-span-3 <lg:col-span-3 col-span-1 flex flex-col gap-18 2xl:p-20-23-20-28 p-28-23-28-28 background-color-white rounded-12"
-          >
-            <div
-              class="color-primary-dark font-size-16 font-700 line-height-24"
-            >
-              {{ $t('page.report.latestUpdate.title') }}
-            </div>
-            <div class="flex flex-col gap-9">
-              <item-card v-for="item in items" v-bind="item" />
-            </div>
-          </div>
-          <div
-            class="2xl:col-span-3 <lg:col-span-3 col-span-1 flex flex-col gap-18 2xl:p-20-23-20-28 p-28-23-28-28 background-color-white rounded-12"
-          >
-            <div
-              class="color-primary-dark font-size-16 font-700 line-height-24"
-            >
-              {{ $t('page.report.upComingEvent.title') }}
-            </div>
-            <div class="flex flex-col gap-9">
-              <event-card v-for="item in events" v-bind="item" />
-            </div>
-          </div>
-          <div
-            class="2xl:col-span-3 <lg:col-span-3 col-span-1 flex flex-col gap-18 2xl:p-20-23-20-28 p-28-23-28-28 background-color-white rounded-12"
-          >
-            <div class="flex flex-col">
-              <div
-                class="color-primary-dark font-size-16 font-700 line-height-24"
-              >
-                {{ $t('page.report.popularCategory.title') }}
-              </div>
-              <div
-                class="color-primary-grey font-size-14 font-400 line-height-21"
-              >
-                {{ $t('page.report.popularCategory.description') }}
-              </div>
-            </div>
-            <div class="flex flex-col gap-9">
-              <category-card v-for="item in categories" v-bind="item" />
-            </div>
-          </div>
+          <latest-update />
+          <upcoming-event />
+          <popular-category />
         </teleport>
       </div>
     </div>
@@ -110,11 +70,6 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import ItemCard, { ItemCardProps } from '@/components/card/item-card.vue'
-import EventCard, { EventCardProps } from '@/components/card/event-card.vue'
-import CategoryCard, {
-  CategoryCardProps,
-} from '@/components/card/category-card.vue'
 import CustomHeader from '@/layouts/basic-layout/components/custom-header.vue'
 import { useScreen } from '@/composables'
 import VisitChart from '@/views/report/components/chart/visit-chart.vue'
@@ -136,73 +91,4 @@ const isMounted = ref<boolean>(false)
 onMounted(() => {
   isMounted.value = true
 })
-
-const items: ItemCardProps[] = [
-  {
-    label: 'Item sale #340-00',
-    value: '+$890.00',
-    icon: 'cart',
-  },
-  {
-    label: 'New lead created',
-    value: '30 min',
-    icon: 'create',
-  },
-  {
-    label: 'Item sale #360-20',
-    value: '+$940.00',
-    icon: 'cart',
-  },
-  {
-    label: 'Items upload complete',
-    value: '45 min',
-    icon: 'upload',
-  },
-  {
-    label: 'Email notifications sent',
-    value: '2 hrs',
-    icon: 'notification',
-  },
-]
-
-const events: EventCardProps[] = [
-  {
-    date: '05:48AM',
-    title: 'Meeting with a client',
-    description: 'Tell how to boost website traffic',
-    color: 'primary',
-  },
-  {
-    date: '10:28AM',
-    title: 'New project discussion',
-    description: 'Business Cards Does Your Business',
-    color: 'warning',
-  },
-]
-
-const categories: CategoryCardProps[] = [
-  {
-    icon: 'laptop',
-    title: 'Electronics',
-    value: '1.345',
-    iconFillColor: 'primary',
-    iconBackgroundColor: 'primary-resting',
-  },
-  {
-    icon: 'diamond',
-    title: 'Accessories',
-    value: '1.042',
-    iconFillColor: 'danger',
-    iconBackgroundColor: 'danger-light',
-  },
-  {
-    icon: 'keyboard',
-    title: 'Digital goods',
-    value: '980',
-    iconFillColor: 'primary-grey',
-    iconBackgroundColor: 'background-2',
-  },
-]
-
-
 </script>

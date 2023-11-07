@@ -69,7 +69,7 @@ const apis: MockMethod[] = [
         {
           id: mock('@id'),
           type: 'lead-created',
-          value: now().subtract(30, 'minutes').unix(),
+          value: now().subtract(30, 'minutes').valueOf(),
         },
         {
           id: mock('@id'),
@@ -80,12 +80,12 @@ const apis: MockMethod[] = [
         {
           id: mock('@id'),
           type: 'item-upload-complete',
-          value: now().subtract(45, 'minutes').unix(),
+          value: now().subtract(45, 'minutes').valueOf(),
         },
         {
           id: mock('@id'),
           type: 'email-notification-sent',
-          value: now().subtract(2, 'hours').unix(),
+          value: now().subtract(2, 'hours').valueOf(),
         },
       ]
       return {
@@ -104,13 +104,13 @@ const apis: MockMethod[] = [
           id: mock('@id'),
           title: 'Meeting with a client',
           description: 'Tell how to boost website traffic',
-          startAt: now().subtract(20, 'minutes').subtract(1, 'hours').unix(),
+          startAt: now().subtract(20, 'minutes').valueOf(),
         },
         {
           id: mock('@id'),
           title: 'New project discussion',
           description: 'Business Cards Does Your Business',
-          startAt: now().subtract(45, 'minutes').subtract(6, 'hours').unix(),
+          startAt: now().subtract(45, 'minutes').subtract(6, 'hours').valueOf(),
         },
       ]
       return {

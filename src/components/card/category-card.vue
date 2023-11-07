@@ -4,10 +4,10 @@
   >
     <div class="flex flex-col">
       <div class="color-primary-dark font-size-18 font-700 line-height-27">
-        {{props.value}}
+        {{ props.value }}
       </div>
       <div class="color-primary-grey font-size-14 font-400 line-height-21">
-        {{props.title}}
+        {{ $t(props.title) }}
       </div>
     </div>
     <div
@@ -24,6 +24,8 @@
 </template>
 <script setup lang="ts">
 import { LocalIcon } from '@/typings/icon'
+import { $t } from '@/locales'
+
 defineOptions({ name: 'CategoryCard' })
 
 export interface CategoryCardProps {
