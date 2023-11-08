@@ -388,6 +388,97 @@ const locale: I18nType.Schema = {
           total: 'Total',
         },
         activity: 'Activities',
+        common: {
+          button: {
+            saveAndSend: 'Save & Send',
+            cancel: 'Cancel',
+          },
+          tab: {
+            billTo: {
+              title: 'Bill To',
+              description: "Set your customer's details",
+            },
+            from: {
+              title: 'From',
+              description: 'Set your personal details',
+            },
+            description: {
+              title: 'Description',
+              description: 'Add products or items',
+            },
+            saveAsDraft: {
+              title: 'Save As a Draft',
+              description: 'Edit and send this invoice later',
+            },
+            deleteInvoice: {
+              title: 'Delete Invoice',
+              description: 'Hide & disable current invoice',
+            },
+          },
+        },
+        description: {
+          item: 'Item',
+          remove: 'Remove',
+          itemDescription: {
+            title: 'Item description',
+            placeholder: 'Start typing...',
+          },
+          hour: {
+            title: 'Hours',
+            placeholder: 'Nhập thời gian',
+          },
+          rate: {
+            title: 'Rate',
+            placeholder: 'Start typing...',
+          },
+          addNewItem: 'Add new item',
+          subTotal: 'Subtotal',
+          tax: 'Tax',
+          total: 'Total',
+        },
+        billTo: {
+          uploadImage: 'Upload image',
+          invoiceNumber: {
+            title: 'Invoice number',
+            placeholder: 'Start typing...',
+          },
+          template: {
+            title: 'Template',
+            placeholder: 'Start typing...',
+          },
+          companyName: {
+            title: 'Company name',
+            placeholder: 'Start typing...',
+          },
+          date: {
+            title: 'Date',
+            placeholder: 'Start typing...',
+          },
+          businessAddress: {
+            title: 'Business address',
+            placeholder: 'Start typing...',
+          },
+          country: {
+            title: 'Country',
+            placeholder: 'Start typing...',
+          },
+          city: {
+            title: 'City',
+            placeholder: 'Start typing...',
+          },
+          phoneNumber: {
+            title: 'Phone number',
+            placeholder: 'Start typing...',
+          },
+          email: {
+            title: 'Email',
+            placeholder: 'Start typing...',
+          },
+          taxRate: {
+            title: 'Tax rate',
+            placeholder: 'Start typing...',
+          },
+        },
       },
     },
     report: {

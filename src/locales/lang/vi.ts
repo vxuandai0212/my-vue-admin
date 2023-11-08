@@ -388,6 +388,97 @@ const locale: I18nType.Schema = {
           total: 'Tổng sau thuế',
         },
         activity: 'Hoạt động',
+        common: {
+          button: {
+            saveAndSend: 'Lưu và gửi',
+            cancel: 'Hủy',
+          },
+          tab: {
+            billTo: {
+              title: 'Người nhận',
+              description: 'Thông tin khách hàng',
+            },
+            from: {
+              title: 'Người gửi',
+              description: 'Thông tin của bạn',
+            },
+            description: {
+              title: 'Mô tả',
+              description: 'Thêm sản phẩm',
+            },
+            saveAsDraft: {
+              title: 'Lưu bản nháp',
+              description: 'Cập nhật và gửi lần khác',
+            },
+            deleteInvoice: {
+              title: 'Xóa hóa đơn',
+              description: 'Xóa hóa đơn hiện tại',
+            },
+          },
+        },
+        description: {
+          item: 'Công việc',
+          remove: 'Xóa',
+          itemDescription: {
+            title: 'Mô tả công việc',
+            placeholder: 'Nhập mô tả công việc',
+          },
+          hour: {
+            title: 'Thời gian',
+            placeholder: 'Nhập thời gian',
+          },
+          rate: {
+            title: 'Chi phí',
+            placeholder: 'Nhập chi phí',
+          },
+          addNewItem: 'Thêm công việc',
+          subTotal: 'Tổng (trước thuế)',
+          tax: 'Thuế',
+          total: 'Tổng',
+        },
+        billTo: {
+          uploadImage: 'Tải lên ảnh',
+          invoiceNumber: {
+            title: 'Mã hóa đơn',
+            placeholder: 'Nhập mã hóa đơn',
+          },
+          template: {
+            title: 'Mẫu hóa đơn',
+            placeholder: 'Chọn mẫu hóa đơn',
+          },
+          companyName: {
+            title: 'Công ty',
+            placeholder: 'Nhập tên công ty',
+          },
+          date: {
+            title: 'Thời gian',
+            placeholder: 'Nhập thời gian',
+          },
+          businessAddress: {
+            title: 'Địa chỉ làm việc',
+            placeholder: 'Nhập địa chỉ làm việc',
+          },
+          country: {
+            title: 'Quốc gia',
+            placeholder: 'Nhập tên quốc gia',
+          },
+          city: {
+            title: 'Thành phố',
+            placeholder: 'Nhập tên thành phố',
+          },
+          phoneNumber: {
+            title: 'Số điện thoại',
+            placeholder: 'Nhập số điện thoại',
+          },
+          email: {
+            title: 'Địa chỉ email',
+            placeholder: 'Nhập địa chỉ email',
+          },
+          taxRate: {
+            title: 'Thuế',
+            placeholder: 'Nhập % thuế',
+          },
+        },
       },
     },
     report: {

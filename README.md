@@ -25,3 +25,6 @@ https://icones.js.org/
 - Loading state
 - Empty state
 - Full content state
+
+# Mock
+- mockjs.com

@@ -1,102 +1,89 @@
 <template>
-  <div class="flex flex-col gap-36 h-full min-w-1000px">
-    <div class="flex flex-col gap-22 grow shrink">
+  <div class="flex flex-col gap-22 grow shrink">
+    <div
+      class="flex basis-48px grow-0 shrink-0 overflow-hidden p-14-25-0-45 background-color-FBFBFD cursor-default"
+    >
       <div
-        class="flex basis-48px grow-0 shrink-0 overflow-hidden p-14-25-0-45 background-color-FBFBFD cursor-default"
+        v-for="item in props.headers"
+        class="color-primary-grey font-size-12 font-700 line-height-18"
+        :style="{
+          width: `${item.width}%`,
+          textAlign: item.align ? item.align : 'left',
+        }"
+      >
+        {{ $t(item.label) }}
+      </div>
+      <div v-if="hasCommand" class="width-80"></div>
+    </div>
+    <div class="flex flex-col h-full overflow-y-no-scrollbar gap-7">
+      <div
+        v-for="item in data"
+        class="border-1 border-solid border-color-resting-outline rounded-12 flex basis-88px grow-0 shrink-0 items-center m-0-25-0-25 p-0-0-0-20 hover:background-color-background-extra-light transition"
       >
         <div
-          v-for="item in props.headers"
-          class="color-primary-grey font-size-12 font-700 line-height-18"
+          v-for="(value, key) in item"
+          class="color-primary-dark font-size-16 line-height-24 flex items-center cursor-default"
           :style="{
-            width: `${item.width}%`,
-            textAlign: item.align ? item.align : 'left',
+            width: getWidth(key),
+            justifyContent: getJustifyContent(key),
+            fontStyle: getFontStyle(key),
+            fontWeight: getFontWeight(key),
           }"
         >
-          {{ $t(item.label) }}
-        </div>
-        <div v-if="hasCommand" class="width-80"></div>
-      </div>
-      <div class="flex flex-col h-full overflow-y-no-scrollbar gap-7">
-        <div
-          v-for="item in data"
-          class="border-1 border-solid border-color-resting-outline rounded-12 flex basis-88px grow-0 shrink-0 items-center m-0-25-0-25 p-0-0-0-20 hover:background-color-background-extra-light transition"
-        >
-          <div
-            v-for="(value, key) in item"
-            class="color-primary-dark font-size-16 line-height-24 flex items-center cursor-default"
-            :style="{
-              width: getWidth(key),
-              justifyContent: getJustifyContent(key),
-              fontStyle: getFontStyle(key),
-              fontWeight: getFontWeight(key),
-            }"
-          >
-            <template v-if="isShowField(key)">
-              <template v-if="isMatchType(key, 'tag')">
-                <tag :label="value.value" :type="value.type" />
-              </template>
-              <template v-else-if="isMatchType(key, 'icon-text')">
-                <div
-                  class="width-52 height-52 rounded-8 flex justify-center items-center"
-                  style="
-                    background: linear-gradient(
-                        0deg,
-                        rgba(94, 129, 244, 0.1) 0%,
-                        rgba(94, 129, 244, 0.1) 100%
-                      ),
-                      #fff;
-                  "
-                >
-                  <Icon
-                    style="width: 18px; height: 18px; color: var(--primary)"
-                    icon="ph:calculator"
-                  />
-                </div>
-                <div class="ml-20">{{ getFormatText(key, value.text) }}</div>
-              </template>
-              <template v-else-if="isMatchType(key, 'image-text')">
-                <img
-                  class="width-36 height-36 rounded-6"
-                  src="@/assets/images/avatar.png"
-                  alt="image"
-                />
-                <div class="ml-12">{{ getFormatText(key, value.text) }}</div>
-              </template>
-              <template v-else>{{ getFormatText(key, value) }}</template>
+          <template v-if="isShowField(key)">
+            <template v-if="isMatchType(key, 'tag')">
+              <tag :label="value.value" :type="value.type" />
             </template>
-          </div>
-          <div class="width-80 cursor-pointer" v-if="hasCommand">
-            <n-dropdown
-              v-if="isRenderCommandDropdown(item)"
-              trigger="click"
-              :options="item.commands"
-              size="large"
-              :show="selectedId === item.id"
-              :on-clickoutside="dropdownOnClickOutside"
-              :render-option="render"
-            >
-              <icon-button
-                class="border-1 border-solid border-color-resting-outline rounded-8"
-                icon="three-dot"
-                icon-fill-color="primary-grey"
-                icon-background-color="white"
-                @click="dropdownClick(item.id)"
+            <template v-else-if="isMatchType(key, 'icon-text')">
+              <div
+                class="width-52 height-52 rounded-8 flex justify-center items-center"
+                style="
+                  background: linear-gradient(
+                      0deg,
+                      rgba(94, 129, 244, 0.1) 0%,
+                      rgba(94, 129, 244, 0.1) 100%
+                    ),
+                    #fff;
+                "
+              >
+                <Icon
+                  style="width: 18px; height: 18px; color: var(--primary)"
+                  icon="ph:calculator"
+                />
+              </div>
+              <div class="ml-20">{{ getFormatText(key, value.text) }}</div>
+            </template>
+            <template v-else-if="isMatchType(key, 'image-text')">
+              <img
+                class="width-36 height-36 rounded-6"
+                src="@/assets/images/avatar.png"
+                alt="image"
               />
-            </n-dropdown>
-          </div>
+              <div class="ml-12">{{ getFormatText(key, value.text) }}</div>
+            </template>
+            <template v-else>{{ getFormatText(key, value) }}</template>
+          </template>
+        </div>
+        <div class="width-80 cursor-pointer" v-if="hasCommand">
+          <n-dropdown
+            v-if="isRenderCommandDropdown(item)"
+            trigger="click"
+            :options="item.commands"
+            size="large"
+            :show="selectedId === item.id"
+            :on-clickoutside="dropdownOnClickOutside"
+            :render-option="render"
+          >
+            <icon-button
+              class="border-1 border-solid border-color-resting-outline rounded-8"
+              icon="three-dot"
+              icon-fill-color="primary-grey"
+              icon-background-color="white"
+              @click="dropdownClick(item.id)"
+            />
+          </n-dropdown>
         </div>
       </div>
-    </div>
-    <div
-      class="flex justify-end p-0-25-0-25 basis-34px grow-0 shrink-0 overflow-hidden"
-    >
-      <n-pagination
-        v-model:page="page"
-        :page-count="100"
-        size="large"
-        show-quick-jumper
-        show-size-picker
-      />
     </div>
   </div>
 </template>
@@ -104,10 +91,11 @@
 import { ref, computed, h } from 'vue'
 import { Icon } from '@iconify/vue'
 import { $t } from '@/locales'
-import { useDatetime } from '@/composables'
-import { moneyFormat } from '@/utils/common/currency-format'
+import { useDatetime, useNumber } from '@/composables'
 
 defineOptions({ name: 'VTable' })
+
+const { moneyFormat } = useNumber()
 
 interface Format {
   type: 'datetime' | 'currency'
@@ -138,9 +126,14 @@ export interface Header {
 interface Props {
   headers: Array<Header>
   data: Array<any>
+  total: number
 }
 
-const emit = defineEmits()
+interface Emits {
+  (e: any, value: any): void
+}
+
+const emit = defineEmits<Emits>()
 
 function render(arg: any) {
   const color =
@@ -176,8 +169,6 @@ const hasCommand = computed(() => {
 function isRenderCommandDropdown(item: any) {
   return item.commands && item.commands.length > 0
 }
-
-const page = ref<number>(2)
 
 function getWidth(key: any) {
   if (!isShowField(key)) return
@@ -220,12 +211,7 @@ function getFormatText(key: any, value: any) {
     if (format.type === 'datetime') {
       return datetime(value).format(format.value)
     } else if (format.type === 'currency') {
-      moneyFormat(
-        format.value.locale,
-        format.value.style,
-        format.value.currency,
-        value
-      )
+      return moneyFormat(format.value.style, format.value.currency, value)
     } else {
       return value
     }

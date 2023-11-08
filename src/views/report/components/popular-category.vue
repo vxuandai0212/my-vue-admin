@@ -60,10 +60,7 @@ function setData(value: ApiReport.PopularCategory[]) {
     return {
       icon: ICON_MAP[i.type],
       title: I18N_MAP[i.type],
-      value: new Intl.NumberFormat('vi-VN', {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 2,
-      }).format(i.value),
+      value: i.value,
       iconFillColor: ICON_FILL_COLOR[i.type],
       iconBackgroundColor: ICON_BACKGROUND_COLOR[i.type],
     }

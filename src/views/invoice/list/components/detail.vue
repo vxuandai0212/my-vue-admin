@@ -11,7 +11,9 @@
     <div class="flex <lg:flex-col">
       <div class="basis-3/5 <lg:basis-1 p-10-30-83-29">
         <div>
-          <div class="flex <md:flex-col <md:items-start <md:gap-10 justify-between items-center md:height-52">
+          <div
+            class="flex <md:flex-col <md:items-start <md:gap-10 justify-between items-center md:height-52"
+          >
             <div class="flex gap-14 items-center">
               <div
                 class="flex items-center justify-center background-color-background-light"
@@ -253,7 +255,7 @@
                   <div
                     class="color-primary-grey font-size-12 font-700 line-height-18"
                   >
-                    04 May 2019
+                    {{ sampleDate1 }}
                   </div>
                 </div>
               </div>
@@ -274,7 +276,7 @@
                   <div
                     class="color-primary-grey font-size-12 font-700 line-height-18"
                   >
-                    05 May 2019
+                    {{ sampleDate1 }}
                   </div>
                 </div>
               </div>
@@ -290,7 +292,7 @@
                   <div
                     class="color-primary-grey font-size-12 font-700 line-height-18"
                   >
-                    04 Sep 2019
+                    {{ sampleDate1 }}
                   </div>
                 </div>
                 <img
@@ -316,7 +318,7 @@
                   <div
                     class="color-primary-grey font-size-12 font-700 line-height-18"
                   >
-                    04 May 2019
+                    {{ sampleDate1 }}
                   </div>
                 </div>
               </div>
@@ -337,7 +339,7 @@
                   <div
                     class="color-primary-grey font-size-12 font-700 line-height-18"
                   >
-                    05 May 2019
+                    {{ sampleDate1 }}
                   </div>
                 </div>
               </div>
@@ -353,7 +355,7 @@
                   <div
                     class="color-primary-grey font-size-12 font-700 line-height-18"
                   >
-                    04 Sep 2019
+                    {{ sampleDate1 }}
                   </div>
                 </div>
                 <img
@@ -379,7 +381,7 @@
                   <div
                     class="color-primary-grey font-size-12 font-700 line-height-18"
                   >
-                    04 May 2019
+                    {{ sampleDate2 }}
                   </div>
                 </div>
               </div>
@@ -400,7 +402,7 @@
                   <div
                     class="color-primary-grey font-size-12 font-700 line-height-18"
                   >
-                    05 May 2019
+                    {{ sampleDate2 }}
                   </div>
                 </div>
               </div>
@@ -416,7 +418,7 @@
                   <div
                     class="color-primary-grey font-size-12 font-700 line-height-18"
                   >
-                    04 Sep 2019
+                    {{ sampleDate2 }}
                   </div>
                 </div>
                 <img
@@ -443,7 +445,7 @@
                   <div
                     class="color-primary-grey font-size-12 font-700 line-height-18"
                   >
-                    04 May 2019
+                    {{ sampleDate2 }}
                   </div>
                 </div>
               </div>
@@ -464,7 +466,7 @@
                   <div
                     class="color-primary-grey font-size-12 font-700 line-height-18"
                   >
-                    05 May 2019
+                    {{ sampleDate2 }}
                   </div>
                 </div>
               </div>
@@ -480,7 +482,7 @@
                   <div
                     class="color-primary-grey font-size-12 font-700 line-height-18"
                   >
-                    04 Sep 2019
+                    {{ sampleDate2 }}
                   </div>
                 </div>
                 <img
@@ -539,8 +541,19 @@ import EmojiPicker from 'vue3-emoji-picker'
 import 'vue3-emoji-picker/css'
 import { useClick } from '@/hooks'
 import { $t } from '@/locales'
+import { useDatetime } from '@/composables'
+import { computed } from 'vue'
 
 defineOptions({ name: 'InvoiceDetail' })
+
+const { datetime } = useDatetime()
+const sampleDate1 = computed(() =>
+  datetime(1683533878000).format('DD MMM YYYY')
+)
+const sampleDate2 = computed(() =>
+  datetime(1694161078000).format('DD MMM YYYY')
+)
+
 const chatContainerRef: any = ref(null)
 const commentInputRef: any = ref(null)
 const chatListHeight = ref(570)

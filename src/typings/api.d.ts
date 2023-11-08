@@ -112,3 +112,19 @@ declare namespace ApiReport {
     value: number
   }
 }
+
+declare namespace ApiInvoice {
+  interface Invoice {
+    id: number
+    code: string
+    createdAt: number
+    customerName: string
+    status: 1 | 2 | 3 | 4 | 5 | 6
+    amount: number
+  }
+
+  interface GetAllInvoice {
+    total: number
+    items: Invoice[]
+  }
+}

@@ -35,9 +35,11 @@ import { useLoading } from '@/hooks'
 import { fetchSmoking } from '@/service'
 import { useI18n } from 'vue-i18n'
 import dayjs from 'dayjs'
-import { moneyFormat } from '~/src/utils/common/currency-format'
+import { useNumber } from '@/composables'
 
 defineOptions({ name: 'SmokingChart' })
+
+const { moneyFormat } = useNumber()
 
 const { locale } = useI18n()
 watch(locale, () => {
@@ -55,8 +57,8 @@ const womenSale = ref<string>()
 
 function setChartData(data: ApiReport.Smoking) {
   const { x, y, totalMen, totalWomen } = data
-  menSale.value = moneyFormat('en-US', 'currency', 'USD', totalMen)
-  womenSale.value = moneyFormat('en-US', 'currency', 'USD', totalWomen)
+  menSale.value = moneyFormat('currency', 'USD', totalMen)
+  womenSale.value = moneyFormat('currency', 'USD', totalWomen)
   const { men, women } = y
   chartData.value = {
     legend: [
@@ -75,8 +77,8 @@ function setChartData(data: ApiReport.Smoking) {
       },
     ],
     yAxis: {
-      name: $t('page.report.smokingChart.unit')
-    }
+      name: $t('page.report.smokingChart.unit'),
+    },
   }
 }
 

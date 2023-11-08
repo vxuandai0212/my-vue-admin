@@ -24,10 +24,10 @@
             item.key === active ? 'color-primary' : 'color-primary-dark',
           ]"
         >
-          {{ item.label }}
+          {{ $t(item.label) }}
         </div>
         <div class="font-size-12 font-400 color-primary-grey">
-          {{ item.description }}
+          {{ $t(item.description) }}
         </div>
       </div>
     </div>
@@ -36,13 +36,15 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { LocalIcon } from '@/typings/icon'
+import { $t } from '@/locales'
+import { I18nType } from '~/src/typings/system'
 
 defineOptions({ name: 'AdvanceTab' })
 
 export type Tab = {
   key: any
-  label: string
-  description: string
+  label: I18nType.I18nKey
+  description: I18nType.I18nKey
   icon: LocalIcon
 }
 

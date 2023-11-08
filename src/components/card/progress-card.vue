@@ -14,7 +14,7 @@
       </div>
       <div class="flex gap-4 items-center">
         <div class="color-primary-dark font-size-20 font-700 line-height-32">
-          {{ valuePrefix }}{{ props.value }}
+          {{ valuePrefix }}{{ formatValue }}
         </div>
         <v-icon
           icon="arrow"
@@ -39,13 +39,17 @@
 import { computed } from 'vue'
 import { $t } from '@/locales'
 import { I18nType } from '@/typings/system'
+import { useNumber } from '@/composables'
 
 defineOptions({ name: 'ProgressCard' })
+
 export interface ProgressCardProps {
   label: I18nType.I18nKey
   description: I18nType.I18nKey
   valuePrefix?: string
-  value?: number
+  value?: number | string
+  valueType?: 'currency' | 'number'
+  currencyType?: 'USD' | 'VND'
   progressColor: 'primary' | 'warning' | 'danger' | 'success'
   trend: 'up' | 'down'
   percent: number
@@ -64,9 +68,21 @@ const props = withDefaults(defineProps<ProgressCardProps>(), {
   trend: 'up',
   percent: 60,
   backgroundColor: 'background-extra-light',
+  valueType: 'number',
+  currencyType: 'USD',
 })
+
+const { numberFormat, moneyFormat } = useNumber()
 
 const trendColor = computed(() =>
   props.trend === 'up' ? '#7CE7AC' : '#FF808B'
 )
+
+const formatValue = computed(() => {
+  if (props.valueType === 'currency') {
+    return moneyFormat('currency', props.currencyType, props.value as number)
+  } else {
+    return numberFormat(props.value as number)
+  }
+})
 </script>

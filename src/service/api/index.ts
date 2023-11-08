@@ -1,3 +1,3 @@
 export * from './auth'
-export * from './management'
+export * from './invoice'
 export * from './report'

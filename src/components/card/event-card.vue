@@ -9,7 +9,7 @@
           :style="[`background-color: ${COLOR[props.color]}`]"
         ></div>
         <div class="color-primary font-size-12 font-799 line-height-18">
-          {{ props.date }}
+          {{ formatDate }}
         </div>
       </div>
       <v-icon class="fill-primary-grey width-14" icon="three-dot" />
@@ -25,6 +25,9 @@
   </div>
 </template>
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useDatetime } from '@/composables'
+
 defineOptions({ name: 'EventCard' })
 
 const COLOR = {
@@ -35,11 +38,15 @@ const COLOR = {
 }
 
 export interface EventCardProps {
-  date: string
+  date: number
   title: string
   description: string
   color: 'primary' | 'success' | 'danger' | 'warning'
 }
 
 const props = withDefaults(defineProps<EventCardProps>(), {})
+
+const { datetime } = useDatetime()
+
+const formatDate = computed(() => datetime(props.date).format('hh:mm A'))
 </script>

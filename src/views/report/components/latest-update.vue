@@ -12,20 +12,15 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import { fetchLatestUpdate } from '@/service'
 import { I18nType } from '@/typings/system'
 import { ItemCardProps } from '@/components/card/item-card.vue'
 import { useLoading } from '@/hooks'
 import { LocalIcon } from '@/typings/icon'
 import { $t } from '@/locales'
-import { useDatetime } from '@/composables'
-import { moneyFormat } from '@/utils/common/currency-format'
-import { useI18n } from 'vue-i18n'
 
 defineOptions({ name: 'LatestUpdate' })
-
-const { timeFromNow } = useDatetime()
 
 const { loading, startLoading, endLoading } = useLoading(false)
 
@@ -43,29 +38,22 @@ const ICON_MAP: { [key: string]: LocalIcon } = {
   'email-notification-sent': 'notification',
 }
 
-const { locale } = useI18n()
-watch(locale, () => {
-  getData()
-})
-
 const data = ref<ItemCardProps[]>()
 
 function setData(value: ApiReport.LatestUpdate[]) {
   data.value = value.map(function (i): ItemCardProps {
-    let label = `${$t(I18N_MAP[i.type])}`
+    let label = I18N_MAP[i.type]
+    let valueType: ItemCardProps['valueType'] = 'number'
     if (i.type === 'item-sale') {
-      label = `${$t(I18N_MAP[i.type])} #${i.code}`
-    }
-
-    let value = ''
-    if (i.type === 'item-sale') {
-      value = `+${moneyFormat('en-US', 'currency', 'USD', i.value as number)}`
+      valueType = 'currency'
     } else {
-      value = `${timeFromNow(i.value)}`
+      valueType = 'datetime'
     }
     return {
       label,
-      value,
+      value: i.value as number,
+      code: i.code,
+      valueType,
       icon: ICON_MAP[i.type],
     }
   })

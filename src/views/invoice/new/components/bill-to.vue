@@ -11,87 +11,92 @@
       >
         <v-icon icon="upload" class="fill-primary-dark width-18" />
         <div class="color-primary-dark font-size-12 font-900 uppercase">
-          upload image
+          {{ $t('page.invoice.detail.billTo.uploadImage') }}
         </div>
       </n-upload-dragger>
     </n-upload>
     <div class="grid grid-cols-2 gap-y-22px gap-x-28px">
       <v-input
         class="col-span-1 <md:col-span-2"
-        label="Invoice number"
+        :label="$t('page.invoice.detail.billTo.invoiceNumber.title')"
         icon="invoice"
         type="text"
-        placeholder="Start typing…"
+        :placeholder="
+          $t('page.invoice.detail.billTo.invoiceNumber.placeholder')
+        "
       />
       <v-select
         :options="templateOptions"
         class="col-span-1 <md:col-span-2"
-        label="Template"
+        :label="$t('page.invoice.detail.billTo.template.title')"
         icon="caret-down"
         type="text"
-        placeholder="Select invoice template"
+        :placeholder="$t('page.invoice.detail.billTo.template.placeholder')"
       />
       <v-input
         class="col-span-1 <md:col-span-2"
-        label="Company name"
+        :label="$t('page.invoice.detail.billTo.companyName.title')"
         icon="company"
         type="text"
-        placeholder="Start typing…"
+        :placeholder="$t('page.invoice.detail.billTo.companyName.placeholder')"
       />
       <v-datepicker
         class="col-span-1 <md:col-span-2"
-        label="Date"
+        :label="$t('page.invoice.detail.billTo.date.title')"
         icon="date"
-        placeholder="Select due date"
+        :placeholder="$t('page.invoice.detail.billTo.date.placeholder')"
       />
       <v-input
         class="col-span-2"
-        label="Business address"
+        :label="$t('page.invoice.detail.billTo.businessAddress.title')"
         icon="business"
         type="text"
-        placeholder="Start typing..."
+        :placeholder="
+          $t('page.invoice.detail.billTo.businessAddress.placeholder')
+        "
       />
       <v-select
         :options="templateOptions"
         class="col-span-1 <md:col-span-2"
-        label="Country"
+        :label="$t('page.invoice.detail.billTo.country.title')"
         icon="caret-down"
         type="text"
-        placeholder="Select country"
+        :placeholder="$t('page.invoice.detail.billTo.country.placeholder')"
       />
       <v-select
         :options="templateOptions"
         class="col-span-1 <md:col-span-2"
-        label="City"
+        :label="$t('page.invoice.detail.billTo.city.title')"
         icon="caret-down"
         type="text"
-        placeholder="Select city"
+        :placeholder="$t('page.invoice.detail.billTo.city.placeholder')"
       />
       <v-input
         class="col-span-1 <md:col-span-2"
-        label="Phone number"
+        :label="$t('page.invoice.detail.billTo.phoneNumber.title')"
         icon="phone"
         type="text"
-        placeholder="Start typing..."
+        :placeholder="$t('page.invoice.detail.billTo.phoneNumber.placeholder')"
       />
       <v-input
         class="col-span-1 <md:col-span-2"
-        label="Email"
+        :label="$t('page.invoice.detail.billTo.email.title')"
         icon="email"
         type="text"
-        placeholder="Start typing..."
+        :placeholder="$t('page.invoice.detail.billTo.email.placeholder')"
       />
       <v-input
         class="col-span-1 <md:col-span-2"
-        label="Tax rate"
+        :label="$t('page.invoice.detail.billTo.taxRate.title')"
         icon="rate"
         type="text"
-        placeholder="Start typing..."
+        :placeholder="$t('page.invoice.detail.billTo.taxRate.placeholder')"
       />
     </div>
   </div>
 </template>
 <script setup lang="ts">
+import { $t } from '@/locales'
 import { DropdownMixedOption } from 'naive-ui/es/dropdown/src/interface'
 
 defineOptions({ name: 'InvoiceBillTo' })

@@ -599,6 +599,97 @@ declare namespace I18nType {
             total: string
           }
           activity: string
+          common: {
+            button: {
+              saveAndSend: string
+              cancel: string
+            }
+            tab: {
+              billTo: {
+                title: string
+                description: string
+              }
+              from: {
+                title: string
+                description: string
+              }
+              description: {
+                title: string
+                description: string
+              }
+              saveAsDraft: {
+                title: string
+                description: string
+              }
+              deleteInvoice: {
+                title: string
+                description: string
+              }
+            }
+          }
+          description: {
+            item: string
+            remove: string
+            itemDescription: {
+              title: string
+              placeholder: string
+            }
+            hour: {
+              title: string
+              placeholder: string
+            }
+            rate: {
+              title: string
+              placeholder: string
+            }
+            addNewItem: string
+            subTotal: string
+            tax: string
+            total: string
+          }
+          billTo: {
+            uploadImage: string
+            invoiceNumber: {
+              title: string
+              placeholder: string
+            }
+            template: {
+              title: string
+              placeholder: string
+            }
+            companyName: {
+              title: string
+              placeholder: string
+            }
+            date: {
+              title: string
+              placeholder: string
+            }
+            businessAddress: {
+              title: string
+              placeholder: string
+            }
+            country: {
+              title: string
+              placeholder: string
+            }
+            city: {
+              title: string
+              placeholder: string
+            }
+            phoneNumber: {
+              title: string
+              placeholder: string
+            }
+            email: {
+              title: string
+              placeholder: string
+            }
+            taxRate: {
+              title: string
+              placeholder: string
+            }
+          }
         }
       }
       report: {

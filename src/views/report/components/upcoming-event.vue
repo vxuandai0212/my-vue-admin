@@ -12,12 +12,11 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import { fetchUpcomingEvent } from '@/service'
 import { useLoading } from '@/hooks'
 import { $t } from '@/locales'
 import { useDatetime } from '@/composables'
-import { useI18n } from 'vue-i18n'
 import { EventCardProps } from '@/components/card/event-card.vue'
 
 defineOptions({ name: 'UpcomingEvent' })
@@ -26,23 +25,17 @@ const { now, datetime } = useDatetime()
 
 const { loading, startLoading, endLoading } = useLoading(false)
 
-const { locale } = useI18n()
-watch(locale, () => {
-  getData()
-})
-
 const data = ref<EventCardProps[]>()
 
 function setData(value: ApiReport.UpcomingEvent[]) {
   data.value = value.map(function (i): EventCardProps {
     const diff = Math.ceil(datetime(now()).diff(i.startAt, 'minutes', true))
-    console.log(diff)
     let color: EventCardProps['color'] = 'primary'
     if (diff < 60) {
       color = 'danger'
     }
     return {
-      date: datetime(i.startAt).format('hh:mm A'),
+      date: i.startAt,
       title: i.title,
       description: i.description,
       color,

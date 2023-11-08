@@ -1,7 +1,7 @@
 import { MockMethod } from 'vite-plugin-mock'
 import auth from './auth'
 import route from './route'
-import management from './management'
+import invoice from './invoice'
 import report from './report'
 
-export default [...auth, ...route, ...management, ...report] as MockMethod[]
+export default [...auth, ...route, ...invoice, ...report] as MockMethod[]

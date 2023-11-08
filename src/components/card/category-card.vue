@@ -4,7 +4,7 @@
   >
     <div class="flex flex-col">
       <div class="color-primary-dark font-size-18 font-700 line-height-27">
-        {{ props.value }}
+        {{ formatValue }}
       </div>
       <div class="color-primary-grey font-size-14 font-400 line-height-21">
         {{ $t(props.title) }}
@@ -25,12 +25,14 @@
 <script setup lang="ts">
 import { LocalIcon } from '@/typings/icon'
 import { $t } from '@/locales'
+import { computed } from 'vue'
+import { useNumber } from '@/composables'
 
 defineOptions({ name: 'CategoryCard' })
 
 export interface CategoryCardProps {
   title: string
-  value: string
+  value: number
   icon: LocalIcon
   iconFillColor: string
   iconBackgroundColor: string
@@ -39,5 +41,11 @@ export interface CategoryCardProps {
 const props = withDefaults(defineProps<CategoryCardProps>(), {
   iconFillColor: 'primary',
   iconBackgroundColor: 'primary-resting',
+})
+
+const { numberFormat } = useNumber()
+
+const formatValue = computed(() => {
+  return numberFormat(props.value)
 })
 </script>

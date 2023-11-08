@@ -44,7 +44,6 @@ const progressCards: ProgressCardProps[] = [
   },
 ]
 
-
 const I18N_MAP: { [key: string]: I18nType.I18nKey } = {
   sale: 'page.invoice.progress.sale',
   lead: 'page.invoice.progress.lead',
@@ -67,8 +66,11 @@ function setData(value: ApiReport.OverviewStat[]) {
   data.value = value.map(function (i): ProgressCardProps {
     const label = I18N_MAP[i.type]
     let description = I18N_MAP[i.duration]
-    let valuePrefix = i.type === 'sale' || i.type === 'profit' ? '$' : ''
-    let value = i.currentValue
+    let value: number | string = i.currentValue
+    let valueType: ProgressCardProps['valueType'] = 'number'
+    if (i.type === 'sale' || i.type === 'profit') {
+      valueType = 'currency'
+    }
     let progressColor = COLOR_MAP[i.type]
     let trend: ProgressCardProps['trend'] =
       i.currentValue > i.previousDurationValue ? 'up' : 'down'
@@ -78,8 +80,8 @@ function setData(value: ApiReport.OverviewStat[]) {
     return {
       label,
       description,
-      valuePrefix,
       value,
+      valueType,
       progressColor,
       trend,
       percent,

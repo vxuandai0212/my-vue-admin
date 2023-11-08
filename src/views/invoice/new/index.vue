@@ -54,22 +54,30 @@
         <div
           class="rounded-12 background-color-white p-24-29-33-26 flex <md:flex-col-reverse gap-31"
         >
-          <div class="flex flex-col gap-97 basis-2/3 <md:basis-1 grow-0 shrink-0">
+          <div
+            class="flex flex-col gap-97 basis-2/3 <md:basis-1 grow-0 shrink-0"
+          >
             <Transition name="fade" mode="out-in">
               <invoice-bill-to
                 v-if="activeTab === 'bill'"
                 class="flex flex-col gap-11"
               />
-              <invoice-description
-                v-else-if="activeTab === 'description'"
-              />
+              <invoice-description v-else-if="activeTab === 'description'" />
             </Transition>
             <div class="flex gap-6">
-              <primary-button class="p-14-47-15-46" label="Save & Send" />
-              <resting-button class="p-14-43-15-43" label="Cancel" />
+              <primary-button
+                class="p-14-47-15-46"
+                :label="$t('page.invoice.detail.common.button.saveAndSend')"
+              />
+              <resting-button
+                class="p-14-43-15-43"
+                :label="$t('page.invoice.detail.common.button.cancel')"
+              />
             </div>
           </div>
-          <div class="flex flex-col <md:gap-20 grow shrink justify-between h-full">
+          <div
+            class="flex flex-col <md:gap-20 grow shrink justify-between h-full"
+          >
             <advance-tab
               @update:active-tab="chooseTab"
               :active="activeTab"
@@ -90,6 +98,7 @@ import InvoiceDescription from '@/views/invoice/new/components/description.vue'
 import InvoiceBillTo from '@/views/invoice/new/components/bill-to.vue'
 import CustomHeader from '@/layouts/basic-layout/components/custom-header.vue'
 import { useScreen } from '@/composables'
+import { $t } from '@/locales'
 
 const { isNotPC } = useScreen()
 const isMounted = ref<boolean>(false)
@@ -101,20 +110,20 @@ onMounted(() => {
 const topTabs: Tab[] = [
   {
     key: 'bill',
-    label: 'Bill To',
-    description: "Set your customer's details",
+    label: 'page.invoice.detail.common.tab.billTo.title',
+    description: 'page.invoice.detail.common.tab.billTo.description',
     icon: 'bill',
   },
   {
     key: 'from',
-    label: 'From',
-    description: 'Set your personal details',
+    label: 'page.invoice.detail.common.tab.from.title',
+    description: 'page.invoice.detail.common.tab.from.description',
     icon: 'from',
   },
   {
     key: 'description',
-    label: 'Description',
-    description: 'Add products or items',
+    label: 'page.invoice.detail.common.tab.description.title',
+    description: 'page.invoice.detail.common.tab.description.description',
     icon: 'description',
   },
 ]
@@ -128,38 +137,38 @@ function chooseTab(v: any) {
 const bottomTabs: Tab[] = [
   {
     key: 'save',
-    label: 'Save As a Draft',
-    description: 'Edit and send this invoice later',
+    label: 'page.invoice.detail.common.tab.saveAsDraft.title',
+    description: 'page.invoice.detail.common.tab.saveAsDraft.description',
     icon: 'save',
   },
   {
     key: 'delete',
-    label: 'Delete Invoice',
-    description: 'Hide & disable current invoice',
+    label: 'page.invoice.detail.common.tab.deleteInvoice.title',
+    description: 'page.invoice.detail.common.tab.deleteInvoice.description',
     icon: 'delete',
   },
 ]
 
 const progressCards = [
   {
-    label: 'All Invoices',
-    description: 'Week comparison',
+    label: 'page.invoice.progress.all',
+    description: 'page.invoice.progress.duration.week',
     value: 1.345,
     progressColor: 'primary',
     trend: 'up',
     percent: 80,
   },
   {
-    label: 'Scheduled',
-    description: 'Month comparison',
+    label: 'page.invoice.progress.scheduled',
+    description: 'page.invoice.progress.duration.month',
     value: 3.82,
     progressColor: 'warning',
     trend: 'down',
     percent: 60,
   },
   {
-    label: 'Unpaid',
-    description: 'Week comparison',
+    label: 'page.invoice.progress.unpaid',
+    description: 'page.invoice.progress.duration.week',
     valuePrefix: '$',
     value: 4690,
     progressColor: 'danger',
@@ -167,8 +176,8 @@ const progressCards = [
     percent: 30,
   },
   {
-    label: 'Paid',
-    description: 'Month comparison',
+    label: 'page.invoice.progress.paid',
+    description: 'page.invoice.progress.duration.month',
     valuePrefix: '$',
     value: 3820,
     progressColor: 'success',
