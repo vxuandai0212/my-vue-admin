@@ -17,14 +17,14 @@ const apis: MockMethod[] = [
       let filterItems
 
       if (status && status !== 'all') {
-        filterItems = invoiceModel.list.filter((i) => i.status === status)
+        filterItems = invoiceModel.list.filter((i: ApiInvoice.Invoice) => i.status === status)
         items = filterItems.filter(
-          (_i, index) => index <= endIndex && index >= startIndex
+          (_i: any, index: number) => index <= endIndex && index >= startIndex
         )
       } else {
         filterItems = invoiceModel.list
         items = filterItems.filter(
-          (_i, index) => index <= endIndex && index >= startIndex
+          (_i: any, index: number) => index <= endIndex && index >= startIndex
         )
       }
 

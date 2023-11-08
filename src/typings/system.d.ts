@@ -59,24 +59,10 @@ declare namespace Service {
 
 declare namespace Theme {
   interface Setting {
-    darkMode: boolean
-    followSystemTheme: boolean
-    isCustomizeDarkModeTransition: boolean
-    layout: Layout
-    scrollMode: UnionKey.ThemeScrollMode
-    scrollModeList: Common.OptionWithKey<UnionKey.ThemeScrollMode>[]
     themeColor: string
     themeColorList: string[]
     otherColor: OtherColor
     isCustomizeInfoColor: boolean
-    fixedHeaderAndTab: boolean
-    showReload: boolean
-    header: Header
-    tab: Tab
-    sider: Sider
-    menu: Menu
-    footer: Footer
-    page: Page
   }
 
   interface Layout {
@@ -627,7 +613,7 @@ declare namespace I18nType {
               }
             }
           }
-          description: {
+          descriptionSection: {
             item: string
             remove: string
             itemDescription: {

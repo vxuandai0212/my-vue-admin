@@ -416,7 +416,7 @@ const locale: I18nType.Schema = {
             },
           },
         },
-        description: {
+        descriptionSection: {
           item: 'Item',
           remove: 'Remove',
           itemDescription: {

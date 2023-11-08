@@ -1,6 +1,6 @@
 import { mock } from 'mockjs'
 
-export const invoiceModel: ApiInvoice.Invoice[] = mock({
+export const invoiceModel: any = mock({
   'list|1000': [
     {
       id: '@id',

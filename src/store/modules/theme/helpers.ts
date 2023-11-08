@@ -52,7 +52,6 @@ function getThemeColors(colors: [ColorType, string][]) {
   return themeColor
 }
 
-/** 获取naive的主题颜色 */
 export function getNaiveThemeOverrides(
   colors: Record<ColorType, string>
 ): GlobalThemeOverrides {

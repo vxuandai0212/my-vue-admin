@@ -1,7 +1,6 @@
 <template>
   <router-view v-slot="{ Component, route }">
     <transition
-      :name="theme.pageAnimateMode"
       mode="out-in"
       :appear="true"
       @before-leave="app.setDisableMainXScroll(true)"
@@ -21,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { useAppStore, useRouteStore, useThemeStore } from '@/store'
+import { useAppStore, useRouteStore } from '@/store'
 
 defineOptions({ name: 'GlobalContent' })
 
@@ -34,7 +33,6 @@ withDefaults(defineProps<Props>(), {
 })
 
 const app = useAppStore()
-const theme = useThemeStore()
 const routeStore = useRouteStore()
 </script>
 

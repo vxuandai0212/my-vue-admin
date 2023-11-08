@@ -12,24 +12,4 @@ declare namespace UnionKey {
     | 'register'
     | 'reset-pwd'
     | 'bind-wechat'
-
-  type ThemeLayoutMode =
-    | 'vertical'
-    | 'horizontal'
-    | 'vertical-mix'
-    | 'horizontal-mix'
-
-  type ThemeScrollMode = 'wrapper' | 'content'
-
-  type ThemeTabMode = 'chrome' | 'button'
-
-  type ThemeHorizontalMenuPosition = 'flex-start' | 'center' | 'flex-end'
-
-  type ThemeAnimateMode =
-    | 'zoom-fade'
-    | 'zoom-out'
-    | 'fade-slide'
-    | 'fade'
-    | 'fade-bottom'
-    | 'fade-scale'
 }

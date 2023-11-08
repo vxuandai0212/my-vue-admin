@@ -40,7 +40,6 @@ import type {
 import { LabelLayout, UniversalTransition } from 'echarts/features'
 import { CanvasRenderer } from 'echarts/renderers'
 import { useElementSize } from '@vueuse/core'
-import { useThemeStore } from '@/store'
 
 export type ECOption = echarts.ComposeOption<
   | BarSeriesOption
@@ -83,8 +82,6 @@ export function useEcharts(
   options: Ref<ECOption> | ComputedRef<ECOption>,
   renderFun?: (chartInstance: echarts.ECharts) => void
 ) {
-  const theme = useThemeStore()
-
   const domRef = ref<HTMLElement>()
 
   const initialSize = { width: 0, height: 0 }
@@ -109,7 +106,7 @@ export function useEcharts(
 
   async function render() {
     if (domRef.value) {
-      const chartTheme = theme.darkMode ? 'dark' : 'light'
+      const chartTheme = 'light'
       await nextTick()
       chart = echarts.init(domRef.value, chartTheme)
       if (renderFun) {
@@ -125,11 +122,6 @@ export function useEcharts(
 
   function destroy() {
     chart?.dispose()
-  }
-
-  function updateTheme() {
-    destroy()
-    render()
   }
 
   const scope = effectScope()
@@ -156,13 +148,6 @@ export function useEcharts(
         update(newValue)
       },
       { deep: true }
-    )
-
-    watch(
-      () => theme.darkMode,
-      () => {
-        updateTheme()
-      }
     )
   })
 

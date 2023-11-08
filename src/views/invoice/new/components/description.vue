@@ -6,11 +6,11 @@
           <div
             class="flex p-0-18-0-18 justify-between items-center background-color-FBFBFD rounded-8 height-50"
           >
-            <div>{{ $t('page.invoice.detail.description.item') }}</div>
+            <div>{{ $t('page.invoice.detail.descriptionSection.item') }}</div>
             <div class="flex gap-7">
               <v-icon class="fill-primary-dark height-15" icon="delete" />
               <div class="uppercase color-primary-dark font-size-12 font-900">
-                {{ $t('page.invoice.detail.description.remove') }}
+                {{ $t('page.invoice.detail.descriptionSection.remove') }}
               </div>
             </div>
           </div>
@@ -18,30 +18,30 @@
             <v-input
               class="flex-grow"
               :label="
-                $t('page.invoice.detail.description.itemDescription.title')
+                $t('page.invoice.detail.descriptionSection.itemDescription.title')
               "
               icon="cart"
               :placeholder="
                 $t(
-                  'page.invoice.detail.description.itemDescription.placeholder'
+                  'page.invoice.detail.descriptionSection.itemDescription.placeholder'
                 )
               "
             />
             <div class="flex gap-30">
               <v-input
                 class="flex-grow"
-                :label="$t('page.invoice.detail.description.hour.title')"
+                :label="$t('page.invoice.detail.descriptionSection.hour.title')"
                 icon="hour"
                 :placeholder="
-                  $t('page.invoice.detail.description.hour.placeholder')
+                  $t('page.invoice.detail.descriptionSection.hour.placeholder')
                 "
               />
               <v-input
                 class="flex-grow"
-                :label="$t('page.invoice.detail.description.rate.title')"
+                :label="$t('page.invoice.detail.descriptionSection.rate.title')"
                 icon="money"
                 :placeholder="
-                  $t('page.invoice.detail.description.rate.placeholder')
+                  $t('page.invoice.detail.descriptionSection.rate.placeholder')
                 "
               />
             </div>
@@ -51,11 +51,11 @@
           <div
             class="flex p-0-18-0-18 justify-between items-center background-color-FBFBFD rounded-8 height-50"
           >
-            <div>{{ $t('page.invoice.detail.description.item') }}</div>
+            <div>{{ $t('page.invoice.detail.descriptionSection.item') }}</div>
             <div class="flex gap-7">
               <v-icon class="fill-primary-dark height-15" icon="delete" />
               <div class="uppercase color-primary-dark font-size-12 font-900">
-                {{ $t('page.invoice.detail.description.remove') }}
+                {{ $t('page.invoice.detail.descriptionSection.remove') }}
               </div>
             </div>
           </div>
@@ -63,29 +63,29 @@
             <v-input
               class="col-span-2"
               :label="
-                $t('page.invoice.detail.description.itemDescription.title')
+                $t('page.invoice.detail.descriptionSection.itemDescription.title')
               "
               icon="cart"
               :placeholder="
                 $t(
-                  'page.invoice.detail.description.itemDescription.placeholder'
+                  'page.invoice.detail.descriptionSection.itemDescription.placeholder'
                 )
               "
             />
             <v-input
               class="col-span-1 <md:col-span-2"
-              :label="$t('page.invoice.detail.description.hour.title')"
+              :label="$t('page.invoice.detail.descriptionSection.hour.title')"
               icon="hour"
               :placeholder="
-                $t('page.invoice.detail.description.hour.placeholder')
+                $t('page.invoice.detail.descriptionSection.hour.placeholder')
               "
             />
             <v-input
               class="col-span-1 <md:col-span-2"
-              :label="$t('page.invoice.detail.description.rate.title')"
+              :label="$t('page.invoice.detail.descriptionSection.rate.title')"
               icon="money"
               :placeholder="
-                $t('page.invoice.detail.description.rate.placeholder')
+                $t('page.invoice.detail.descriptionSection.rate.placeholder')
               "
             />
           </div>
@@ -94,7 +94,7 @@
       <div class="flex gap-2 items-center">
         <v-icon class="fill-primary-dark width-18" icon="add" />
         <div class="uppercase color-primary-dark font-size-12 font-900">
-          {{ $t('page.invoice.detail.description.addNewItem') }}
+          {{ $t('page.invoice.detail.descriptionSection.addNewItem') }}
         </div>
       </div>
     </div>
@@ -106,7 +106,7 @@
               <div
                 class="color-primary-dark font-size-14 font-700 line-height-21"
               >
-                {{ $t('page.invoice.detail.description.subTotal') }}
+                {{ $t('page.invoice.detail.descriptionSection.subTotal') }}
               </div>
               <div
                 class="color-primary-dark font-size-14 font-400 line-height-21"
@@ -118,7 +118,7 @@
               <div
                 class="color-primary-dark font-size-14 font-700 line-height-21"
               >
-                {{ $t('page.invoice.detail.description.tax') }} 10%
+                {{ $t('page.invoice.detail.descriptionSection.tax') }} 10%
               </div>
               <div
                 class="color-primary-dark font-size-14 font-400 line-height-21"
@@ -131,7 +131,7 @@
             <div
               class="color-primary-dark font-size-16 font-700 line-height-24"
             >
-              {{ $t('page.invoice.detail.description.total') }}
+              {{ $t('page.invoice.detail.descriptionSection.total') }}
             </div>
             <div
               class="color-primary-dark font-size-16 font-700 line-height-24"

@@ -1,13 +1,11 @@
 import { effectScope, onScopeDispose, watch } from 'vue'
 import type { GlobalThemeOverrides } from 'naive-ui'
-import { useElementSize } from '@vueuse/core'
 import { kebabCase } from 'lodash-es'
 import { getColorPalettes, getRgbOfColor } from '@/utils'
 import { useThemeStore } from '@/store/modules'
 
 export default function subscribeThemeStore() {
   const theme = useThemeStore()
-  const { width } = useElementSize(document.documentElement)
   const scope = effectScope()
 
   scope.run(() => {
@@ -20,14 +18,6 @@ export default function subscribeThemeStore() {
       },
       { immediate: true }
     )
-
-    watch(width, (newValue) => {
-      if (newValue < theme.layout.minWidth) {
-        document.documentElement.style.overflowX = 'auto'
-      } else {
-        document.documentElement.style.overflowX = 'hidden'
-      }
-    })
   })
 
   onScopeDispose(() => {
