@@ -21,11 +21,6 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
 ## Remote icon
 https://icones.js.org/
 
-# Component state
-- Loading state
-- Empty state
-- Full content state
-
 # Mock
 - mockjs.com
 
@@ -33,3 +28,35 @@ https://icones.js.org/
 - Super/super123
 - Admin/admin123
 - User01/user01123
+
+# Requirement checklist:
+- Global application (support multi-language, fully responsive)
+- Secure page, authorization view and action
+- Beautiful UI (modern vibe, fancy transitions and animations)
+- Optimized performace (quick page loading time, small package size, least re-render)
+- Used latest technologies but still can integrate basic technologies
+
+# What is included
+- Build tool: vite
+- Technologies: 
++ vue3
++ typescript (support developer with typesafe and hint when coding)
++ vue-router
++ pinia
++ plugin:
+* compress (reduce package size for quick deployment)
+* unplug (support developer to use component without import)
+* mock (support team to quick demo when backend is not ready yet)
+* visualizer (visual package size, see what can be further size-optimized)
++ unocss (inline css style like tailwind)
++ naiveUI (component library for vuejs)
+- Features:
++ Fully customize font
++ Can use local icon, remote icon
++ Except datepicker, pagination, dropdown all is self-implemented.
++ Component with empty state, loading state, full content state
++ Multi language (text, number format, datetime format, currency format)
++ Dynamic route (auth route, view permission)
++ JWT verify
++ Transition + animation
++ Third party library integration sample code
