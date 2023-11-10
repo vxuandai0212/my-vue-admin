@@ -37,26 +37,28 @@ https://icones.js.org/
 - Used latest technologies but still can integrate basic technologies
 
 # What is included
-- Build tool: vite
-- Technologies: 
-+ vue3
-+ typescript (support developer with typesafe and hint when coding)
-+ vue-router
-+ pinia
-+ plugin:
-* compress (reduce package size for quick deployment)
-* unplug (support developer to use component without import)
-* mock (support team to quick demo when backend is not ready yet)
-* visualizer (visual package size, see what can be further size-optimized)
-+ unocss (inline css style like tailwind)
-+ naiveUI (component library for vuejs)
-- Features:
-+ Fully customize font
-+ Can use local icon, remote icon
-+ Except datepicker, pagination, dropdown all is self-implemented.
-+ Component with empty state, loading state, full content state
-+ Multi language (text, number format, datetime format, currency format)
-+ Dynamic route (auth route, view permission)
-+ JWT verify
-+ Transition + animation
-+ Third party library integration sample code
+## Build tool: vite
+## Technologies:
+### Core
+- vue3
+- typescript (support developer with typesafe and hint when coding)
+- vue-router
+- pinia
+### Plugin:
+- compress (reduce package size for quick deployment)
+- unplug (support developer to use component without import)
+- mock (support team to quick demo when backend is not ready yet)
+- visualizer (visual package size, see what can be further size-optimized)
+### UI
+- unocss (inline css style like tailwind)
+- naiveUI (component library for vuejs)
+## Features:
+- Fully customize font
+- Can use local icon, remote icon
+- Except datepicker, pagination, dropdown all is self-implemented.
+- Component with empty state, loading state, full content state
+- Multi language (text, number format, datetime format, currency format)
+- Dynamic route (auth route, view permission)
+- JWT verify
+- Transition + animation
+- Third party library integration sample code
