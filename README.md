@@ -28,3 +28,8 @@ https://icones.js.org/
 
 # Mock
 - mockjs.com
+
+# Login
+- Super/super123
+- Admin/admin123
+- User01/user01123
